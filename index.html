@@ -9,8 +9,15 @@
   <link rel="alternate" hreflang="fr" href="http://jeremyrouot.github.io/homepage/fr" />
 </head>
 
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+
 <body style="color: rgb(0, 0, 0); background-color:#D5DBDC;" link="#0000ee" vlink="#551a8b">
-  <!--#config timefmt="%A" --> <!--#echo var="DATE_LOCAL" -->
-  <!--#include virtual="content.html" -->
+
+  <div w3-include-html="content.html"></div> 
+
+  <script>
+  w3IncludeHTML();
+  </script>
+
 </body>
 </html>
