@@ -1,0 +1,286 @@
+﻿1
+00:00:00,000 --> 00:00:00,700
+
+
+2
+00:00:00,700 --> 00:00:06,933
+We're going to see how to solve trigonometric equations.
+One knows very well how to solve equation:
+cos()=cos()
+
+3
+00:00:06,933 --> 00:00:10,066
+We have a formula for this.
+We also know how to solve equation:
+
+4
+00:00:10,066 --> 00:00:13,199
+sin()=sin(),
+we have an other formula for this.
+
+5
+00:00:13,200 --> 00:00:17,533
+However we do not know how to solve directly
+cos()=sin()
+
+6
+00:00:17,533 --> 00:00:21,899
+We'll see that we'll need one of the previous form.
+
+7
+00:00:21,900 --> 00:00:24,666
+Let's focus on this trigonometric equation.
+
+8
+00:00:24,666 --> 00:00:27,899
+To solve this trigonometric equation,
+is to find
+
+9
+00:00:27,900 --> 00:00:31,666
+all the x values 
+for which the equality is true.
+
+10
+00:00:31,666 --> 00:00:36,066
+To solve this equation, 
+the first thing to do is to change
+
+11
+00:00:36,066 --> 00:00:40,299
+the value sqrt(2)/2,
+ into a cosine of something.
+
+12
+00:00:40,300 --> 00:00:47,633
+Here it is straightforward because
+sqrt(2)/2 is actually equal to cos(Pi/4).
+
+13
+00:00:47,633 --> 00:00:52,133
+This first step is very important.
+Once we had written it,
+
+14
+00:00:52,133 --> 00:00:56,666
+we get an equation cos()=cos().
+And we have a formula
+
+15
+00:00:56,666 --> 00:01:03,132
+for solutions of this kind of equation.
+The formula always has 2 parts as you can see.
+
+16
+00:01:03,133 --> 00:01:10,599
+Then we have,
+2x equals Pi/4 to which we have to add 2kPi
+
+17
+00:01:10,600 --> 00:01:20,366
+or (and you have to keep in mind this "or")
+2x equals minus the angle, namely -Pi/4 +2kPi.
+
+18
+00:01:20,366 --> 00:01:22,599
+Once you have this 2 parts,
+
+19
+00:01:22,600 --> 00:01:26,833
+you have to find x.
+
+20
+00:01:26,833 --> 00:01:30,933
+Here, you only need to divide by 2,
+
+21
+00:01:30,933 --> 00:01:33,566
+and be careful when you divide by 2,
+
+22
+00:01:33,566 --> 00:01:42,166
+Pi/4 becomes Pi/8,
+but you also need to divide 2kPi by 2
+which becomes kPi.
+
+23
+00:01:42,166 --> 00:01:46,699
+Hence we can write 
+the set of the solutions of this equation,
+
+24
+00:01:46,700 --> 00:01:51,700
+like this, with 2 parts:
+the first one Pi/8+kP
+
+25
+00:01:51,700 --> 00:01:56,700
+and the second one
+-Pi/8+kP (where k is an integer).
+
+26
+00:01:56,700 --> 00:01:59,800
+Notice there is an infinity of solutions.
+
+27
+00:01:59,800 --> 00:02:02,500
+Second example with sinus.
+
+28
+00:02:02,500 --> 00:02:07,600
+It's the same way as before.
+The first thing to do is to change this value 1/2,
+
+29
+00:02:07,600 --> 00:02:11,100
+to a sinus of something.
+
+30
+00:02:11,100 --> 00:02:17,800
+It turns out that 1/2 is sin(Pi/6).
+Once we have this form, we can apply
+
+31
+00:02:17,800 --> 00:02:23,200
+solutions formula for sinus,
+which is also
+
+32
+00:02:23,200 --> 00:02:28,533
+in 2 parts.
+The first part is the same as for cosine:
+
+33
+00:02:28,533 --> 00:02:33,733
+4x equals Pi/6+2kPi.
+
+34
+00:02:33,733 --> 00:02:40,733
+And the second one is a little bit different:
+4x equals ...
+
+35
+00:02:40,733 --> 00:02:46,499
+... Pi minus the angle over here, that is Pi/6
+to which we add 2kPi.
+
+36
+00:02:46,500 --> 00:02:54,100
+One more time, you have to find x.
+Therefore you need to divide these equations by 4.
+
+37
+00:02:54,100 --> 00:03:00,033
+Pi/6 becomes Pi/24,
+and do not forget to dived 2kPi by 4
+
+38
+00:03:00,033 --> 00:03:03,899
+which becomes 4Pi/2.
+
+39
+00:03:03,900 --> 00:03:07,600
+We obtain the set of solutions of the equation
+
+40
+00:03:07,600 --> 00:03:11,800
+right there,
+with an integer k.
+
+41
+00:03:11,800 --> 00:03:20,500
+Finally, a last equation.
+An equation of type cos()=sin().
+We don't have an explicit formula to solve this.
+
+42
+00:03:20,500 --> 00:03:26,133
+So how can you do ?
+We're going to use symetry formula 
+we've seen previously.
+
+43
+00:03:26,133 --> 00:03:29,399
+We can switch the sinus to a cosine,
+
+44
+00:03:29,400 --> 00:03:34,266
+(in this case, we'll get cos()=cos())
+otherwise we can switch cosine to sinus
+
+45
+00:03:34,266 --> 00:03:38,099
+(in the latter case, we'll get sin()=sin()).
+
+46
+00:03:38,100 --> 00:03:43,400
+You have a choice to do. 
+I've chosen to switch the sinus to a cosine,
+and we remind
+
+47
+00:03:43,400 --> 00:03:48,733
+of sin(x) equals cos(x-Pi/2).
+
+48
+00:03:48,733 --> 00:03:52,966
+Once we had rewritten the equation,
+we can apply as before
+
+49
+00:03:52,966 --> 00:03:55,832
+the solutions formula for cosine.
+
+50
+00:03:55,833 --> 00:04:04,933
+It's in to 2 parts (keep in mind!). 
+Therefore 2x equals the angle x-Pi/2 +2kPi
+
+51
+00:04:04,933 --> 00:04:12,866
+or
+2x equals negative the angle, that is
+-x + Pi/2 + 2kPi.
+
+52
+00:04:12,866 --> 00:04:21,199
+At last, you have to find x.
+You put all x together (on the left hand side)
+
+53
+00:04:21,200 --> 00:04:26,333
+and we get only one x
+has to be equal to - Pi/2 +2kPi
+
+54
+00:04:26,333 --> 00:04:31,499
+or
+3x has to be equal to Pi/2 +2kPi.
+
+55
+00:04:31,500 --> 00:04:37,333
+There's nothing to do with the first equation.
+But for the second one, you have to divide by 3
+
+56
+00:04:37,333 --> 00:04:39,733
+and we get
+
+57
+00:04:39,733 --> 00:04:46,133
+(right here a - sign is missing)
+and we get for this side
+Pi/6+2kPi/3.
+
+58
+00:04:46,133 --> 00:04:48,299
+The set of solutions
+
+59
+00:04:48,300 --> 00:04:51,000
+(with a - sign right here)
+
+60
+00:04:51,000 --> 00:04:54,333
+is equal to that.
+

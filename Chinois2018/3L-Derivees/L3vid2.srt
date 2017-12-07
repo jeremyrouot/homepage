@@ -1,0 +1,227 @@
+﻿1
+00:00:00,000 --> 00:00:00,466
+
+
+2
+00:00:00,466 --> 00:00:06,632
+Most of functions we meet
+depend on not only one but on many variables.
+
+3
+00:00:06,633 --> 00:00:11,033
+You have to know how to compute the derivative
+of some function, depending on many variables,
+
+4
+00:00:11,033 --> 00:00:14,533
+with respect to one of the given variable.
+
+5
+00:00:14,533 --> 00:00:17,566
+We're going to see this through 2 examples.
+
+6
+00:00:17,566 --> 00:00:20,799
+Let's look this first function f.
+
+7
+00:00:20,800 --> 00:00:31,133
+It depends on t and x.
+The x over here is the variable against which
+we have to take the derivative of f.
+
+8
+00:00:31,133 --> 00:00:38,199
+Therefore the only variable which matters here is x.
+And all the other variables are considered as a parameter,
+
+9
+00:00:38,200 --> 00:00:42,933
+in other words as a constant.
+How to take the derivative of f with respect to x?
+
+10
+00:00:42,933 --> 00:00:48,599
+In red is what is depending on x.
+The rest of it is a constant.
+
+11
+00:00:48,600 --> 00:00:55,366
+Taking the derivative of f w.r.t x,
+we have to take the derivative of exp(x)
+(the t in front of it is a constant)
+
+12
+00:00:55,366 --> 00:01:02,132
+ The constant t stays in the same place.
+It's similar for the t squared.
+
+13
+00:01:02,133 --> 00:01:09,466
+The derivative of f w.r.t. x is then
+t times exp(x)
+(because the derivative of exp(x) is exp(x))
+
+14
+00:01:09,466 --> 00:01:19,332
+ plus a constant times x
+which becomes the constant:
+that is t squared.
+
+15
+00:01:19,333 --> 00:01:22,766
+Now we're interested in the same function
+
+16
+00:01:22,766 --> 00:01:28,066
+and we would like to take the derivative of it
+with respect to t.
+
+17
+00:01:28,066 --> 00:01:35,399
+This time roles are exchanged:
+what isn't t is considered as a constant.
+
+18
+00:01:35,400 --> 00:01:40,300
+Hence exp(x) is a constant
+and the derivative of t times exp(x)
+
+19
+00:01:40,300 --> 00:01:44,233
+is the constant exp(x).
+
+20
+00:01:44,233 --> 00:01:51,066
+And the derivative of t squared times x,
+it comes 2 t times the constant.
+
+21
+00:01:51,066 --> 00:01:59,632
+Notice that for the same function,
+the derivatives are not the same according to
+the choice of the variable.
+
+22
+00:01:59,633 --> 00:02:08,099
+At last, with the same expression,
+let's consider a third function
+depending on the variable a.
+
+23
+00:02:08,100 --> 00:02:15,566
+Because the function is depending on a
+and a is not explicit in the expression,
+
+24
+00:02:15,566 --> 00:02:23,132
+all of this is considered as a constant
+(w.r.t. a)
+and taking the derivative of h w.r.t. a
+
+25
+00:02:23,133 --> 00:02:27,933
+is taking the derivative of a constant,
+so the result is 0.
+
+26
+00:02:27,933 --> 00:02:31,166
+Here is a second and little more tricky example.
+
+27
+00:02:31,166 --> 00:02:40,366
+One more time, we have an expression
+which depend on t and x.
+We would like to take the derivative w.r.t. x.
+
+28
+00:02:40,366 --> 00:02:46,732
+In red is what depends on x,
+the rest of it doesn't depend on x
+
+29
+00:02:46,733 --> 00:02:54,733
+and is considered as a constant.
+Hence cos(t^2) is a constant here
+
+30
+00:02:54,733 --> 00:02:59,166
+as well as the square root of t.
+Both will appear in the derivative.
+
+31
+00:02:59,166 --> 00:03:05,966
+Now we have to take the derivative of ln(x) squared.
+ln(x) squared has the form u squared.
+
+32
+00:03:05,966 --> 00:03:08,099
+The derivative of u squared
+
+33
+00:03:08,100 --> 00:03:18,300
+equals 2 u times u'.
+We get 2 ln(x) times the derivative of ln(x),
+which is 1 over x.
+
+34
+00:03:18,300 --> 00:03:27,800
+The constant is multiplied by
+2 u (2 ln(x) ) times u' (1/x).
+
+35
+00:03:27,800 --> 00:03:37,900
++ the derivative of some constant times 1 / x:
+the constant is the same and the derivative of 1/x
+is - 1/x squared.
+
+36
+00:03:37,900 --> 00:03:43,966
+This can be written as the following.
+(it's not an obligation)
+
+37
+00:03:43,966 --> 00:03:51,599
+Now we take the derivative of the same function
+but this time depending on t.
+
+38
+00:03:51,600 --> 00:03:58,400
+This time roles are exchanged:
+what isn't depending on t is considered as a constant.
+
+39
+00:03:58,400 --> 00:04:03,933
+Hence ln(x)^2 is a constant,
+as well as 1 over x.
+
+40
+00:04:03,933 --> 00:04:08,733
+We have to take the derivative of cos(t^2),
+namely cos(u).
+
+41
+00:04:08,733 --> 00:04:15,699
+The derivative of cos(u)
+is - sin(u) times u'.
+
+42
+00:04:15,700 --> 00:04:20,033
+Here u is t squared, 
+u' is then 2t.
+
+43
+00:04:20,033 --> 00:04:29,366
+Then we get something like that:
+- sin(u) times u' times the constant
+
+44
+00:04:29,366 --> 00:04:40,199
++ the constant 1/x
+times the derivative of square root of t,
+which is 1 over 2 square root of .
+
+45
+00:04:40,200 --> 00:04:46,000
+All of this can be written like that.
+

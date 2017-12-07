@@ -1,0 +1,289 @@
+﻿1
+00:00:00,000 --> 00:00:00,933
+
+
+2
+00:00:00,933 --> 00:00:07,633
+We're going to see addition formula and a straightforward application: duplication formula.
+
+3
+00:00:07,633 --> 00:00:13,933
+So the trigonometric addition formula 
+are the most important amongst all trigonometric formula.
+
+4
+00:00:13,933 --> 00:00:19,233
+The main reason is that from these formula, 
+we can deduce all the others.
+
+5
+00:00:19,233 --> 00:00:23,566
+Here we recall addition formula:
+
+6
+00:00:23,566 --> 00:00:31,399
+cosine of x+y and sinus of x+y, 
+which are available for all real x and y.
+
+7
+00:00:31,400 --> 00:00:35,866
+Be careful: cosine switch + sign to - sign
+
+8
+00:00:35,866 --> 00:00:39,866
+instead of sinus which keeps the same sign.
+
+9
+00:00:39,866 --> 00:00:47,432
+We immediately can deduce from them
+the following formula, with a cosine of x minus y.
+
+10
+00:00:47,433 --> 00:00:51,966
+Actually we replace all of y by -y
+
+11
+00:00:51,966 --> 00:01:03,832
+and we get cosine of x cosine of - y minus sinus of x sinus -y. 
+Because cos(-x)=cos(x), this is the same
+
+12
+00:01:03,833 --> 00:01:09,799
+but sin(-y)=-sin(y), both - signs give together a + sign.
+
+13
+00:01:09,800 --> 00:01:15,766
+We get the formula over here for cos(x-y) with a +sign.
+
+14
+00:01:15,766 --> 00:01:22,532
+Conversely, sin(x-y), switching all the y by -y
+
+15
+00:01:22,533 --> 00:01:27,033
+we get in the same way: the -sign from the sinus
+
+16
+00:01:27,033 --> 00:01:32,466
+is going outside et the formula follows.
+
+17
+00:01:32,466 --> 00:01:38,932
+You absolutely have to remember these 2 (ou 4) formula.
+
+18
+00:01:38,933 --> 00:01:48,933
+A first application: 
+if you want to compute cos(x+Pi/3), we apply the formula, 
+the +sign becomes a -sign
+
+19
+00:01:48,933 --> 00:01:55,599
+and we remind of the usual values of cos(Pi/3) et sin(Pi/3).
+
+20
+00:01:55,600 --> 00:02:03,633
+Namely, cosine becomes 1/2 
+and sinus becomes the square root of 3 over 2.
+
+21
+00:02:03,633 --> 00:02:09,699
+An other and little more tricky example: 
+how to compute sinus of Pi/12 ?
+
+22
+00:02:09,700 --> 00:02:12,633
+Sin(Pi/12) is not an usual value.
+
+23
+00:02:12,633 --> 00:02:18,466
+But we can transform these quantity into two usual values,
+
+24
+00:02:18,466 --> 00:02:25,499
+if we notice that Pi/12 is actually equal to 4Pi/12 - 3Pi/12.
+
+25
+00:02:25,500 --> 00:02:28,233
+It turns out that 4Pi/12=Pi/3
+
+26
+00:02:28,233 --> 00:02:31,533
+which is an usual value. And 3Pi/12 = Pi/4
+
+27
+00:02:31,533 --> 00:02:36,933
+therefore we can apply addition formula for sinus,
+
+28
+00:02:36,933 --> 00:02:43,999
+which gives us this, 
+and all the values are well-known usual values.
+
+29
+00:02:44,000 --> 00:02:47,633
+The result follows.
+
+30
+00:02:47,633 --> 00:02:56,766
+We can simplify to obtain: 
+the square root of 6 minus the square root of 2, all of this over 4,
+for the value of sin(Pi/12).
+
+31
+00:02:56,766 --> 00:03:01,932
+Obviously, we could compute in the same way cos(Pi/12).
+
+32
+00:03:01,933 --> 00:03:09,466
+So a first application of addition formula 
+is what we call duplication formula.
+
+33
+00:03:09,466 --> 00:03:15,832
+Namely, cosine of 2x is actually cosine of x+x,
+
+34
+00:03:15,833 --> 00:03:18,599
+and using the addition formula,
+
+35
+00:03:18,600 --> 00:03:25,433
+we get something like that: 
+cosine of x squared minus sinus of x squared.
+
+36
+00:03:25,433 --> 00:03:27,799
+From this, we remind of
+
+37
+00:03:27,800 --> 00:03:35,500
+the trigonometric Pythagoras' formula, in other words: 
+cos^2+sin^2=1. 
+Therefore we can switch
+
+38
+00:03:35,500 --> 00:03:38,366
+the one or the other one
+
+39
+00:03:38,366 --> 00:03:43,932
+the cos^2 or the sin^2 
+to 1-sin^2 or to 1-cos^2.
+
+40
+00:03:43,933 --> 00:03:53,833
+Here I switch cos^2 to 1-sin^2
+and I get 1-2sin^2(x).
+
+41
+00:03:53,833 --> 00:04:02,999
+Otherwise, if I switch sin^2 to 1-cos^2, 
+then I get 2cos^2(x)-1.
+
+42
+00:04:03,000 --> 00:04:12,166
+These 3 green quantities are the same, 
+called duplication formula for cosine. 
+
+43
+00:04:12,166 --> 00:04:19,766
+At last, duplication formula for sinus: 
+it is easier,
+
+44
+00:04:19,766 --> 00:04:30,132
+because we notice that we get 2 times cos(x)sin(x), 
+and here is the duplication formula for sinus.
+
+45
+00:04:30,133 --> 00:04:35,766
+So we can apply these duplication formula 
+in two different ways.
+
+46
+00:04:35,766 --> 00:04:40,899
+We're going to see this with the cosine.
+
+47
+00:04:40,900 --> 00:04:49,800
+Indeed, reversely,
+cosine squared is equal to 1 ...
+
+48
+00:04:49,800 --> 00:04:55,800
+(if I put the 1 in the other side) 
+...+ cosine of 2x, all of that above 2.
+
+49
+00:04:55,800 --> 00:05:04,133
+For example: let's compute cosine of Pi/8.
+Again Pi/8 isn't an usual value.
+
+50
+00:05:04,133 --> 00:05:07,066
+So we should go back to usual values.
+
+51
+00:05:07,066 --> 00:05:13,032
+Cos(Pi/8) is not directly computable,
+but we can compute
+
+52
+00:05:13,033 --> 00:05:17,933
+cos(Pi/8)^2,
+using the previous formula.
+
+53
+00:05:17,933 --> 00:05:25,866
+cos(Pi/8)^2 equals 
+cosine of 2 times Pi/8 (=Pi/4) +1
+all of that over 2.
+
+54
+00:05:25,866 --> 00:05:32,966
+But we know the value of cos(Pi/4)
+which is the square root of 2 over 2.
+
+55
+00:05:32,966 --> 00:05:40,899
+Hence cos(Pi/8)^2 is finally equal 
+to the square root of 2 +2, over 2.
+
+56
+00:05:40,900 --> 00:05:45,900
+The last thing to do is 
+to take the square root of these quantities.
+
+57
+00:05:45,900 --> 00:05:51,300
+Be careful, 
+the square root of a^2 is not a.
+
+58
+00:05:51,300 --> 00:05:56,700
+Actually the square root of a^2 
+is the absolute value of a.
+
+59
+00:05:56,700 --> 00:06:02,133
+It depends on whether 
+a is a positive or a negative number.
+
+60
+00:06:02,133 --> 00:06:07,666
+Here Pi/8 is between 0 and Pi/2,
+
+61
+00:06:07,666 --> 00:06:11,266
+therefore cos(Pi/8) is necessarly positive.
+
+62
+00:06:11,266 --> 00:06:16,932
+Hence the square root of cos(Pi/8)^2
+is equal to cos(Pi/8).
+
+63
+00:06:16,933 --> 00:06:24,166
+It is the square root of all of that.
+

@@ -1,0 +1,289 @@
+﻿1
+00:00:00,000 --> 00:00:00,633
+
+
+2
+00:00:00,633 --> 00:00:07,699
+During this video, we're going to see
+how to compute limits in which exp and ln occur.
+
+3
+00:00:07,700 --> 00:00:14,966
+The first point is about
+compared growths: they compare
+exp, ln functions with respect to power functions.
+
+4
+00:00:14,966 --> 00:00:19,832
+Then we'll give another example
+of computation of some limit.
+
+5
+00:00:19,833 --> 00:00:26,066
+Here are the graph of exp (in black)
+and the graph of ln (in violet).
+
+6
+00:00:26,066 --> 00:00:35,966
+These functions are symmetric w.r.t to the line y=x.
+Now we draw power functions.
+
+7
+00:00:35,966 --> 00:00:41,666
+In green is the function x to the power 1.06.
+
+8
+00:00:41,666 --> 00:00:47,899
+We can change the power:
+while the power is increasing,
+
+9
+00:00:47,900 --> 00:00:54,166
+we notice that the green function 
+is approaching the graph of exp.
+
+10
+00:00:54,166 --> 00:00:58,832
+But when x tends to +infinity,
+
+11
+00:00:58,833 --> 00:01:06,199
+exponential function increases
+more quickly than any power functions
+(in +infinity)
+
+12
+00:01:06,200 --> 00:01:14,500
+This a property we can write:
+
+13
+00:01:14,500 --> 00:01:20,033
+the quotient of exp of x and power function x to alpha
+
+14
+00:01:20,033 --> 00:01:24,866
+tends to +infinity
+when x tends to +infinity.
+
+15
+00:01:24,866 --> 00:01:29,732
+It means that the exponential function
+is "stronger" than any power function.
+
+16
+00:01:29,733 --> 00:01:36,733
+Now
+when power decreases,
+
+17
+00:01:36,733 --> 00:01:43,466
+in the same way, graphs of power functions
+are approaching the graph of ln.
+
+18
+00:01:43,466 --> 00:01:51,766
+But
+when x tends to +infinity,
+for any power here,
+
+19
+00:01:51,766 --> 00:01:57,066
+logarithm function tends to +infinity
+more slowly than power function.
+
+20
+00:01:57,066 --> 00:02:04,766
+In other words, we can translate 
+this property into a limit of quotient.
+
+21
+00:02:04,766 --> 00:02:12,666
+The quotient of ln of x over x to alpha,
+for any alpha,
+when x tends to +infinity,
+
+22
+00:02:12,666 --> 00:02:16,999
+is going to zero.
+It means that ln is always "weaker" than
+
+23
+00:02:17,000 --> 00:02:21,366
+any power functions in +infinity.
+
+24
+00:02:21,366 --> 00:02:28,566
+That is a first use of these functions
+for computation of some limits.
+
+25
+00:02:28,566 --> 00:02:34,732
+Second example:
+how to compute this kind of limit?
+
+26
+00:02:34,733 --> 00:02:39,433
+The first thing you have to ask yourself is:
+can you compute it without transformation?
+
+27
+00:02:39,433 --> 00:02:47,833
+We notice that in the first part,
+it is the x squared which matters in +infinity,
+so it goes to +infinity.
+
+28
+00:02:47,833 --> 00:02:52,766
+Because of the square root,
+all of this tends to +infinity.
+
+29
+00:02:52,766 --> 00:02:57,399
+Here we have a "minus x",
+which tends to - infinity.
+
+30
+00:02:57,400 --> 00:03:06,000
+Therefore we have the (undefined) form:
++ infinity - infinity
+
+31
+00:03:06,000 --> 00:03:14,866
+To compute this kind of limit,
+we then have to transform the quantity.
+
+32
+00:03:14,866 --> 00:03:17,266
+So
+
+33
+00:03:17,266 --> 00:03:27,532
+this is a classical operation,
+because we have a square root of something minus something
+
+34
+00:03:27,533 --> 00:03:38,333
+So we multiply this quantity inside ln by
+its conjugate quantity.
+
+35
+00:03:38,333 --> 00:03:43,199
+The conjugate quantity of
+sqrt a - sqrt b is
+sqrt a + sqrt b.
+
+36
+00:03:43,200 --> 00:03:48,200
+To not change the value,
+we have to multiply both above and below
+by the same thing.
+
+37
+00:03:48,200 --> 00:03:54,533
+We multiply by 
+the square root of x squared + x -1
+plus x.
+
+38
+00:03:54,533 --> 00:03:59,199
+Above we get a classical polynomial identity,
+which is
+
+39
+00:03:59,200 --> 00:04:06,766
+(sqrt a - sqrt b) times (sqrt a + sqrt b)
+is actually a - b.
+
+40
+00:04:06,766 --> 00:04:10,666
+Because of the squared,
+we can remove the square root here.
+
+41
+00:04:10,666 --> 00:04:15,032
+And x becomes x squared.
+
+42
+00:04:15,033 --> 00:04:20,599
+We can simplify and we obtain this.
+
+43
+00:04:20,600 --> 00:04:24,266
+Once we have this form,
+
+44
+00:04:24,266 --> 00:04:35,832
+we can factor above and below
+by the biggest power we can find.
+
+45
+00:04:35,833 --> 00:04:39,133
+Above the biggest power is x.
+
+46
+00:04:39,133 --> 00:04:45,466
+Below,
+the biggest power inside the square root
+is x squared.
+
+47
+00:04:45,466 --> 00:04:52,699
+After factor, we get his,
+and now we put the x squared in front of the square root.
+
+48
+00:04:52,700 --> 00:05:03,066
+Keep in mind that square root of x squared
+is the absolute value of x.
+
+49
+00:05:03,066 --> 00:05:12,166
+But here we're interested in the limit
+when x tends to +infinity.
+Hence x will be a positive number.
+
+50
+00:05:12,166 --> 00:05:19,032
+So in this case,
+you can remove the absolute value.
+
+51
+00:05:19,033 --> 00:05:30,199
+At last, we can simplify all of these x.
+
+52
+00:05:30,200 --> 00:05:37,800
+We get
+this quantity over here.
+(after simplification)
+
+53
+00:05:37,800 --> 00:05:45,966
+Notice that the new quantity is easier than the first one.
+
+54
+00:05:45,966 --> 00:05:55,999
+Indeed, 
+it is easier to find the limit of this quantity:
+when x tends to +infinity, above is going to 1,
+
+55
+00:05:56,000 --> 00:06:02,966
+and below, 
+we get 1 + square root of 1
+(all of this tends to zero).
+
+56
+00:06:02,966 --> 00:06:08,266
+Then square root of 1 plus 1 is 2.
+
+57
+00:06:08,266 --> 00:06:14,199
+So the limit of ln of this quotient
+is going to be ln of 1 over 2.
+
+58
+00:06:14,200 --> 00:06:21,000
+Thanks to the ln properties,
+we get - ln of 2.
+
