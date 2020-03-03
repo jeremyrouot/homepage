@@ -1,0 +1,196 @@
+﻿1
+00:00:00,000 --> 00:00:00,166
+
+
+2
+00:00:00,166 --> 00:00:06,599
+This lesson is about integrals and primitives.
+We'll give the relation between these two objects.
+
+3
+00:00:06,600 --> 00:00:14,800
+In this first video, we're going to talk about integral,
+to give a definition and some properties.
+
+4
+00:00:14,800 --> 00:00:20,266
+Then we're going to see how to compute
+the integrale of some constant function.
+
+5
+00:00:20,266 --> 00:00:25,499
+Here is a graph of some positive function f.
+
+6
+00:00:25,500 --> 00:00:29,766
+It means the graph is above the x-axis.
+
+7
+00:00:29,766 --> 00:00:36,199
+We're interested in the area below the graph:
+namely between the graph and the x-axis
+
+8
+00:00:36,200 --> 00:00:42,666
+delimited by two points:
+a=1 and b=5.
+
+9
+00:00:42,666 --> 00:00:47,099
+That area, that quantity,
+is denoted like this.
+
+10
+00:00:47,100 --> 00:00:54,966
+It depends on a and b 
+but also on the function f.
+
+11
+00:00:54,966 --> 00:01:04,166
+We read the number like:
+the integral from a to b of f (x) dx.
+
+12
+00:01:04,166 --> 00:01:07,366
+It can be computed and here the value is 10.88.
+
+13
+00:01:07,366 --> 00:01:11,232
+For negative function,
+
+14
+00:01:11,233 --> 00:01:20,299
+we're interested in the area but this time
+above the graph (between the graph and the x-axis).
+
+15
+00:01:20,300 --> 00:01:32,033
+That area is a positive number,
+but the integral from a to b of f(x) 
+
+16
+00:01:32,033 --> 00:01:39,499
+is going to be a negative number.
+Actually the integral of a negative function
+is the opposite of the value of the area.
+
+17
+00:01:39,500 --> 00:01:45,733
+Here it comes -10.88.
+
+18
+00:01:45,733 --> 00:01:48,133
+A first property:
+
+19
+00:01:48,133 --> 00:01:54,133
+Here is the graph of some positive function,
+
+20
+00:01:54,133 --> 00:01:59,499
+and we're looking to compute the area 
+between a and b of this function.
+
+21
+00:01:59,500 --> 00:02:03,500
+It is easy to figure out that
+
+22
+00:02:03,500 --> 00:02:13,200
+when we cut the interval a,b into two intervals a,c and c,b
+the area below the graph
+
+23
+00:02:13,200 --> 00:02:24,733
+between a and b equals
+the area between a and c + the area between c and b.
+These two area in green and red can be denoted by
+
+24
+00:02:24,733 --> 00:02:32,433
+integrals:
+here is the integral between a and c
+and here is the integral between c and b.
+
+25
+00:02:32,433 --> 00:02:41,333
+If you compute a1+a1 (the areas),
+then you get 10.35
+
+26
+00:02:41,333 --> 00:02:50,599
+And moving c
+is going to change a1 and a2, 
+but the sum a1+a2 doesn't change.
+
+27
+00:02:50,600 --> 00:02:54,933
+This result is actually the integral
+between a and b.
+
+28
+00:02:54,933 --> 00:02:56,799
+This relation is called
+Chasles' relation.
+
+29
+00:02:56,800 --> 00:03:05,366
+The integral between a and b equals
+the integral between a and c + the integral between c and b
+
+30
+00:03:05,366 --> 00:03:11,032
+whatever the point c.
+
+31
+00:03:11,033 --> 00:03:13,499
+Let's continue by
+
+32
+00:03:13,500 --> 00:03:21,400
+the computation of the integral of some constant.
+It is very important and you have to know how to do it quickly.
+
+33
+00:03:21,400 --> 00:03:26,633
+The formula is the following:
+
+34
+00:03:26,633 --> 00:03:33,933
+the integral between a and b of c
+is equal to b-a (the length of the intervall a,b)
+
+35
+00:03:33,933 --> 00:03:41,266
+multiplied by the constant c inside the integral.
+
+36
+00:03:41,266 --> 00:03:47,632
+Actually to compute the integral of some constant
+
+37
+00:03:47,633 --> 00:03:50,399
+(because a constant function is a horizontal line)
+
+38
+00:03:50,400 --> 00:04:01,133
+the area below the line is the area of a rectangle.
+
+39
+00:04:01,133 --> 00:04:05,799
+Area of a rectangle is well-known:
+
+40
+00:04:05,800 --> 00:04:14,300
+the base (here is b-a that is 5-1)
+
+41
+00:04:14,300 --> 00:04:26,266
+times the height 
+(here is the value of the constant minus 0, that is c)
+
+42
+00:04:26,266 --> 00:04:39,999
+At last, the integral of a constant c between 1 and 5,
+is equal to 5-1 times the height c.
+

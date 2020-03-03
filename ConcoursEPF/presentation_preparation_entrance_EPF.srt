@@ -1,0 +1,411 @@
+1
+00:00:00,500 --> 00:00:04,200
+Welcome in this preparation of the examination entrance
+
+2
+00:00:04,600 --> 00:00:06,900
+of the EPF Graduate School of Engineering
+
+3
+00:00:06,900 --> 00:00:10,800
+My name is Jeremy Rouot and I am a mathematics teacher at EPF
+
+4
+00:00:10,800 --> 00:00:15,400
+and I will accompany you during this preparation 
+
+5
+00:00:16,800 --> 00:00:20,600
+In this video, I will present you the contents of this formation
+
+6
+00:00:20,600 --> 00:00:26,600
+with the different courses and the Moodle platform, 
+
+7
+00:00:26,600 --> 00:00:29,000
+due to which we will communicate all together,
+
+8
+00:00:30,200 --> 00:00:38,000
+to access of the different pdf files and video files of the courses,
+
+9
+00:00:38,000 --> 00:00:49,000
+and also to provide you some tests to see if you reached the requirements of the lessons
+
+10
+00:00:49,000 --> 00:00:53,000
+Let's begin to access this platform:
+
+11
+00:00:53,000 --> 00:00:57,000
+type the address http://moodle.epf.fr/
+
+12
+00:00:57,000 --> 00:01:03,000
+you reach this page where you can put
+
+13
+00:01:03,000 --> 00:01:13,000
+your id and your password, which were given to you 
+
+14
+00:01:14,000 --> 00:01:23,000
+After logging in, you get a series of courses and you should see the course
+
+15
+00:01:23,000 --> 00:01:28,000
+"SPOC Concours EPF"  You click on this link 
+
+16
+00:01:28,000 --> 00:01:38,000
+I will switch on the student mode so that you will see the same page as me 
+
+17
+00:01:38,000 --> 00:01:44,000
+Here on the course's page, you can change the language to english 
+
+18
+00:01:44,000 --> 00:01:51,000
+You have a first link to download a presentation's video of EPF Troyes, 
+
+19
+00:01:52,000 --> 00:02:02,000
+which was made by Chinese students at EPF 
+
+20
+00:02:02,000 --> 00:02:10,000
+Click on the link to download the zip archive on your computer
+
+21
+00:02:10,000 --> 00:02:18,000
+and extract it to have the video file 
+
+22
+00:02:18,000 --> 00:02:22,000
+Then I let you enjoy this video 
+
+23
+00:02:28,000 --> 00:02:32,000
+You have one link where you will be able to introduce yourself 
+
+24
+00:02:32,000 --> 00:02:40,000
+You can create a new discussion: for instance I introduced myself here
+
+25
+00:02:40,000 --> 00:02:44,000
+that is, I am Jérémy Rouot, math teacher at EPF
+
+26
+00:02:44,000 --> 00:03:00,000
+My hobby is bikes and I give you a QR code to add me on WeChat 
+
+27
+00:03:03,000 --> 00:03:12,000
+I invite you to create a discussion to speak a bit about yourself here 
+
+28
+00:03:16,000 --> 00:03:24,000
+You can either ask to me your question on WeChat or if you want to share your question
+
+29
+00:03:25,000 --> 00:03:37,000
+You can post a topic to present your problem that you encountered 
+
+30
+00:03:40,000 --> 00:03:47,000
+Let's come back on the main page of the course 
+
+31
+00:03:47,000 --> 00:03:55,000
+You have a first section about how to answer questions of this preparation 
+
+32
+00:03:56,500 --> 00:04:09,000
+Indeed there will be tests and you will be told to respect a syntax so that your answers can be correct 
+
+33
+00:04:09,000 --> 00:04:12,000
+We will come back to it after 
+
+34
+00:04:13,000 --> 00:04:20,000
+This second section is the first chapter of the preparation and concerns Trigonometry 	
+
+35
+00:04:20,000 --> 00:04:27,000
+Each course is organized as follows: you have the competencies that you should get at the end of this chapter 
+
+36
+00:04:27,000 --> 00:04:37,000
+You have links to download the pdf file of the course about Trigonometry
+
+37
+00:04:37,000 --> 00:04:46,000
+and to download videos related to this lesson 
+
+38
+00:04:46,000 --> 00:04:52,000
+As before, you have to download the zip archive on your computer 
+
+39
+00:04:52,000 --> 00:05:01,000
+and to extract it to have access to the videos of the course 
+
+40
+00:05:01,000 --> 00:05:07,000
+Once you finished to work on the pdf file and the video files 
+
+41
+00:05:07,000 --> 00:05:11,500
+You can train yourself with several tests  
+
+42
+00:05:12,000 --> 00:05:21,000
+You can do these tests as many of times as you want  You won't have marked on these tests 
+
+43
+00:05:21,000 --> 00:05:27,000
+At each different attempts, questions are not the same, so do not hesitate to do tests several times 
+
+44
+00:05:27,000 --> 00:05:34,000
+For instance, I entered in this test and I selected one question 
+
+45
+00:05:34,000 --> 00:05:42,000
+This test has 15 questions, and in the twelfth question I am told to expand the expression
+
+46
+00:05:42,000 --> 00:05:48,000
+(sine of minus 5 times r minus pi) in terms of (sine of 5 times r) or (cosine of 5 times r)
+
+47
+00:05:48,000 --> 00:05:52,000
+The answer to this question is (sine of 5 times r)
+
+48
+00:05:52,000 --> 00:05:57,000
+How to enter correctly (sine of 5 times r)?
+
+49
+00:05:57,000 --> 00:06:07,700
+To help you, this "Sheet summary"'s file contains different mathematical expressions 
+
+50
+00:06:07,700 --> 00:06:11,000
+and the corresponding expressions to enter in Moodle 
+
+51
+00:06:11,000 --> 00:06:20,000
+For instance, for the sine function, to enter sine of 2 times pi times beta, 
+
+52
+00:06:20,000 --> 00:06:26,000
+You must enter (sine of 2 times "p" "i" and "b" "e" "t" "a")
+
+53
+00:06:26,000 --> 00:06:35,000
+Indeed the pi number is indicated here as "p" "i" and the Greek letter beta is entered as "b" "e" "t" "a" 
+
+54
+00:06:35,000 --> 00:06:40,000
+Finally the sine function can be entered as "s" "i" "n" "bracket"
+
+55
+00:06:40,000 --> 00:06:50,000
+and you enter the input in the brackets  Here the input of the sine function is 5 times r 
+
+56
+00:06:50,000 --> 00:06:55,000
+I enter "5" "asterisk" because "asterisk" is the multiplication symbol
+
+57
+00:06:55,000 --> 00:07:04,000
+Below your answer box is displayed the mathematical expression corresponding to what you entered 
+
+58
+00:07:04,000 --> 00:07:10,000
+Namely, if you forgot a bracket, one indicates that your answer is not valid  
+
+59
+00:07:10,000 --> 00:07:13,000
+Indeed it specifies to add a closing bracket 
+
+60
+00:07:13,000 --> 00:07:21,000
+Careful, this displayed expression may be not correct  It is just an interpretation of what you entered and it could be incorrect 
+
+61
+00:07:21,000 --> 00:07:31,000
+If I add "plus" "1", it would have displayed the corresponding expression 
+
+62
+00:07:31,000 --> 00:07:41,000
+Then you can pass to the next question to reach a new question 
+
+63
+00:07:41,000 --> 00:07:50,000
+In this question you have to choose the correct answer among four potential answers 
+
+64
+00:07:50,000 --> 00:07:58,000
+You can go back to the previous question if you want to modify it 
+
+65
+00:07:58,000 --> 00:08:03,000
+To validate all your answers, you click here "Finish attempt"
+
+66
+00:08:03,000 --> 00:08:17,000
+and you can send all your answers to the system and you get a summary of your test 
+
+67
+00:08:17,000 --> 00:08:29,000
+I did not answer to the first question and it yields the right mathematical answer and the right syntax to enter it 
+
+68
+00:08:29,000 --> 00:08:38,000
+For instance (minus square root of three over 2), from this file 
+
+69
+00:08:38,000 --> 00:08:49,000
+the square root function should be entered as "s" "q" "r" "t" and the input is inside  brackets  
+
+70
+00:08:58,000 --> 00:09:04,000
+To get used to with this syntax, I strongly advice you to have a look at the first section,
+
+71
+00:09:04,000 --> 00:09:07,000
+which will train you to answer correctly to the questions 
+
+72
+00:09:07,000 --> 00:09:21,000
+The first link gives you instructions on this syntax to answer correctly to the questions 
+
+73
+00:09:21,000 --> 00:09:26,000
+The number pi can be entered as "p" "i" or with a percentage symbol "%" in front 
+
+74
+00:09:26,000 --> 00:09:35,000
+The multiplication symbol is the "asterisk", the power function, the brackets 
+
+75
+00:09:35,000 --> 00:09:41,000
+as soon as you have a rational expression, you should not forget brackets 
+
+76
+00:09:41,000 --> 00:09:49,000
+You can read this page and if you encounter mathematical object that you don't understand such as matrices, you can skip it 
+
+77
+00:09:49,000 --> 00:10:03,000
+The second link refers to a quiz, which is not evaluated  You can do it several times because most questions are random 
+
+78
+00:10:03,000 --> 00:10:14,000
+And this quiz is the perfect exercise to get used to with the specific syntax to enter mathematical expressions 
+
+79
+00:10:14,000 --> 00:10:19,000
+Keep this "Sheet summary" next to you as soon as you are answering questions on Moodle 
+
+80
+00:10:19,000 --> 00:10:33,000
+This point concerns Greek letters, to enter the Greek letter "alpha" you must type "a" "l" "p" "h" "a" 
+
+81
+00:10:33,000 --> 00:10:40,000
+Concerning the test of the first section, the first part is informative
+
+82
+00:10:40,000 --> 00:10:48,000
+To enter "x" at the power minus 2, you have to enter "x" "hat" "bracket" "-2" "bracket" 
+
+83
+00:10:50,000 --> 00:10:59,000
+In question 1, you are told to enter the expression corresponding to "y" equals to "3" times "x" plus "5"
+
+84
+00:10:59,000 --> 00:11:10,000
+So I enter "y" "=" "3" "*" "+" "5"
+
+85
+00:11:10,000 --> 00:11:17,000
+Below the answer box, your answer is interpretated and displayed with mathematical symbols
+
+86
+00:11:17,000 --> 00:11:21,000
+Once you are satisfied, you may pass on the next question  We skip the question 2 
+
+87
+00:11:21,000 --> 00:11:34,000
+The third question concerns Greek letters  Here you have to enter the expression 
+
+88
+00:11:34,000 --> 00:11:38,400
+"alpha" times exponential of "pi" times "x"
+
+89
+00:11:38,400 --> 00:11:44,000
+"alpha" is a Greek letter and you may refer here or to your sheet summary
+
+90
+00:11:44,000 --> 00:11:51,000
+To enter the letter "alpha" you have to type "a" "l" "p" "h" "a"
+
+91
+00:11:51,000 --> 00:11:57,000
+Let's enter it  "a" "l" "p" "h" "a" "*" exponential of pi times x
+
+92
+00:11:57,000 --> 00:12:08,000
+The exponential function can be entered as "e" "x" "p" and the input is between brackets 
+
+93
+00:12:08,000 --> 00:12:14,000
+So "e" "x" "p" and in brackets we put "pi" times "x" 
+
+94
+00:12:14,000 --> 00:12:24,000
+Likewise "pi" can be entered as "p" "i"  So "p" "i" "*" "x" and I close the brackets 
+
+95
+00:12:24,000 --> 00:12:33,000
+Once you finished you get an interpretation of what you entered and if you forgot a bracket, it will tell you 
+
+96
+00:12:33,000 --> 00:12:43,000
+Once again, the displayed expression here corresponds to what you entered in the answer box and may be not the correct answer 
+
+97
+00:12:43,000 --> 00:12:51,000
+You may have added "x" at the power "2" and it doesn't tell you if it's right or wrong  
+
+98
+00:12:51,000 --> 00:12:55,000
+Then you can jump to the following questions  
+
+99
+00:12:55,000 --> 00:13:13,000
+Train yourself on this quiz and keep this sheet summary next to you!
+
+100
+00:13:13,000 --> 00:13:17,000
+This presentation is about to finish
+
+101
+00:13:17,000 --> 00:13:26,000
+If you have any question (mathematical or concerning Moodle or how to answer questions),
+
+102
+00:13:26,000 --> 00:13:34,500
+Please do not hesitate to send me a message either on Moodle or via WeChat 
+
+103
+00:13:34,500 --> 00:13:45,000
+I wish you all the best for this week and I am looking forward to seeing you at EPF!

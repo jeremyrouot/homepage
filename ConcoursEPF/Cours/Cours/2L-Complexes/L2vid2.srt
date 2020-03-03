@@ -1,0 +1,184 @@
+﻿1
+00:00:00,000 --> 00:00:00,333
+
+
+2
+00:00:00,333 --> 00:00:05,566
+Now let's be interested in some of properties
+of complex numbers.
+
+3
+00:00:05,566 --> 00:00:09,699
+Concerning geometric symmetries,
+
+4
+00:00:09,700 --> 00:00:15,166
+Let me recall the exponential form:
+if z is r exp(i theta)
+
+5
+00:00:15,166 --> 00:00:20,666
+then r is the modulus of z,
+and theta is the argument of z.
+
+6
+00:00:20,666 --> 00:00:27,932
+We know that the conjugate of z
+equals r exp(-i theta).
+
+7
+00:00:27,933 --> 00:00:34,366
+Therefore we can see that z and the conjugate of z
+have the same modulus, the same radius.
+
+8
+00:00:34,366 --> 00:00:37,666
+However the argument of the conjugate of z
+
+9
+00:00:37,666 --> 00:00:42,132
+equals the opposite of the argument of z.
+
+10
+00:00:42,133 --> 00:00:44,466
+Then for negative z,
+
+11
+00:00:44,466 --> 00:00:50,199
+negative z can be written like that,
+but we know that -1 equals exp( i Pi).
+
+12
+00:00:50,200 --> 00:00:52,500
+Therefore the exponential form of -z
+
+13
+00:00:52,500 --> 00:01:00,700
+is equal to that.
+And again we can see that
+the modulus of -z is equal to the modulus of z,
+
+14
+00:01:00,700 --> 00:01:09,366
+but the argument of -z
+is equal to arg(z) to which you have to add Pi.
+
+15
+00:01:09,366 --> 00:01:14,366
+Geometrically,
+here we've put a point M in the plane R^2.
+
+16
+00:01:14,366 --> 00:01:19,399
+ This point M also represents a complex number,
+called the affix of M over here.
+
+17
+00:01:19,400 --> 00:01:25,166
+If you take the symmetric point,
+with respect to the x-acis, then
+
+18
+00:01:25,166 --> 00:01:29,532
+the affix of M'
+is exactly equal to
+
+19
+00:01:29,533 --> 00:01:37,033
+the conjugate of the affix of M.
+Namely z' = the conjugate of z.
+
+20
+00:01:37,033 --> 00:01:42,299
+Now if you take the symmetric point
+with respect to the origin,
+
+21
+00:01:42,300 --> 00:01:45,400
+of M, then its affix
+
+22
+00:01:45,400 --> 00:01:51,500
+equals -z.
+From z, we've drawn the conjugate of z
+
+23
+00:01:51,500 --> 00:01:57,966
+the both numbers have the same modulus,
+in contrast with the argument which are opposite.
+
+24
+00:01:57,966 --> 00:02:04,566
+Then, for z'' namely -z
+
+25
+00:02:04,566 --> 00:02:08,666
+we also have the same modulus,
+however
+
+26
+00:02:08,666 --> 00:02:13,299
+the relation between the two angles,
+is the angle theta over here
+
+27
+00:02:13,300 --> 00:02:19,966
+to which you add Pi
+to get the angle of M''.
+
+28
+00:02:19,966 --> 00:02:22,199
+That's it for the symmetries.
+
+29
+00:02:22,200 --> 00:02:27,533
+Now let's focus on 
+the simplification of two complex numbers.
+
+30
+00:02:27,533 --> 00:02:32,899
+This is a very common trick:
+you can simplify 2-i over 1+3i
+
+31
+00:02:32,900 --> 00:02:38,300
+in other words, 
+to give the standard form of this complex number.
+
+32
+00:02:38,300 --> 00:02:45,700
+How to do that?
+There's a way which always works:
+you have to multiply above and below
+
+33
+00:02:45,700 --> 00:02:48,500
+by the conjugate
+
+34
+00:02:48,500 --> 00:02:58,633
+of the complex number below.
+Here you have to multiply by 1-3i
+(which is the conjugate of 1+3i).
+
+35
+00:02:58,633 --> 00:03:06,566
+Indeed we know that 
+z times the conjugate of z equals
+the modulus of z squared.
+
+36
+00:03:06,566 --> 00:03:10,199
+Here the value is 10.
+
+37
+00:03:10,200 --> 00:03:16,766
+Above, after simplification,
+we get -1-7i.
+Then we separe real and imaginary parts
+
+38
+00:03:16,766 --> 00:03:24,999
+to get the standard form of the complex number
+like this.
+
