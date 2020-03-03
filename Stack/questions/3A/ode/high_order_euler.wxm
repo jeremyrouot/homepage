@@ -1,0 +1,25 @@
+/*batch("/data/Resilio/Work/Travail/EPF/Teaching/3A/S6/Analyse_Num/progs/maxima/high_order_euler.wxm");*/
+
+
+
+f1un:rand([y2+(-1)^rand(2)*rand(2)*t,cos(y1+(-1)^rand(2)*rand(2)*t),cos(y2+(-1)^rand(2)*rand(2)*t),sin(y1+(-1)^rand(2)*rand(2)*t),sin(y2+(-1)^rand(2)*rand(2)*t)]);
+f2un:rand([-sin(y1+(-1)^rand(2)*rand(2)*t),-y1,cos(y2+y1+(-1)^rand(2)*rand(2)*t),sin(y2+(-1)^rand(2)*rand(2)*t)]);
+
+f1(s,z1,z2):=subst(z2,y2,subst(z1,y1,subst(s,t,f1un)));
+f2(s,z1,z2):=subst(z2,y2,subst(z1,y1,subst(s,t,f2un)));
+
+N:rand_with_step(50,100,5); /*N+1 points de subdivision*/
+
+a:ceiling(rand_with_step(-1,1,0.1)*100)/100.0;
+h:ceiling(rand_with_step(0.01,0.1,0.01)*1000)/1000.0;
+b:ceiling((N*h+a)*100)/100.0;
+
+u10:(-1)^rand(2)*(1+rand(10))/10.0;
+u20:(-1)^rand(2)*(1+rand(10))/10.0;
+u1n:u10;
+u2n:u20;
+for i:0 while i<N do {tn:a+i*h,u1np1:u1n+h*f1(tn,u1n,u2n),u2np1:u2n+h*f2(tn,u1n,u2n),u1n:u1np1,u2n:u2np1};
+
+res2:significantfigures(u1np1,3);
+res3:significantfigures(u2np1,3);
+

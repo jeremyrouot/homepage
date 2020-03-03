@@ -1,0 +1,20 @@
+
+/*
+INPUT: Function f, endpoint values a, b, tolerance TOL, maximum iterations NMAX
+CONDITIONS: a < b, either f(a) < 0 and f(b) > 0 or f(a) > 0 and f(b) < 0
+OUTPUT: value which differs from a root of f(x)=0 by less than TOL
+
+batch("/data/Resilio/Work/Travail/EPF/Teaching/3A/S6/Analyse_Num/progs/maxima/bissection.wxm");
+ */
+
+
+f(y):=y;
+a:-1;
+b:1;
+N:10;
+for i:1 step 1 while i<=N do (
+  c:(a + b)/2, 
+  if signum(f(c))=signum(f(a)) then a:c else b:c
+);
+
+significantfigures(c,3);

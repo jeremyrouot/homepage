@@ -1,0 +1,31 @@
+/*
+ *
+ * batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/1A/matrices_puiss.wxm");
+ *
+ */
+
+m:2+rand(2);
+
+genmat(n):= apply('matrix,makelist(makelist((-1)^rand(2)*rand(3),i,1,n),j,1,n));
+genmatnilp(n):= apply('matrix,makelist(makelist(if i>=j then 0 else (-1)^rand(2)*rand(3),j,1,n),i,1,n));
+
+P:genmat(m);
+
+while determinant(P)=0 do { P:genmat(m) };
+
+P;
+
+
+Nold:genmatnilp(m);
+Nold[1,m]:(1+rand(4))*(-1)^rand(2);
+
+N:determinant(P)*(invert(P).Nold.P);
+
+N^^(m-1);
+N^^m;
+
+A:ident(m) + N;
+
+
+res:sum(binomial(n,i)*N^^i,i,0,m-1);
+

@@ -1,0 +1,26 @@
+/*
+ *batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/prog/1A/suppl.wxm");
+ * */
+lmxchar:"(";
+gen(x):=(-1)^rand(2)*(rand(7));
+normInf(v):=max(makelist(abs(v[i]),i,1,length(v)));
+genvec(n):=(v:[], for i:1 while i<=n do { v:append(v,[gen(0)]) }, v); 
+genvecCano(n):=(v:makelist(0,i,1,n),v[1+rand(n)]:1,v); 
+vecCano(n,j):=(v:makelist(0,i,1,n),v[j]:1,v); 
+
+/*dimension */
+N:2+rand(4);
+/*nombre de vecteurs */
+p:max(1,N-1-rand(2));
+lp:[];
+lv:[];
+matv:matrix([0]);
+while not rank(matv)=p do {for k:1 while k<=p do {aux:genvec(N),lv:append(lv,[aux])},matv:apply('matrix,lv)};
+
+matv;
+ii:1;
+ladd:[];
+while ((not rank(matv)=N) and ii<=N) do {vadd:vecCano(N,ii),lvv:append(lv,[vadd]),mataux:apply('matrix,lvv), if rank(mataux)>rank(matv) then (matv:mataux,lv:lvv,ladd:append(ladd,[vadd])), ii:ii+1};
+
+res1:ladd;
+

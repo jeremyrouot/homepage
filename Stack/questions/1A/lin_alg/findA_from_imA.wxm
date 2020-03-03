@@ -1,0 +1,33 @@
+/*
+ *batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/1A/lin_alg/findA_from_imA.wxm")
+ */
+
+/* on genere deux vecteurs de imA */
+
+N:rand([2,3,4,5]);
+lcol : makelist(makelist((-1)^rand(2)*(rand(4)+(i-1)*(3-i)),i,1,N),j,1,N);
+
+ch:rand(N)+1;
+lcol[ch]: sum((1+rand(4))*(-1)^rand(2)*lcol[i],i,1,ch-1) +sum((1+rand(4))*(-1)^rand(2)*lcol[i],i,ch+1,N);
+A:apply('matrix,lcol);
+
+res:transpose(apply('matrix,lcol));
+res2:rank(res);
+res3:echelon(res);
+
+egs:eigenvalues(res);
+
+ss:0;
+for i:2 while i<=N do { for j:1 while j<=i-1 do { ss:ss+res[i,j] } };
+ss;
+
+
+
+
+
+
+
+
+
+
+

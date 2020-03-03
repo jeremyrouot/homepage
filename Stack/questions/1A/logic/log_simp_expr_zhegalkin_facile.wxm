@@ -1,0 +1,76 @@
+/*
+batch("/data/mathrice/upload/Travail/EPF/Teaching/Stack/questions/logic/log_neg_expr.wxm");
+Use AlgEquiv(predicate(ex),true)
+https://github.com/jgeisler0303/maxima/blob/master/share/logic/logic.dem
+*/
+
+/* Soit x,y,z in {0,1}.
+ * Ecire l'equivalent logique de l'expression suivante qui ne contient que des
+ * and et des xor avec un nombre minimal de termes
+ */
+
+load ("logic.mac")$
+
+listSymbAux(expression, sbList) :=
+ block ( [x, args, newList],
+        if atom(expression)
+           then cons(expression,sbList)
+           else
+             (x:    op(expression),
+              args: args(expression),
+              newList:sbList,
+              for arg in args do
+                newList: listSymbAux(arg, newList),
+              newList
+             ) 
+        )$
+
+listSymb(expression):=
+ block( [ ],
+        listSymbAux (expression, [])
+       )$
+
+difficulte:3;
+
+vlist:[["x","y","z"],["a","b","c"],["u","v","w"]];
+
+/* choix de la liste des caracteres  */
+ ll:rand(3)+1;
+ 
+ oplist:["and","or"]$
+ lg:rand(difficulte)+2;
+
+lengSol:difficulte+1;
+while lengSol>difficulte do
+(
+  seq:vlist[ll][rand(3)+1],
+  for i: 1 while i <= lg do
+  (
+  cc:rand(3)+1,
+  seq:sconcat(vlist[ll][cc]," ",oplist[rand(length(oplist))+1]," (",seq,")")
+  /* if rand(2)=0 then seq:sconcat("not"," (",seq,")") */
+  ),
+  
+  ch:eval_string(seq),
+  
+  /* zhegalkin normal form */
+  sol:zhegalkin_form(ch),
+  
+  lengSol:length(listSymb(sol))
+);
+
+seq;
+ch;
+sol;
+
+
+/*
+boolean_form (a implies b implies c);
+
+logic_simp ((a xor true) xor b xor true);
+logic_simp ((a implies q));
+
+logic_simp (ch);
+characteristic_vector (ch);
+*/
+

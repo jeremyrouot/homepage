@@ -1,0 +1,114 @@
+/*
+ * batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/3A/exam/generate_taylor_formulae_for_second_derivative.wxm");
+ */
+
+/* on construit somme(a_i u(x+b_i h, 1<=i<=Nb) */
+  /*
+ *   s
+ *     = sum( ai * u(xk + bi*h),i,1,Nb)
+ *       =  sum(ai,i)*u(xk)
+ *          + h*sum(ai*bi,i)*u'(xk)
+ *             + h^2/2*sum(ai*bi^2,i)*u''(xk)
+ *                + h^3/6*sum(ai*bi^3,i)*u'''(xk)
+ *                  = sa*uk + h*sab*upk + h^2/2*sabb*uppk
+ *                  + h^3/6*sabbb*upppk
+*/
+
+/*nombre de termes dans l'expression qui approche u''(x)*/
+Nb:rand(4)+4;
+/*borne sup des coeffs*/
+supa:4; 
+supb:3; 
+
+/* dans alp, le nombre d elements non nuls doit etre impair*/
+genAlp(nb,spa):=(alp:makelist(rand(spa)*(-1)^rand(2),i,1,nb),alp);
+replaceaux(x):=(if x=0 then (-1)^rand(2)*(1+rand(5)) else x);
+replace(lst):=map(replaceaux,lst);
+
+/*puissance pour traiter le cas 0^0*/
+pow(x,k):=if not k=0 then x^k else 1;
+
+/*renvoie le premier 0 apres l'indice inext de la liste ll*/
+frst(ll,inext):=(k:inext,while ll[k]=0 do {k:k+1},k);
+
+/*divise les composantes entieres du vecteur ll par leur pgcd*/
+divpgcd(ll,nb):=(pg:lmax(abs(ll))+1,for i:1 while i<=nb do {for j:i+1 while j<=nb do {if not ll[i]=0 and not ll[j]=0 then {pg:min(abs(gcd(ll[i],ll[j])),pg)}}},ll/pg);
+
+/*nettoie la liste alpha: si bet[k]=bet[j] alors on construit newbet qui
+ * contient les occurences non repetititves de bet. On change alors alp avec 
+ * newalp tel que newalp[k]<-alp[k]+alp[j]
+ */
+groupBet(ap,bt,nb):=(icours:1,for i:1 while i<=nb do {bi:bet[i],for j:i+1 while j<=nb do {if bet[j]=bi then {alp[i]:alp[i]+alp[j],alp[j]:0}}},[alp,bet]);
+
+genAlpBet(nb,spa,spb):=(alp:genAlp(nb,spa),bet:makelist(alp[i],i,1,nb),qq:rand(nb)+1,bet[qq]:bet[qq]+(-1)^rand(2)*(1+rand(spb)),bet:(alp.alp)*bet-(bet.alp)*alp,[alp:divpgcd(alp,nb),bet:divpgcd(bet,nb)]);
+
+/*on construit la matrice A et F */
+constructA(nb,nxm2):=(Aaux:makelist(makelist(0,i,1,nxm2),j,1,nxm2),A:apply('matrix,Aaux),for k:1 while k<=nb do {ak:alp[k],bk:bet[k],for i:1 while i<=nxm2 do {if (not ak=0 and i+bk>=1 and i+bk<=nxm2) then {A[i,i+bk]:ak}}},A);
+
+constructF(nxm2,vx):=(res:makelist(0,i,1,nxm2),for i:1 while i<=nxm2 do {res[i]:bfloat(ffun(vx[i+1]))},res);
+
+sa:1;
+sab:1;
+sabb:0;
+todev:0;
+alp:makelist(0,i,1,Nb);
+bet:makelist(0,i,1,Nb);
+
+nbtry:0;
+lmt:2200;
+while (nbtry<lmt and (sabb=0 or todev=0 or (not sa=0) or (not sab=0) or lmax(abs(alp))=0 or lmax(abs(bet))>2 or lmax(abs(bet))=0)) do {res:genAlpBet(Nb,supa,supb),alp:res[1],bet:res[2],alp:replace(alp),coeffs:makelist(sum(alp[i]*pow(bet[i],k),i,1,Nb),k,0,10),sa:coeffs[1],sab:coeffs[2],sabb:coeffs[3],todev:expand(sum(alp[i]*u(x+bet[i]*h),i,1,Nb))/h^2,nbtry:nbtry+1};
+
+/*si on met trop de temps a trouve, j'en donne un */ 
+if nbtry=lmt then {Nb:5,alp:[-1,16,-30,16,-1],bet:[2,1,0,-1,-2],coeffs:makelist(sum(alp[i]*pow(bet[i],k),i,1,Nb),k,0,10),sabb:coeffs[3],todev:expand(sum(alp[i]*u(x+bet[i]*h),i,1,Nb))/h^2};
+
+od:frst(coeffs,4)-4;
+
+newC:groupBet(alp,bet,Nb);
+alp:newC[1];
+bet:newC[2];
+
+/*longueur finale*/
+L:10+2*rand(6);
+
+/*nombre de points de la subdivision*/
+Nx:rand_with_step(100,200,2);
+Nx:7;
+Nxm2:Nx-2;
+
+kk:rand(5)+1.;
+ffun(x):=kk*exp(-(x-L/2.)^2);
+
+/*on resout par differences finies l'equation: u''(x) = f(x) */
+/* on ecrit le discretise sous la forme 1/(h^2*sabb) * A * U = F */ 
+hh:L/(Nx+1);
+matA:constructA(Nb,Nxm2);
+determinant(matA);
+
+load (lapack);
+dgeev(A);
+
+
+
+/*
+vecX:makelist(i*hh,i,0,Nx+1);
+vecF:constructF(Nxm2,vecX);
+
+expr;
+invA:invert(matA);
+solU:sabb*hh^2*(invA.vecF);
+
+sumU:sum(solU[i],i,1,length(solU));
+res:float(1/Nx*sumU[1]);
+
+/* on implemente du rk4 pour integree l'equation u''(x)=f(x)*/
+odefun(t,y):=[y[2],ffun(t)];
+
+yn:[ffun[0],0.];
+tn:0;
+ss:yn;
+while tn<=L do {k1:hh*odefun(tn,yn),k2:hh*odefun(tn+hh/2.,yn+k1/2.),k3:hh*odefun(tn+hh/2.,yn+k2/2.),k4:hh*odefun(tn+hh,yn+k3),yn:yn + (k1 + 2.*k2 + 2.*k3 + k4)/6.,tn:tn+hh,ss:ss+yn};
+
+res;
+bfloat(ss)/Nx;
+*/
+

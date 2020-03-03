@@ -1,0 +1,54 @@
+/*
+ *
+ * batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/2A/eq_reduced_conique.wxm");
+ *
+ */
+
+
+/* choix du type: ellipse, parabole, hyperbole*/
+/* sp(A) = l1, l2 
+ *ch=1: ellipse: l1 et l2 de meme signe et differents et non nuls
+ *ch=2: parabole: l1=l2 ou l1=0 et l2!=0 ou l2=0 et l1!=0
+ *ch=3: hyperbole: l1 et l2 de meme signe signe differents et differents
+*/
+
+ch:rand(3)+1;
+m:rand(3)+3;
+
+if ch=1 then {l1:(-1)^rand(2)*(1+rand(m)), l2:(1+rand(3))*l1};
+if ch=2 then {l1:(-1)^rand(2)*(1+rand(m)), l2:rand([l1,0])};
+if ch=3 then {l1:(-1)^rand(2)*(1+rand(m)), l2:-(1+rand(3))*l1};
+
+
+D:matrix([l1,0],[0,l2]);
+
+p11:rand(m)*(-1)^rand(2);
+p21:rand(m)*(-1)^rand(2);
+sg:(-1)^rand(2);
+p12:sg*p21;
+p22:-sg*p11;
+P:matrix([p11,p12],[p21,p22]);
+dP:determinant(P);
+while dP=0 do {p11:rand(10)*(-1)^rand(2),p21:rand(10)*(-1)^rand(2),sg:(-1)^rand(2),p12:sg*p21,p22:-sg*p11,P:matrix([p11,p12],[p21,p22]),dP:determinant(P)};
+
+A:P.D.invert(P);
+b:matrix([rand(m)],[rand(m)]);
+c:rand(m);
+X:matrix([x],[y]);
+
+
+eq:expand(transpose(X).A.X + 2*transpose(b).X + c);
+
+if ch=1 then {eqred:(x/l1)^2 + (y/l2)^2 =1};
+
+
+
+
+/*
+p12:rand(m)*(-1)^rand(2);
+p22:rand(m)*(-1)^rand(2);
+P:matrix([p11,p12],[p21,p22]);
+dP:determinant(P);
+while dP=0 do {p11:rand(10)*(-1)^rand(2),p21:rand(10)*(-1)^rand(2),sg:(-1)^rand(2),p12:sg*p21,p22:-sg*p11,P:matrix([p11,p12],[p21,p22]),dP:determinant(P)};
+*/
+

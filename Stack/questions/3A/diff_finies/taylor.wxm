@@ -1,0 +1,75 @@
+/*
+ * batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/3A/diff_finies/taylor.wxm");
+ */
+
+/* on construit somme(a_i u(x+b_j h, 1<=i,j<=Nb) */
+  /*
+ *   s
+ *     = sum(sum( ai * u(xk + bj*h),i,1,Nb),j,1,Nb)
+ *       =  Nb*sum(ai,i)*u(xk)
+ *          + h*sum(ai,i)*sum(bj,j)*u'(xk)
+ *             + h^2/2*sum(ai,i)*sum(bj^2,j)*u''(xk)
+ *                + h^3/6*sum(ai,i)*sum(bj^3,j)*u'''(xk)
+ *                  = Nb*sa*uk + h*sa*upk + h^2/2*sa*sbb*uppk
+ *                  + h^3/6*sa*sbbb*upppk
+ *                    */
+
+/* variante de la question */
+/*ch:rand(4);*/
+ch:rand(3);
+ch:2;
+
+/*borne sup des coeffs*/
+ss:4;
+
+/*nombre de termes*/
+Nb:rand(4)+2;
+if ch=3 then {ss:3, if rand(2)=0 then Nb:4 else ch:2};
+if ch=2 then {ss:2, Nb:3+rand(2)};
+
+bet:makelist(rand(ss)*(-1)^rand(2),i,1,Nb);
+alp:makelist(rand(ss)*(-1)^rand(2),i,1,Nb);
+while sum(alp[i]^2,i,1,Nb)=0 do {alp:makelist(rand(4)*(-1)^rand(2),i,1,Nb)};
+
+/*coeff random */
+aux:(1+rand(ss))*(-1)^rand(2);
+aux2:(1+rand(ss))*(-1)^rand(2);
+/*indice random*/
+k:rand(Nb)+1;
+/*indice random mais different de k*/ 
+q:rand(Nb)+1;
+while q=k do {q:rand(Nb)+1}; 
+
+/*ch=0: sa!=0 */
+if ch=0 then {alp[k]:alp[k]-sum(alp[i],i,1,Nb)+(1+rand(2))*(-1)^rand(2)};
+
+/*ch=1: sa=0 et sab!=0 */
+if ch=1 then {alp[k]:alp[k]-sum(alp[i],i,1,Nb),if sum(alp[i]^2,i,1,Nb)=0 then {alp[k]:aux,alp[q]:-aux},while sum(alp[i]*bet[i],i,1,Nb)=0 do {bet:makelist(rand(4)*(-1)^rand(2),i,1,Nb)}};
+
+/*ch=2: sa=sab=0 et sabb!=0 */
+if ch=2 then {alp[k]:alp[k]-sum(alp[i],i,1,Nb),if sum(alp[i]^2,i,1,Nb)=0 then {alp[k]:aux,alp[q]:-aux},bet:(alp.alp)*bet-(bet.alp)*alp,if sum(bet[i]^2,i,1,Nb)=0 then {bet[k]:aux2,bet[q]:-aux2},while sum(alp[i]*bet[i]^2,i,1,Nb)=0 do {alp:makelist(rand(ss)*(-1)^rand(2),i,1,Nb),bet:makelist(rand(ss)*(-1)^rand(2),i,1,Nb),alp[k]:alp[k]-sum(alp[i],i,1,Nb),bet:(alp.alp)*bet-(bet.alp)*alp}};
+/*on divise les beta par leur pgcd */
+pg:1;
+if ch=2 then {pg:1e12,for i:1 while i<=Nb do { for j:i+1 while j<=Nb do { if not bet[i]=0 and not bet[j]=0 then { pg:min(abs(gcd(bet[i],bet[j])),pg)}}}};
+
+bet:bet/pg;
+
+
+
+
+/*ch=3: sa=sab=sabb=0 et sabbb!=0 */
+/*
+ * if ch=3 then {D:bet[1]^2-bet[1]*bet[2]-bet[1]*bet[3]+bet[2]*bet[3],while D=0
+ * do
+ * {bet:makelist(rand(4)*(-1)^rand(2),i,1,Nb),D:bet[1]^2-bet[1]*bet[2]-bet[1]*bet[3]+bet[2]*bet[3]},alp[1]:alp[4]*(-bet[2]*bet[3]+bet[2]*bet[4]+bet[3]*bet[4]-bet[4]^2)/D,alp[2]:alp[4]*(bet[1]*bet[3]-bet[1]*bet[4]-bet[3]*bet[4]+bet[4]^2)/D,alp[3]:alp[4]*(-bet[1]*bet[2]+bet[1]*bet[4]+bet[2]*bet[4]-bet[4]^2)/D};
+ * */
+if ch=3 then { alp[2]:-alp[3],alp[1]:-alp[4],bet[1]:bet[4],bet[2]:bet[3] };
+
+sa:sum(alp[i],i,1,Nb);
+sb:sum(bet[i],i,1,Nb);
+sab:sum(alp[i]*bet[i],i,1,Nb);
+sabb:sum(alp[i]*bet[i]^2,i,1,Nb);
+sabbb:sum(bet[i]^3,i,1,Nb);
+
+todev:expand(sum(alp[i]*u(x+bet[i]*h),i,1,Nb))/h^ch;
+

@@ -1,0 +1,20 @@
+/*
+batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/prog/suite_recu_ord2.wxm"); 
+*/
+
+bb:(1+rand(6));
+u1:float(1+rand(12));
+u2:float(rand(12)+1);
+ch:rand(2);
+dejacpt:[u1,u2]; /*contient u1 et u2 */
+Fibo(n):= block(if length(dejacpt)<n then dejacpt:append(dejacpt,[0]), if n=1 then u1 else if n=2 then u2 else if not dejacpt[n]=0 then dejacpt[n] else (c:aa*float(Fibo(n-1))*(1+bb*n/float(Fibo(n-2))), dejacpt[n]:c));
+if ch=0 then qq:"pairs" else qq:"impairs";
+
+s:0;
+k:1;
+aux:u1;
+N:rand_with_step(100000,4000000,100000)+(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10));
+while aux<N do {if mod(aux,2)=ch then (s:s+aux),k:k+1,aux:floor(Fibo(k))};
+
+k;
+res:s;

@@ -1,0 +1,41 @@
+/*
+ *batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/prog/1A/base_ev_quadra.mwx");
+ * */
+
+cross_prod(v1,v2):=(c:[v1[2]*v2[3]-v1[3]*v2[2],-(v1[1]*v2[3]-v1[3]*v2[1]),v1[1]*v2[2]-v1[2]*v2[1]]);
+norm2(v):=(sqrt(v[1]^2+v[2]^2+v[3]^2));
+gen(x):=(-1)^rand(2)*(rand(5));
+
+aa:(rand(9)+1)*(-1)^rand(2);
+bb:gen(0);
+cc:gen(0);
+dd:rand(8)+1;
+
+v:rand([x,y,z]);
+ll:[expand((aa*x + bb*y +cc*z)^2+dd*v^2),expand((aa*x + bb*y +cc*z)^2+dd*v^2),x*(aa*y+bb*z)];
+ch:rand(3)+1;
+eq:ll[ch];
+fc:factor(eq-dd*v^2);
+n1:[aa,bb,cc];
+n2:if v=x then [1,0,0] else if v=y then [0,1,0] else [0,0,1];
+n12:cross_prod(n1,n2);
+lv:[];
+
+if ch<3 then block(if is(equal(n12,[0,0,0])) then (lv:append(lv,[[-bb,aa,0]/norm2([-bb,aa,0])]),cp:cross_prod(n1,[-bb,aa,0]),lv:append(lv,[cp/norm2(cp)])) else (n12:n12/norm2(n12),lv:append(lv,[n12])));
+
+l1:[true,true,false];
+res1:l1[ch];
+
+res2:lv;
+nb:length(lv);
+
+
+
+a2:lv;
+le:lv;
+for i:1 while i<=length(a2) do { le:append(le,[a2[i]]) };
+le;
+mt:apply('matrix,le);
+rg:rank(mt);
+anse:(is(rg=nb) or is(ch=3 and ans2=[]));
+

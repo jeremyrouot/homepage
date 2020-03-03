@@ -1,0 +1,20 @@
+/*
+batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/prog/fibo.wxm"); 
+*/
+
+
+ch:rand(2);
+dejacpt:[1,1]; /*contient u1 et u2 */
+Fibo(n):= block(if length(dejacpt)<n then dejacpt:append(dejacpt,[0]), if n=0 then 0 else if n=1 then 1 else if not dejacpt[n]=0 then dejacpt[n] else (c:Fibo(n-1) + Fibo(n-2), dejacpt[n]:c));
+if ch=0 then qq:"pairs" else qq:"impairs";
+
+s:0;
+aux :1.0;
+k:1;
+aux:1;
+N:rand_with_step(100000,4000000,100000)+(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10))*(1+rand(10));
+N:35;
+while aux<N do {if mod(aux,2)=ch then (s:s+aux),k:k+1,aux:Fibo(k)};
+
+res:s;
+

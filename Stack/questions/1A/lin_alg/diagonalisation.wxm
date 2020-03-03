@@ -1,0 +1,30 @@
+
+/*
+ *batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/1A/lin_alg/diagonalisation.wxm");
+ */
+
+N:rand([2,3]);
+spA:makelist((-1)^rand(2)*rand(4),i,1,N);
+spA[rand(N)+1]:(abs(spA[rand(N)+1])+1)*(-1)^rand(2);
+
+spA:sort(spA);
+
+genmat(n):= apply('matrix,makelist(makelist((-1)^rand(2)*rand(4),i,1,n),j,1,n));
+P:genmat(N);
+k:rand(N-1)+1;
+P[k,k+rand(N-k+1)]:(rand(4)+1)*(-1)^rand(2);
+while determinant(P)=0 do { P:genmat(N),k:rand(N-1)+1,P[k,k+rand(N-k+1)]:(1+rand(4))*(-1)^rand(2) };
+P;
+
+D:ident(N);
+for i:1 while i<=N do { D[i,i]:spA[i] };
+D;
+A:P.D.invert(P);
+
+eigenvalues(A);
+
+res1:D;
+res2:P.D^n.invert(P);
+
+
+

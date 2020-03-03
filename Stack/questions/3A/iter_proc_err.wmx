@@ -1,0 +1,63 @@
+/* n,a,b : parameters to define functions */
+n:rand(6)+1;
+a:rand(7);
+b:rand(7)+1; 
+
+/*set of fonctions */
+flist:[sqrt(x),exp(x),b/(a+x),x^n];
+/*corresponding set of fonctions */
+finvlist:[y^2,log(y),b/y-a,y^(1/n)];
+
+/*choice of the function for the exercice*/
+choix:rand(4)+1;
+f:flist[choix];
+finv:finvlist[choix];
+finvx0:subst(y,x0,finv);
+dfinv:diff(finv,y);
+dfinvx0:subst(y,x0,dfinv);
+x;
+x0;
+/*error in terms of x0 and x*/
+epsx0:(x-finvx0)/dfinvx0;
+
+
+
+/*
+ * <p>Soit la fonction \(f(x)={@fct@}\) représentant la longueur d'une poutre
+ * sous contrainte, sachant que \(x\) représente sa longueur au repos. </p>
+ * <p>
+ * On considère une poutre sous contrainte dont sa longueur au repos est notée
+ * \(x\).
+ * Un appareil de mesure donne une approximation \(x_0\) de la longueur de
+ * cette poutre sous contrainte avec une erreur absolue de \(\varepsilon\).</p>
+ *
+ * <p>\'Ecrire le lien entre \(f(x),x_0\) et \(\varepsilon\). Cela définie une
+ * fonction \(g(x_0,\varepsilon)=x\)</p>
+ *
+ * <p>[[input:ans1]] [[validation:ans1]]</p>
+ *
+ * <p>Donner le développement à l'ordre 1 en  \(\varepsilon\) de la fonction
+ * \(g\).</p>
+ *
+ * <p>[[input:ans2]] [[validation:ans2]]</p>
+ *
+ * <p>En déduire l'expression de l'erreur \(\varepsilon\) en fonction de
+ * \(x,x_0\).</p>
+ *
+ * <p>\(\varepsilon(x,x_0)\)=
+ * [[input:ans3]] [[validation:ans3]]</p>
+ *
+ * <p>Une nouvelle approximation de la longueur de la poutre sous contrainte
+ * est alors donnée par
+ * \(x_1 = x_0 +  \varepsilon(x,x_0)\). Si vous refaites les questions
+ * précédentes dans le cas où \(x_0\leftarrow x_1\), quelle est l'expression de
+ * la nouvelle approximation notée \(x_2\) en fonction
+ * de \(x,x_1\) ?</p>.
+ *
+ * <p>[[input:ans4]] [[validation:ans4]]</p>
+ *
+ * <p>Plus généralement, pour tout \(k\) entier, donner l'expression de
+ * \(x_{k+1}\) en fonction de \(x_k\).
+ *
+ * <p>[[input:ans5]] [[validation:ans5]]</p>
+ */

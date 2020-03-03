@@ -1,0 +1,41 @@
+/*batch("/data/Resilio/Work/Travail/EPF/Teaching/3A/S6/Analyse_Num/progs/maxima/simple_euler.wxm");*/
+
+
+/*
+A NE PAS FAIRE
+f(t,y):=rand([sin((1+rand(2))*y*t),cos(y+t)^(1+rand(2)),1/((2+rand([cos(t),sin(t)]))*y),1/((2+rand([sin(t),cos(t)]))*y^2)]);
+*/
+
+
+/*
+ * Ca c'est ok
+fun:rand([sin(y*t),cos(y+t),1/((2+cos(t))*y),1/((2+sin(t))*y^2),1/((2+cos(t))*y^2),sin(2*y*t)]);
+N:rand_with_step(50,100,5); /*N+1 points de subdivision*/
+
+a:ceiling(rand_with_step(-1,1,0.1)*100)/100.0;
+h:ceiling(rand_with_step(0.01,0.1,0.01)*1000)/1000.0;
+b:ceiling((N*h+a)*100)/100.0;
+
+u0:(1+rand(10))/10.0;
+un:u0;
+unp1:0;
+for i:0 while i<N do {tn:a+i*h,aux:subst(tn,t,fun),fn:subst(un,y,aux),unp1:un+h*fn, un:unp1};
+
+res1:N;
+res2:significantfigures(unp1,3);
+unp1;
+
+*/
+
+f(t,y):=y-6*t*y;
+N:3;
+a:0;
+h:0.3;
+b:N*h+a;
+u0:0.8;
+un:u0;
+unp1:0;
+for i:0 while i<N do {tn:a+i*h,unp1:un+h*f(tn,un),un:unp1};
+
+unp1;
+

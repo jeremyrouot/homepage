@@ -1,0 +1,14 @@
+
+/*
+ *batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/3A/diff_finies/bord.wxm");
+ */
+
+Nx:2+rand(5);
+Ny:2+rand(5);
+nbcas:3;
+
+array(matu,Ny+2,Nx+2);
+
+for j:1 while j<=Ny+2 do {for i:1 while i<=Nx+2 do { matu[j,i]:inf}};
+matu;
+

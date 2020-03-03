@@ -1,0 +1,31 @@
+/*
+ *
+ * batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/code/1A/matrices.wxm");
+ *
+ */
+
+m:2+rand(3);
+
+h [i, j] := rand(7)*(-1)^rand(2);
+M:genmatrix(h,m,m);
+
+
+ii:1+rand(m);
+jj:1+rand(m);
+kk:1+rand(m);
+ll:1+rand(m);
+if rand(2)=1 then kk:jj;
+
+E1:ematrix(m,m, 1, ii, jj);
+E2:ematrix(m,m, 1, kk, ll);
+
+
+E1.E2;
+
+jj;
+kk;
+
+M.E1;
+
+E1.M;
+

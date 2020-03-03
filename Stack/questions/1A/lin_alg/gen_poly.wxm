@@ -1,0 +1,39 @@
+/* 
+ batch("/data/Resilio/Work/Travail/EPF/Teaching/Stack/prog/1A/gen_poly.wxm");
+ */
+
+gen(x):=(-1)^rand(2)*(rand(7));
+normInf(v):=max(makelist(abs(v[i]),i,1,length(v)));
+vecTopoly(v):=sum(v[i]*X^(i-1),i,1,length(v));
+polyTovec(P,N):=(v:[subst(0,X,P)],R:(P-v[1])/X,i:2, for k:1 while k<=N do {v:append(v,[subst(0,X,R)]),R:(R-v[i])/X,i:i+1},v);
+genvec(n):=(v:[], for i:1 while i<=n+1 do { v:append(v,[gen(0)]) }, v); 
+genvecCano(n):=(v:makelist(0,i,1,n+1),v[1+rand(n+1)]:1,v); 
+
+/*dimension */
+N:2+rand(3);
+/*nombre de polynomes */
+p:max(1,N-1-rand(2));
+lp:[];
+lv:[];
+matv:matrix([0]);
+while not rank(matv)=p do {for k:1 while k<=p do {aux:genvec(N),lv:append(lv,[aux]),lp:append(lp,[vecTopoly(aux)])},matv:apply('matrix,lv)};
+
+matv;
+ch:rand(2)+1;
+if (p=1 and not is(equal(normInf(lv[1]),0))) then ch:2;
+if (ch=1 and p>=2) then matv[1]:gen(0)*matv[1]+gen(0)*matv[2]; 
+
+lch1:[false,true];
+
+res1:lch1[ch];
+
+vadd:genvecCano(N);
+lvv:append(lv,[vadd]);
+matvv:apply('matrix,lvv);
+while (not rank(matvv)=p+1) do {vadd:genvecCano(N),lvv:append(lv,[vadd]),matvv:apply('matrix,lvv)};
+
+lch2:[inf,vecTopoly(vadd)];
+res2:lch2[ch];
+
+plu:if p=1 then "" else "s";
+

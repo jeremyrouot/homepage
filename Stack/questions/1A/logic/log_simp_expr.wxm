@@ -1,0 +1,50 @@
+/*
+ * vlist:[x,r,a,u];
+wlist:[y,s,v,b];
+
+oplist:["and","or"];
+cplist:["<",">",">=","<=","="];
+
+l:rand(5)+2;
+seq:[];
+for i: 1 while i <= l do
+v:rand(10)-rand(10);
+c1:rand(length(vlist))+1;
+c2:rand(length(oplist))+1;
+c3:rand(length(cplist))+1;
+aux:apply(cplist[c3],[vlist[c1], v]);
+seq:append(aux,seq);
+done
+
+seq;
+
+*/
+
+/* Soit x,y,z in {0,1}.
+ * Simplifier l'expression logique suivante de sorte qu'elle contienne
+ * le moins de termes possibles
+ * /
+
+vlist:[["x","y","z","1","0"],["a","b","c","1","0"],["u","v","w","0","1"]];
+/* choix de la liste des caracteres */
+l:rand(3)+1;
+
+oplist:["and","or"];
+
+lg:5; /*rand(5)+2;*/
+seq:vlist[l][rand(5)+1];
+for i: 1 while i <= lg do 
+(
+c:rand(5)+1,
+seq:sconcat(vlist[l][c]," ",oplist[rand(length(oplist))+1]," (",seq,")"),
+if rand(2)=0 then seq:sconcat("not"," (",seq,")"),
+);
+
+seq;
+parse_string(seq);
+
+
+
+
+
+
