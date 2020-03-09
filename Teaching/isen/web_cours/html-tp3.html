@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>HTTP TP 3</title>
+
+	<meta name="description" content="HTML TP 3">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+				<h1>TP 3 HTML</h1>
+
+				<h2>Image réactive</h2>
+
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/France_relief_location_map.jpg/499px-France_relief_location_map.jpg?uselang=fr" alt="carte de france">
+
+				<p>En utilisant l'image ci-dessus (<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/France_relief_location_map.jpg/499px-France_relief_location_map.jpg?uselang=fr">lien</a>), vous allez réaliser une image réactive.</p>
+
+				<h3>Question 1</h3>
+
+				<p>Ecrire une page HTML contenant cette image.</p>
+
+				<h3>Question 2</h3>
+
+				<p>Rendre l'image globalement active : en cliquant sur l'image, on arrive à la page wikipedia sur la France.</p>
+
+				<h3>Question 3</h3>
+
+				<p>En utilisant la balise <code>&lt;map&gt;</code>, rendre l'image réactive. Vous pouvez-vous inspirer du tutorial suivant : <a href="https://www.w3schools.com/tags/tag_map.asp">W3School map tag</a></p>
+
+				<p>On définira les zones suivantes :
+					<ul>
+						<li>Une zone circulaire englobant Brest renverra vers une page Web contenant le texte suivant :
+								"Bienvenue à l'ISEN Brest"</li>
+						<li>Une zone hexagonale englobant Lille renverra vers une page Web contenant le texte
+								suivant : "Bienvenue à l'ISEN Lille"</li>
+						<li>Une zone circulaire englobant Rennes renverra vers une page Web contenant le texte suivant
+								: "Bienvenue à l'ISEN Rennes"</li>
+						<li>Une zone rectangulaire englobant Toulon renverra vers une page Web contenant le texte
+								suivant : "Bienvenue à l'ISEN Toulon"</li>
+						<li>Une zone circulaire englobant Nantes renverra vers une page Web contenant le texte suivant
+								: "Bienvenue à l'ISEN Nantes"</li>
+						<li>Le reste de l'image renverra vers une page Web contenant le texte suivant : "L'ISEN ouvrira
+								très prochainement dans votre ville "</li>
+					</ul>
+				</p>
+
+				<h2>Les formulaires</h2>
+
+				<p>Soit un sondage permettant de savoir comment vous avez connu l'école.</p>
+
+				<p>Ecrire un formulaire HTML comprenant les champs suivants à renseigner (choisir l'outil le plus
+						approprié pour chacun) :
+				</p>
+
+				<ul>
+					<li>Votre nom et prénom</li>
+					<li>Date de naissance (menus déroulants)</li>
+					<li>Ce qui vous a fait connaître l'école : un ami, un salon, une porte ouverte, autre (pas en menu
+							déroulant)</li>
+					<li>La possibilité de télécharger votre CV à partir d'un fichier</li>
+					<li>Commentaires (texte libre)</li>
+					<li>...</li>
+				</ul>
+
+				<p>Une fois ce formulaire renseigné, un bouton permettra d'envoyer vos réponses par mail à l'adresse
+						de l'enseignant (ou la vôtre pour test). Le mail généré devra avoir comme sujet : "Sondage ISEN".
+						Le CV ne pourra pas apparaître comme pièce jointe dans le message mais on doit visualier le nom
+						du fichier.</p>
+
+
+
+
+
+			</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--
+	Formalisme
+
+	# commande
+
+	# Requêtes et réponses vu du client
+
+	www.isen.fr
+
+	quelle est la requète
+	que signifie la première ligne
+	déduire de la réponse le type de serveur
+	
+	meême question pour perdu.com
+
+	même question pour http://web.isen-bretagne.fr/
+
+		même question pour http://web.isen-bretagne.fr/ sur le port 443
+
+	question 4 écrire la 
+		pour www.isen.fr
+		pour http://example.org
+
+	écrire la requète pour isen.fr por Brest
+
+	question 6 machine intermédiaire
+
+	question 7 requète head
+		succès
+		erreur client
+
+	coté serveur
+	
+	nc -l
+
+	1 - faire connection avec telnet puis navigateur
+
+	2 - renvoyer une page web
+	
+	3 - positionner un couqui
+
+	cache
+
+	requete If-modifed-Since
+-->

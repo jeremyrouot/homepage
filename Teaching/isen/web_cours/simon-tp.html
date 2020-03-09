@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>TP Jeu du Simon</title>
+
+	<meta name="description" content="Javascripot TP 1">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+			<h1>TP Jeu du Simon</h1>
+
+			<p>
+				Le but du TP va être de créer un jeu Simon en Javascript. Simon est un jeu de société électronique de forme circulaire comportant quatre grosses touches de couleur différentes, rouge, vert, bleu et jaune:
+			</p>
+
+			<img src="img/simon.jpg" alt="Photo du jeu du simon">
+
+			<p>
+				Le jeu, électronique, éclaire une des quatre couleurs et produit un son toujours associé à cette couleur. Le joueur doit alors appuyer sur la touche de la couleur qui vient de s'allumer dans un délai assez court. Le jeu répète la même couleur et le même son, puis ajoute au hasard une nouvelle couleur. Le joueur doit reproduire cette nouvelle séquence. Chaque fois que le joueur reproduit correctement la séquence, le jeu ajoute une nouvelle couleurà la séquence.
+			</p>
+
+			<p>
+				Un exemple d’implémentation de ce jeu en Javascript	:
+			</p>
+
+			<a href="http://www.kellyking.me/projects/simon/">http://www.kellyking.me/projects/simon/</a>
+
+			<h1>Étape 1 –Corps de la page</h1>
+
+			<p>
+				Le corps de la page HTML qui fournit le cadre pour le développement Javascript est le suivant
+			</p>
+
+			<pre>Ficher simon.html</pre>
+
+			<pre><code class="html">
+&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Simon&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;src=&quot;simon.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot;href=&quot;simon.css&quot;/&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button&gt;D&eacute;but&lt;/button&gt;Tour : &lt;span id=&quot;tour&quot;&gt;0&lt;/span&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td id=&quot;bleu&quot;&gt;Bleu&lt;/td&gt;
+            &lt;td id=&quot;rouge&quot;&gt;Rouge&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td id=&quot;jaune&quot;&gt;Jaune&lt;/td&gt;
+            &lt;td id=&quot;vert&quot;&gt;Vert&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;span id=&quot;resultat&quot;&gt;&lt;/span&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+			</code></pre>
+
+			<pre>Ficher simon.css</pre>
+			<pre><code class="css">
+table,th,td {
+    border: 1px solid black;
+}
+
+td {
+    width:100px;
+    height:100px;
+}
+			</code></pre>
+
+			<p>
+				<strong>
+					Recopier les codes ci-dessus et vérifier que la page s’affiche bien comme suit:
+				</strong>
+			</p>
+
+			<h1>Étape 2 –Initialisation</h1>
+
+			<p>
+				Afin de faciliter le développement on attribue un indice à chaque touche :
+			</p>
+
+			<ul>
+				<li>Bleu : 0</li>
+				<li>Rouge : 1</li>
+				<li>Jaune : 2</li>
+				<li>Vert : 3</li>
+			</ul>
+
+			<p>
+				Cet indice nous permettra par la suite de désigner chaque toucheet d’utiliser des tableaux.
+			</p>
+
+			<p>
+				Nous allons commencer l’écriture du fichier Javascript: <code>simon.js</code>. La première étape est de définir un tableau en variable globale.
+			</p>
+
+			<p>
+				Le tableau <code>touches</code> lui est initialisé à vide (<code>var touches= [];</code>), il doit contenir par la suite les éléments DOM correspondant à chaque élément <code>td</code> de notre tableau et donc à chaque touche.
+			</p>
+
+			<p>
+				<strong>
+					Écrire la définition ce tableau dans le fichier <code>simon.js</code> (le tableau est vide pour l'instant).			
+				</strong>
+			</p>
+
+			<p>
+				Il faut maintenant donner des couleurs à nos éléments.
+			</p>
+
+			<ul>
+				<li><code>blue</code></li>
+				<li><code>red</code></li>
+				<li><code>yellow</code></li>
+				<li><code>green</code></li>
+			</ul>
+
+			<p>
+				<strong>
+					Compléter le fichier de style pour que les touches aient la bonne couleur.
+				</strong>
+			</p>
+
+			<p>
+				Lorsque les touches vont clignoter on leur donnera des couleurs légèrement plus clair :
+			</p>
+
+			<ul>
+				<li><code>lighblue</code></li>
+				<li><code>lightsalmon</code></li>
+				<li><code>lightyellow</code></li>
+				<li><code>lightgreen</code></li>
+			</ul>
+	
+			<p>
+				Les éléments <code>td</code> prendront ses couleurs lorsqqu'on leur attribuera la classe <code>clair</code>.
+			</p>
+
+			<p>
+				<strong>
+					Compléter à nouveau le fichier de style avec ces nouvelles règles.
+				</strong>
+			</p>
+
+			<h1>Étape 3 – Fonction <code>chargement()</code></h1>
+	
+			<p>
+				Le but de cette étape est d’écrire une fonction Javascript <code>chargement()</code> qui sera exécutée
+				au chargement de la page (évènement <code>onload</code>). 
+			</p>
+
+			<p>
+				Cette fonction doit remplir le tableau <code>touches</code> avec les éléments DOM correspondants à chaque touche en utilisant la fonction <code>getElementById</code>.
+				L’élément 0 de ce tableau contiendra donc l’élément DOM correspondant à l’élément <code>td</code> ayant pour id <code>bleu</code>, 
+				l’élément 1 de ce tableau contiendra donc l’élément DOM correspondant à l’élément <code>td</code> ayant pour id <code>rouge</code>, etc.
+			</p>
+
+			<p>
+				<strong>
+					Écrire la fonction <code>chargement()</code> et faire qu’elle soit appelée au chargement de la page. 
+				</strong>
+			</p>
+
+			<h1>Étape 4 – Fonction <code>clignoter()</code></h1>
+
+			<p>
+				La fonction <code>clignoter</code> va permettre de faire clignoter une touche. 
+				Elle prend comme argument l’indice de celle-ci et va exécuter les actions suivantes:
+			</p>
+
+			<ul>
+				<li>
+					Mettre la couleur de fond de la case en plus clair en modifiant son attribut <code>class</code> à la valeur <code>clair</code>.
+				</li>
+				<li>
+					Puis 400ms seconde plus tard, mettre la couleur de fond de la case correspondant à la couleur normale en modifiant son attribut <code>class</code> à vide.
+					Pour le décalage de 400ms on utilisera la fonction <code>setTimeout()</code>.
+				</li>
+			</ul>
+			
+			<p>
+				<strong>
+					Écrire la fonction <code>clignoter()</code>. On pourra tester cette fonction en utilisant l’événement <code>onclick</code> sur les éléments <code>td</code> de notre tableau.
+				</strong>
+			</p>
+
+			<h1>Étape 5 – Fonction <code>tourSuivant()</code></h1>
+
+			<p>
+				A chaque tour n, le Simon joue une séquence et donc fait clignoter successivement n touches puis l’utilisateur doit ensuite cliquer 
+				sur cette même succession de touches. Au tour suivant, le Simon refait clignoter les n touches et en rajoute une à la fin. 
+			</p>
+
+			<p>
+				La fonction <code>tourSuivant()</code> est appelée au début de chaque tour.
+			</p>
+
+			<p>
+				Avant d’écrire cette fonction il faut définir les variables globales suivantes:
+			</p>
+
+			<ul>
+				<li>
+					Un tableau <code>tirages</code> qui contiendra le tirage aléatoire des touches. 
+					Au tour 1, ce tableau contient un élément qui correspond à la première touche choisitau hasard par le Simon 
+					désignée par son indice 0, 1, 2 ou 3. Au tour 2, il contient le même 1ier élément puis un second qui est l’indice 
+					d’une deuxième touche choisit au hasard, etc.
+					Ce tableau est initialisé à vide. La taille de ce tableau correspond au tour courant (1 pour le 1iertour, 2 pour le 2nd, etc.).
+				</li>
+				<li>
+					Une variable booléenne <code>simon</code> qui vaut <code>true</code> lorsque le Simon est en train de jouer une séquence et 
+					<code>false</code> lorsque c’est à l’utilisateur de jouer. Par défaut cette variable est initialisée à <code>false</code>.
+				</li>
+				<li>
+					Une variable entière <code>numero</code> qui va définir le numéro dans lequel on se trouve dans la séquence, 
+					que ce soit lorsque le Simon joue une séquence ou lorsque l’utilisateur rejoue la séquence. 
+					Cette variable va de 0 jusqu’à la taille du tableau <code>tirages</code> -1.
+				</li>
+			</ul>
+			
+			<p>
+				La fonction <code>tourSuivant()</code> va réaliser les actions suivantes:
+			</p>
+
+			<ul>
+				<li>
+					Mettre la variable booléenne <code>simon</code> à <code>true</code>, c’est au Simon de jouer sa séquence.
+				</li>
+				<li>
+					Tirer un indice aléatoirement entre les valeurs entières 0, 1, 2 et 3. 
+					On utilisera pour cela les fonctions <code>Math.random()</code> et <code>parseInt()</code>.On tire une nouvelle touche au hasard.
+				</li>
+				<li>
+					Ajouter cet indice comme dernier élément du tableau <code>tirages</code>. 
+					Par cette action on ajoute une nouvelle touche à la séquence de touches du Simon.
+				</li>
+				<li>
+					Modifier l’élément <code>span</code> ayant pour id <code>tour</code> avec le tour courant i.e. la taille du tableau <code>tirages</code>.
+				</li>
+				<li>
+					Mettre la variable <code>numero</code> à 0.
+				</li>
+				<li>
+					Appeler la fonction <code>simonJoue()</code>. Cette fonction est définie à l’étape suivante.
+				</li>
+			</ul>
+
+			<p>
+				<strong>
+					Définir les variables globales ci-dessus et écrire la fonction <code>tourSuivant()</code>.
+				</strong>
+			</p>
+			
+			<h1>Étape 5 – Fonction simonJoue()</h1>
+
+			<p>
+				La fonction <code>simonJoue()</code> va jouer la séquence définit aléatoirement. 
+				Elle va faire clignoter la touche correspondant au numéro courant puis s’appeler pour réaliser la même action pour le numéro suivant.
+			</p>
+
+			<p>
+				Pour cela elle va effectuer les actions suivantes:
+			</p>
+
+			<ul>
+				<li>
+					Récupérer l’indice de la touche tirée pour l’indice correspondant à la variable <code>numero</code> dans le tableau  <code>tirages</code>.
+				</li>
+				<li>
+					Faire clignoterla touche correspondante en utilisant la fonction <code>clignoter()</code>.
+				</li>
+				<li>
+					Incrémenter la variable <code>numero</code>.
+				</li>
+				<li>
+					Si la séquence n’est pas terminée (i.e. si  la valeur <code>numero</code> est strictement inférieure à la taille
+					du tableau <code>tirages</code> lancer un appel à la fonction <code>simonJoue()</code> dans une seconde 
+					(on utilisera la fonction <code>setTimeout()</code>).
+				</li>
+				<li>
+					Sinon la séquence est terminée, mettre la variable globale <code>simon</code> à <code>false</code>
+					(c’est au tour de l’utilisateur de jouer) et la variable globale <code>numero</code> à 0. 
+					L’utilisateur peut ensuite rejouer la séquence.
+				</li>
+			</ul>
+
+			<p>
+				<strong>
+					Écrire la fonction <code>simonJoue()</code>.
+				</strong>
+			</p>
+
+			<h1>Étape 6 – Fonction <code>debut()</code></h1>
+
+			<p>
+				Cette fonction débute une partie de Simon, elle sera appelée lorsque l’utilisateur clique sur le bouton "Début". 
+				Elle effectuera les actions suivantes:
+			</p>
+
+			<ul>
+				<li>
+					Initialiser la variable tableau <code>tirages</code> comme un tableau vide(i.e. <code>= [];</code>).
+				</li>
+				<li>
+					Modifier l’élément <code>span</code> ayant pour id <code>resultat</code>, le mettre à vide.
+				</li>
+				<li>
+					Appeler la fonction <code>tourSuivant()</code>.
+				</li>
+			</ul>
+
+			<p>
+				<strong>
+					Écrire la fonction <code>tourSuivant()</code> et faire qu’elle soit appelée lorsque l’on clique sur le bouton "Début".
+				</strong>
+			</p>
+
+			<p>
+				On peut déjà vérifier que les premières fonctions sont correctes: 
+				si on appuie sur le bouton "Début" une première touche doit clignoter le nombre de tour (1) doit s’afficher.
+			</p>
+
+			<h1>Étape 7 – Fonction <code>clique()</code></h1>
+
+			<p>
+				La fonction <code>clique()</code> va être appeler lorsque l’utilisateur clique sur une touche pour
+				 rejouer la séquence (soit l’évènement <code>onclick</code>) et prend comme argument l’indice de la touche correspondante. 
+				 Soit pour la touche 0 le code suivant :
+			</p>
+
+			<pre><code class="html">
+&lt;td onclick=&quot;clique(0);&quot;id=&quot;bleu&quot;&gt;Bleu&lt;/td&gt;
+			</code></pre>
+			
+			<p>
+				La fonction <code>clique()</code> effectue le synoptique suivant:
+			</p>
+
+			<ul>
+				<li>
+					Si variable <code>simon</code> à <code>false</code> i.e. c’est à l’utilisateur de jouer :
+				</li>
+				<li>
+					Faire clignoter la touche correspondant à l’indice avec la fonction <code>clignoter()</code>. 
+				</li>
+				<li>
+					Si l’indice de la touche passé en argument est égal au tirage dans la séquence donc à <code>tirages[numero]</code> 
+					i.e. l’utilisateur a cliqué sur la bonne touche dans la séquence : 
+					incrémenter la variable <code>numero</code>, l’utilisateur doit trouver la touche suivante.
+				</li>
+				<li>
+					Sinon modifier l’élément <code>span</code> ayant pour id <code>resultat</code> à "Vous avez perdu!", l’utilisateur a perdu.
+				</li>
+				<li>
+					Puis une autre condition, si la variable <code>numero</code> est égale à <code>tirage.length</code>, ie l’utilisateur a effectué 
+					correctement la séquence complète.
+					Appeler la fonction <code>tourSuivant()</code> dans une seconde en utilisant la fonction <code>setTimeout()</code>.  
+				</li>
+			</ul>
+
+			<p>
+				<strong>
+					Écrire la fonction <code>clique()</code>.
+				</strong>
+			</p>
+
+			<p>
+				Vous pouvez maintenant jouer au Simon.
+			</p>
+
+			<h1>Étape 8 – Implémenter un temps maximum</h1>
+
+			<p>
+				Si le joueur met plus de 10 secondes à appuyer sur une touche il a perdu.
+			</p>
+
+			<p>
+				<strong>
+					Mettre en place ce mécanisme.
+				</strong>
+			</p>
+
+			<h1>Étape 9 – Mettre en place un niveau de difficulté</h1>
+
+			<p>
+				Ajouter une liste de choix de niveaux de difficulté: facile, moyen, difficile. 
+				Ce choix modifiera le temps maximum pour appuyer sur une touche: 5 secondes pour difficile, 10 secondes pour moyen et
+				20 secondes pour le mode facile.
+			</p>
+
+			<h1>Étape 10 – Améliorer les graphismes du jeu</h1>
+			
+			<p>
+				Améliorer les graphismes du jeu :
+			</p> 
+
+			<ul>
+				<li>
+					Donner une forme de quart de cercle aux touches du jeu avec la propriété <code>border-radius</code>
+				</li>
+				<li>
+					Appliquer un bord 3D aux touches.
+				</li>
+				<li>
+					Utiliser des dégradés.
+				</li>
+			</ul>
+
+			<p>
+				Dans un second temps : on pourra encore pousser le jeu en ajoutant du son et en s'approchant encore plus du design
+				original du jeu comme dans l'exemple suivant
+				<a href="https://codepen.io/BenLBlood/pen/LGLEoJ">https://codepen.io/BenLBlood/pen/LGLEoJ</a>.
+			</p>
+
+		</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

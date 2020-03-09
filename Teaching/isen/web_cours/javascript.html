@@ -1,0 +1,1937 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Javascript</title>
+
+		<meta name="description" content="Javascript">
+		<meta name="author" content="Guillaume CLODIC">
+
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Javascript</h1>
+					<p>ISEN Brest - CIR1</p>
+				</section>
+
+				<section>
+					<ul>
+						<li>Langage de programmation de scripts</li>
+						<li>Langage interprété</li>
+						<li>Langage orienté objet (un petit peu)</li>
+						<li>Création en 1995 par Netscape puis Sun</li>
+						<li>Objectif : interactivité dans les pages Web : exécution côté client</li>
+						<li>Code directement écrit dans la page Web (pas de confidentialité)</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>Motivations</p>
+					<ul>
+						<li>Instructions de programmation directement dans le code HTML</li>
+						<li>
+							Exécution de code côté client
+							<ul>
+								<li>Améliorer l'interactivé (temps de réponse plus court)</li>
+								<li>Améliorer les débits réseaux (limiter les requêtes</li>
+								<li>Proposer des pages dynamiques (animations, personalisation)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>Applications possibles</p>
+					<ul>
+						<li>Tester la saisie d'un formulaire</li>
+						<li>Programmer des actions en fonction d'un évènement</li>
+						<li>Effectuer un calcul sans passer par le serveur</li>
+						<li>Modier les éléments de la page HTML</li>
+						<li>...</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Avantages et inconvénients</h3>
+					<p>Points forts</p>
+					<ul>
+						<li>Langage de programmation structuré</li>
+						<li>Enrichissement du HTML</li>
+						<li>Pages dynamiques : partage les mêmes objets DOM que HTML</li>
+						<li>Gestion d'évènements</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Avantages et inconvénients</h3>
+					<p>Limitations</p>
+					<ul>
+						<li>Langage de script dépendant du HTML</li>
+						<li>Pas véritablement langage orienté objet (ni héritage , ni polymorphisme)</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Normalisation</h3>
+						<p>Langage normalisé par ECMA International, Standard : ECMAScript (ECMA-262) </p>
+						<ul style="font-size: 0.8em;">
+							<li>ECMAScript Edition 1, Juin 1997, 1re édition</li>
+							<li>ECMAScript Edition 2, Juin 1998, Modifications rédactionnelles pour se conformer au standard international ISO/CEI-16262.</li>
+							<li>ECMAScript Edition 3, Décembre 1999, Expressions rationnelles plus puissantes, amélioration de la manipulation des chaînes de caractères, nouvelles instructions de contrôle, gestion des exception avec les instructions try/catch, formatage des nombres.</li>
+							<li>ECMAScript Edition 4 (ES4), Édition abandonnée</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Normalisation</h3>
+						<ul style="font-size: 0.8em;">
+							<li>ECMAScript Edition 5 (ES5), Décembre 2009 	Clarification des ambiguïtés de la 3e édition, accesseurs, introspection, contrôle des attributs, fonctions de manipulation de tableaux supplémentaires, support du format JSON, mode strict pour la vérification des erreurs.</li>
+							<li>ECMAScript Edition 6 (ES6), Juin 2015, Modules, classes, portée lexicale au niveau des blocs, itérateurs et générateurs, promesses pour la programmation asynchrone, patrons de destructuration, optimisation des appels terminaux, nouvelles structures de données (tableaux associatifs, ensembles, tableaux binaires), support de caractères Unicode supplémentaires dans les chaînes de caractères et les expressions rationnelles, possibilité d'étendre les structures de données prédéfinies.</li>
+							<li>...</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Généralités</h2>
+					</section>
+
+					<section>
+						<h3>Intégration Javascript dans le HTML</h3>
+						<ul>
+							<li>
+								Lien vers un fichier externe (de préférence dans la balise <code>&lt;head&gt;</code>)
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;script type=&quot;text/javascript&quot; src=&quot;fichier.js&quot;&gt
+								</code></pre>
+							</li>
+							<li>
+								Déclaration du code dans le fichier HTML
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;script type=&quot;text/javascript&quot;&gt;
+	code javascript
+&lt;/script&gt;
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Appel d’une fonction Javascript dans le HTML</h3>
+						<ul>
+							<li>
+								Utilisation dans une URL
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;a href=&quot;javascript:instructionJavascript ;&quot;&gt;Texte&lt;/a&gt;
+								</code></pre>
+							</li>
+							<li>
+								Attributs de gestion des évènements
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;balise onEvenement=&quot;instructionJavascript&quot;&gt;...&lt;/a&gt;
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Code alternatif</h3>
+						<p>Il est possible de rajouter une balise comprenant un texte qui s’affichera uniquement dans le cas où le navigateur ne possède par d’interpréteur de script</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;noscript&gt; Message &agrave; afficher en cas d&rsquo;absence de Javascript &lt;/noscript&gt;
+						</code></pre>
+					</section>
+	
+					<section>
+						<h3>Commentaires</h3>
+						<ul>
+							<li>
+								Mêmes conventions qu’en C/C++
+							</li>
+							<li>
+								Mettre une ligne en commentaire
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+// Cette ligne sera ignorée
+								</code></pre>
+							</li>
+							<li>
+								Mettre une partie du code en commentaire
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+/* Toutes les lignes
+   comprises entre ces 2 repères
+   seront ignorées */
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Caractères spéciaux et chaînes de caractères</h3>
+						<p>Insertion d’un caractère spécial dans une chaîne de caractères sans qu’il soit considéré comme un caractère de contrôle précédé d’un antislash \</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+texte = 'Avez-vous l\'heure ?';
+ou
+texte = "Avez-vous l’heure ? ";
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Concaténation de chaînes de caractères</h3>
+						<p>Utilisation de l’opérateur +</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+texte = "Avez-vous" + "l’heure ? ";
+						</code></pre>
+								
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Syntaxe</h2>
+					</section>
+
+					<section>
+						<p>Caractéristiques</p>
+						<ul>
+							<li>Variables faiblement typées</li>
+							<li>Opérateurs et instructions identiques au C/C++/Java</li>
+							<li>>Méthodes :
+								<ul>
+									<li>Globales (associées à tous les objets)</li>
+									<li>Fonctions définies par le programmeur</li>
+								</ul>
+							<li>Séparateur d’instruction : ';'</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Opérateurs</h3>
+					</section>
+
+					<section>
+						<p>Arithmétiques</p>
+
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>Opérateur</th>
+									<th>Dénomination</th>
+									<th>Effet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>+</code></td>
+									<td>Addition</td>
+									<td>Ajoute 2 valeurs</td>
+								</tr>
+								<tr>
+									<td><code>-</code></td>
+									<td>Soustraction</td>
+									<td>Soustrait 2 valeurs</td>
+								</tr>
+								<tr>
+									<td><code>*</code></td>
+									<td>Multiplication</td>
+									<td>Multiplie 2 valeurs</td>
+								</tr>
+								<tr>
+									<td><code>/</code></td>
+									<td>Division</td>
+									<td>Divise 2 valeurs</td>
+								</tr>
+								<tr>
+									<td><code>%</code></td>
+									<td>Modulo</td>
+									<td>Reste de la division entière</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Incrémentation/décrémentation</p>
+
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>Opérateur</th>
+									<th>Dénomination</th>
+									<th>Effet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>++</code></td>
+									<td>Incrémentation</td>
+									<td>Augmente d’une unité la variable</td>
+								</tr>
+								<tr>
+									<td><code>--</code> (2 signes -)</td>
+									<td>Décrémentation</td>
+									<td>Diminue d’une unité la variable</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Logiques</p>
+
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>Opérateur</th>
+									<th>Dénomination</th>
+									<th>Effet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>&amp;&amp;</code></td>
+									<td>Et</td>
+									<td>Vérifie que toutes les conditions sont réalisées</td>
+								</tr>
+								<tr>
+									<td><code>||</code></td>
+									<td>Ou</td>
+									<td>Vérifie qu’une des conditions sont réalisées</td>
+								</tr>
+								<tr>
+									<td><code>!</code></td>
+									<td>Non</td>
+									<td>Inverse l’état de l'expression booléenne</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Affectation</p>
+
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Opérateur</th>
+									<th>Effet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>=</code></td>
+									<td>Affecte l’opérande de gauche à la valeur de l’opérande de droite</td>
+								</tr>
+								<tr>
+									<td><code>+=</code></td>
+									<td>Opérande de gauche = opérande de gauche + opérande de droite</td>
+								</tr>
+								<tr>
+									<td><code>-=</code></td>
+									<td>Opérande de gauche = opérande de gauche - opérande de droite</td>
+								</tr>
+								<tr>
+									<td><code>*=</code></td>
+									<td>Opérande de gauche = opérande de gauche * opérande de droite</td>
+								</tr>
+								<tr>
+									<td><code>/=</code></td>
+									<td>Opérande de gauche = opérande de gauche / opérande de droite</td>
+								</tr>
+								<tr>
+									<td><code>%=</code></td>
+									<td>Opérande de gauche = opérande de gauche % opérande de droite</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Comparaisons</p>
+
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Opérateur</th>
+									<th>Dénomination</th>
+									<th>Effet</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>==</code></td>
+									<td>Égalité</td>
+									<td>Retourne true en cas d’égalité</td>
+								</tr>
+								<tr>
+									<td><code>!=</code></td>
+									<td>Différence</td>
+									<td>Retourne true en cas de différence</td>
+								</tr>
+								<tr>
+									<td><code>&lt;</code></td>
+									<td>Inférieur</td>
+									<td>Retourne true si la valeur est strictement inférieure</td>
+								</tr>
+								<tr>
+									<td><code>&lt;=</code></td>
+									<td>Inférieur ou égal</td>
+									<td>Retourne true si la valeur est inférieure ou égale</td>
+								</tr>
+								<tr>
+									<td><code>&gt;</code></td>
+									<td>Supérieur</td>
+									<td>Retourne true si la valeur est strictement supérieure</td>
+								</tr>
+								<tr>
+									<td><code>&gt;=</code></td>
+									<td>Supérieur ou égal</td>
+									<td>Retourne true si la valeur est supérieure ou égale</td>
+								</tr>
+	
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Comparaisons</p>
+						<p>En javascript il existe <code>===</code> (pas de conversion de type pour tester l'égalité) :</p>
+						<ul>
+							<li><code>==</code> égalité faible</li>
+							<li><code>===</code> égalité stricte</li>
+						</ul>
+					</section>				
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Les variables</h2>
+					</section>
+
+					<section>
+						<h3>Déclaration : </h3>
+						<p><code>var nom[=valeur];</code></p>
+					</section>
+
+					<section>
+						<ul>
+							<li>Déclaration optionnelle mais recommadée</li>
+							<li>Pas de déclaration : déclaration implicite</li>
+							<li>Déclaration avec var : déclration explicite</li>
+							<li>'<code>undefined</code>' si aucune valeur à l'intialisation</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Aucun type à définir</li>
+							<li>Typage dynamique</li>
+							<li>Sensible à la casse</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Visibilité des variables :</h3>
+						<ul>
+							<li>Globale : déclaration explicite en dehors de toute fontion, visible dans tout le script</li>
+							<li>Locale : déclaration explicite dans une fonction visible uniquement dans cette fonction</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Les types de données possibles sont les suivants :</h3>
+						<ul>
+							<li>Nombre (entier uu à virgule)</li>
+							<li>Chaîne de caractères</li>
+							<li>Booléens</li>
+							<li>'<code>null</code>'</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Conditions</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+if(condition) {
+	instructions
+} [ else if(condition) {
+	instructions
+}] [ else {
+	instructions
+}]							
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Conditions</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+switch(variable) {
+	case 'valeur1':
+		instructions
+		break;
+	...
+	default:
+		instructions
+		break;
+}		
+						</code></pre>
+					</section>
+
+					
+					<section>
+						<h3>Boucles</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+for(i=0; i&lt;N; i++) {
+	instructions
+}
+						</code></pre>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+for(p in object) {
+	instructions
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Boucles</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+while(condition) {
+	instructions
+}
+						</code></pre>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+do {
+	instructions
+} while(condition)
+						</code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>Fonctions</h3>
+					</section>
+
+					<section>
+						<h4>Déclaration</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+function nom (arg1, ..., argN) {
+	instruction
+	[ return valeur;]
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Appel de la fonction</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+nom();
+						</code></pre>
+					</section>
+	
+					<section>
+						<h4>Remarques</h4>
+						<ul>
+							<li>Arguments et valeur de retour non typés</li>
+							<li>
+								Passage de paramètres
+								<ul>
+									<li>par valeur pour un type natif (nombre, chaîne de caractères,..)</li>
+									<li>par référence pour les objets</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Les tableaux</h3>
+					</section>
+
+					<section>
+						<h4>Déclaration</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var nom = new Array([dimension]);
+var nom = new Array(val1, val2, ..., valN);
+						</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>Accession avec <code>[]</code> (<code>tableau[i]</code>)</li>
+							<li>Les éléments peuvent être de type différents</li>
+							<li>La taille s'adapte de façon dynamique</li>
+							<li>Propriété : <code>lenght</code></li>
+							<li>Méthodes : <code>reserve()</code>, <code>sort()</code>, <code>toString()</code>, <code>push(element)</code>,...</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Tableaux associatifs</h4>
+						<ul>
+							<li><code>Tab['nom']</code></li>
+							<li><code>Tab.nom</code></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Aperçu objet</h2>
+					</section>
+
+					<section>
+						<h3>Objet <code>window</code></h3>
+						<ul>
+							<li>Objet de référence</li>
+							<li>
+								Contient les autres objets compasants la page Web
+								<ul>
+									<li>Objet <code>document</code> : la page elle-même</li>
+									<li>Objet <code>location</code> : lieu de stockage de la page</li>
+									<li>Objet <code>history</code> : pages visitées précédemment</li>
+								</ul>
+							</li>
+							<li>
+								Méthodes de l'objet
+								<ul>
+									<li>Boites de dialogue : <code>alert()</code>, <code>confirm()</code>, <code>prompt()</code></li>
+									<li>Ouverture et fermeture de fenêtres : <code>open()</code>, <code>close()</code></li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Objet <code>document</code></h3>
+						<ul>
+							<li>Permet d'accéder aux éléments dont est composé la page Web</li>
+							<li>Racine de la hiérarchie de la page HTML</li>
+							<li>
+								Point d'accés pour :
+								<ul>
+									<li>Modifier des éléments de la page Web</li>
+									<li>Vérifier les valeurs des éléments de la page Web (exemple : saisie d'un formulaire)</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Objet <code>location</code></h3>
+						<ul>
+							<li>Permet de connaître les élément de l’URL de la page et de
+									rediriger vers une autre page</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Méthodes couramment utilisées</h3>
+					</section>
+
+					<section>
+						<h3>Boites de dialogue</h3>
+						<ul>
+							<li>Affichage au premier plan d'une boite suite à un évènement</li>
+							<li>Entraîne une action de la part de l'utilisateur</li>
+							<li>Méthodes de l'objet <code>Window</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4><code>alert()</code> : message à l'intention de l'utilisateur</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+alert(nom_de_la_variable);
+alert('Chaîne de caractères');
+alert('Chaîne de caractères ' + nom_de_la_variable);
+						</code></pre>
+					</section>
+
+					<section>
+						<h4><code>confirm()</code> : demande à l'utilisateur de confirmer ou non</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+confirm('Chaîne de caractères');
+						</code></pre>
+					</section>
+
+					<section>
+						<h4><code>prompt()</code> : permet de récupérer une information venant de l'utilisateur</h4>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+variable = prompt(‘Posez ici votre question‘, 'Chaîne par défaut');
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Fenêtres</h3>
+						<p>Ouverture d'une nouvelle fenêtre</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+window.open("URL","nom_de_la_fenetre","options_de_la_fenetre");
+						</code></pre>
+
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;a href=&quot;javascript:window.open('URL', 'nom_de_la_fenetre',
+'options_de_la_fenetre')&quot;&gt;Lien vers URL&lt;/a&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Redirection</h3>
+						<p>Méthodes de l'objet <code>location</code></p>
+						<ul>
+							<li>
+								<code>replace(url)</code> : charge l'URL spécifiée
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+window.location.replace(&quot;URL&quot;,&quot;nom_de_la_fenetre&quot;);
+								</code></pre>																
+							</li>
+
+							<li>
+								<code>reload()</code> : rafraichit la page
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+window.location.reload();
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Programmation évènementielle</h2>
+					</section>
+
+					<section>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Evènement</th>
+									<th>Appel</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Abort</td>
+									<td><code>onAbort</code></td>
+									<td>Lors d’une interruption de chargement</td>
+								</tr>
+								<tr>
+									<td>Blur</td>
+									<td><code>onBlur</code></td>
+									<td>Lorsque l'élément perd le focus</td>
+								</tr>
+								<tr>
+									<td>Change</td>
+									<td><code>onChange</code></td>
+									<td>Lorsque l’utilisateur modifie le champ de données</td>
+								</tr>
+								<tr>
+									<td>Click</td>
+									<td><code>onClick</code></td>
+									<td>Lorsque l’utilisateur clique sur l’élément</td>
+								</tr>
+								<tr>
+									<td>dblclick</td>
+									<td><code>onDblclick</code></td>
+									<td>Lorsque l’utilisateur double-clique sur l’élément</td>
+								</tr>
+								<tr>
+									<td>dragdrop</td>
+									<td><code>onDragdrop</code></td>
+									<td>Lorsque l’utilisateur effectue un glisser-déposer sur la fenêtre</td>
+								</tr>
+								<tr>
+									<td>Error</td>
+									<td><code>onError</code></td>
+									<td>Lorsqu’une erreur apparaît durant le chargement de la page</td>
+								</tr>
+								<tr>
+									<td>Focus</td>
+									<td><code>onFocus</code></td>
+									<td>Lorsque l’élément prend le focus</td>
+								</tr>
+								<tr>
+									<td>Keydown</td>
+									<td><code>onKeydown</code></td>
+									<td>Lorsque l’utilisateur appuie sur une touche</td>
+								</tr>
+								<tr>
+									<td>Kepress</td>
+									<td><code>onKeypress</code></td>
+									<td>Lorsque l’utilisateur maintient sur une touche enfoncée</td>
+								</tr>
+								<tr>
+									<td>Keyup</td>
+									<td><code>onKeyup</code></td>
+									<td>Lorsque l’utilisateur relâche une touche</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Evènement</th>
+									<th>Appel</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Load</td>
+									<td><code>onLoad</code></td>
+									<td>Lorsque le navigateur charge la page en cours</td>
+								</tr>
+								<tr>
+									<td>MouseOver</td>
+									<td><code>onMouseOver</code></td>
+									<td>Lorsque l’utilisateur positionne la souris au dessus de l’élément</td>
+								</tr>
+								<tr>
+									<td>MouseOut</td>
+									<td><code>onMouseOut</code></td>
+									<td>Lorsque le curseur de la souris quitte l’élément</td>
+								</tr>
+								<tr>
+									<td>Reset</td>
+									<td><code>onReset</code></td>
+									<td>Lorsque l’utilisateur efface les données d’un formulaire</td>
+								</tr>
+								<tr>
+									<td>Resize</td>
+									<td><code>onResize</code></td>
+									<td>Lorsque l’utilisateur redimensionne la fenêtre</td>
+								</tr>
+								<tr>
+									<td>Select</td>
+									<td><code>onSelect</code></td>
+									<td>Lorsque l’utilisateur sélectionne un texte dans un champ de type ‘text’ ou ‘textarea’</td>
+								</tr>
+								<tr>
+									<td>Submit</td>
+									<td><code>onSubmit</code></td>
+									<td>Lorsque l’utilisateur soumet un formulaire</td>
+								</tr>
+								<tr>
+									<td>Unload</td>
+									<td><code>onUnload</code></td>
+									<td>Lorsque le navigateur quitte la page en cours</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Fonctionnement</h3>
+						<ul>
+							<li>Le navigateur intercepte les évènements et agit en
+									conséquence</li>
+							<li>
+								Evènements associées aux balises HTML
+								<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;a href=&quot;&quot; onclick=&quot;alert(&rsquo;Merci !&rsquo;) ;&quot;&gt;
+								</code></pre>
+							</li>
+							<li>Tous les évènements ne peuvent pas s’appliquer à tous les
+									éléments !!!</li>
+						</ul>
+					</section>
+				</section>
+				  
+				<section>
+					<section>
+						<h3>DOM (Document Object Model)</h3>
+						<p>Noyau fondamental</p>
+					</section>
+
+					<section>
+						<h4>Présentation</h4>
+						<ul>
+							<li>API pour le HTML/XHTML et le XML</li>
+							<li>
+								La mise en oeuvre de l’API permet de :
+								<ul>
+									<li>Construire un document</li>
+									<li>Naviguer à l’intérieur d’un document</li>
+									<li>Ajouter, modifier ou supprimer des éléments du document</li>
+								</ul>
+							</li>
+							<li>Recommandation du W3C</li>
+							<li>Uniformisation du moyen de manipuler un document Web à travers des scripts</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Représentation</h4>
+						<p>Structure logique du document sous forme d’arbre</p>
+						<pre><code data-trim data-noescape style="font-size: 0.7em;">
+&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;/&gt;
+	&lt;title&gt;Le titre de la page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div&gt;
+		&lt;p&gt;
+			Un peu de texte &lt;a&gt;et un lien&lt;/a&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+						</code></pre>
+					</section>
+
+					<section>
+							<h4>Représentation</h4>
+							<p>Structure logique du document sous forme d’arbre</p>
+							<img src="img/domtree.png" alt="arbre DOM">
+					</section>
+				
+					<section>
+						<h4>Standard W3C</h4>
+						<ul>
+							<li><a href="http://www.w3.org/TR/#tr_DOM">http://www.w3.org/TR/#tr_DOM</a></li>
+							<li>DOM Level 1 : 1998, HTML4</li>
+							<li>DOM Level 2 : 2000</li>
+							<li>DOM Level 3 : 2004</li>
+							<li>DOM Level 4 : 2015</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Interface <code>Document</code></h4>
+						<ul>
+							<li>Représente le document HTML</li>
+							<li>Racide de l'arbre du document</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>doctype</code></td>
+									<td>DTD associée au document</td>
+								</tr>
+								<tr>
+									<td><code>implementation</code></td>
+									<td>Type d’implémentation : langage du document</td>
+								</tr>
+								<tr>
+									<td><code>documentElement</code></td>
+									<td>Accès direct au premier élément du document (ex : en HTML accès àl’élément &lt;html&gt;)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>Document</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>createElement</code></td>
+									<td><code>tagName</code></td>
+									<td>Création d’un élément de type ‘tagName’</td>
+								</tr>
+								<tr>
+									<td><code>createTextNode</code></td>
+									<td><code>data</code></td>
+									<td>Création d’un noeud texte contenant la chaîne da caractères ‘data’</td>
+								</tr>
+								<tr>
+									<td><code>getElementById</code></td>
+									<td><code>elementId</code></td>
+									<td>Renvoie l’élément dont l’id est ‘elementId’</td>
+								</tr>
+								<tr>
+									<td><code>getElementById</code></td>
+									<td><code>tagname</code></td>
+									<td>Renvoie tous les éléments ‘tagname’ dudocument dans un objet de type ‘NodeList’</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>Node</code></h4>
+						<ul>
+							<li>Représente un noeud de l’arbre du document</li>
+							<li>Les attributs dépendent du type de noeud (Element, Attr, Text, Comment, Document,…)</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>doctype</code></td>
+									<td>DTD associée au document</td>
+								</tr>
+								<tr>
+									<td><code>nodeValue</code></td>
+									<td>Type d’implémentation : langage du document</td>
+								</tr>
+								<tr>
+									<td><code>nodeType</code></td>
+									<td>Accès direct au premier élément du document (ex : en HTML accès àl’élément &lt;html&gt;)</td>
+								</tr>
+								<tr>
+									<td><code>parentNode</code></td>
+									<td>DTD associée au document</td>
+								</tr>
+								<tr>
+									<td><code>childNodes</code></td>
+									<td>Type d’implémentation : langage du document</td>
+								</tr>
+								<tr>
+									<td><code>firstChild</code>, <code>lastChild</code></td>
+									<td>Premier et dernier enfant</td>
+								</tr>
+								<tr>
+									<td><code>previousSibling</code>, <code>nextSibling</code></td>
+									<td>Noeud précédent et noeud suivant</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>Node</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>insertBefore</code></td>
+									<td><code>newChild</code>, <code>refChild</code></td>
+									<td>Insertion du noeud ‘newChild’ avant le noeud existant ‘refChild’</td>
+								</tr>
+								<tr>
+									<td><code>appendChild</code></td>
+									<td><code>newChild</code></td>
+									<td>Ajoute le noeud ‘newChild’ à la fin de la liste des enfants du noeud courant</td>
+								</tr>
+								<tr>
+									<td><code>removeChild</code></td>
+									<td><code>oldChild</code></td>
+									<td>Supprime le noeud ‘oldChild’ de la liste des enfants du noeud</td>
+								</tr>
+								<tr>
+									<td><code>replaceChild</code></td>
+									<td><code>newChild</code>, <code>oldChild</code></td>
+									<td>Remplace le noeud enfant oldChild par newChild</td>
+								</tr>
+								<tr>
+									<td><code>hasChildNodes</code></td>
+									<td><code></code></td>
+									<td>Détermine si le noeud contient des enfants</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>NodeList</code></h4>
+						<ul>
+							<li>Liste de noeuds</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>lenght</code></td>
+									<td>Nombre de noeuds dans la liste</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>NodeList</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>item</code></td>
+									<td><code>index</code></td>
+									<td>Renvoie le indexème item de la liste</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>NamedNodeMap</code></h4>
+						<ul>
+							<li>Collections de noeuds repérés par leur nom</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>lenght</code></td>
+									<td>Nombre de noeuds dans la map</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>NamedNodeMap</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>getNamedItem</code></td>
+									<td><code>name</code></td>
+									<td>Renvoie le noeud spécifié par ‘name’</td>
+								</tr>
+								<tr>
+									<td><code>setNamedItem</code></td>
+									<td><code>Arg (un noeud)</code></td>
+									<td>Ajoute le noeud en utilisant le ‘nodeName’ attribut</td>
+								</tr>
+								<tr>
+									<td><code>removeNamedItem</code></td>
+									<td><code>name</code></td>
+									<td>Supprime le noeud spécifié par ‘name’</td>
+								</tr>
+								<tr>
+									<td><code>item</code></td>
+									<td><code></code></td>
+									<td>Renvoie le indexème item de la map</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Autres interfaces</h4>
+						<ul>
+							<li>Interface ‘CharacterData’ : attributs et méthodes supplémentaires spécialisé pour les noeuds contenant des chaînes de caractères (héritage de ‘Node’)</li>
+							<li>Interface ‘Attr’ : Attribut dans un Element (héritage de ‘Node’)</li>
+							<li>Interface ‘Element’ : un Element (héritage de ‘Node’)</li>
+							<li>Interface ‘Text’ : partie textuellle d’un Element (héritage de ‘Node’)</li>
+							<li>...</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>DOM pour le HTML</h2>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLDocument</code></h4>
+						<ul>
+							<li>Equivalent de l’interface Document mais spécifique aux documents HTML</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>title</code></td>
+									<td>Titre du document spécifié par l’élément &lt;title&gt; dans la partie &lt;head&gt;</td>
+								</tr>
+								<tr>
+									<td><code>referrer</code></td>
+									<td>URI de la page précédente</td>
+								</tr>
+								<tr>
+									<td><code>URL</code></td>
+									<td>URI du document</td>
+								</tr>
+								<tr>
+									<td><code>body</code></td>
+									<td>Element &lt;body&gt;</td>
+								</tr>
+								<tr>
+									<td><code>images</code></td>
+									<td>Collection de tous les éléments &lt;img&gt;</td>
+								</tr>
+								<tr>
+									<td><code>links</code></td>
+									<td>Collection de tous les éléments &lt;area&gt; et &lt;a&gt; dont l’attribut ‘href’ est spécifié</td>
+								</tr>
+								<tr>
+									<td><code>forms</code></td>
+									<td>Collection de tous les éléments &lt;form&gt;</td>
+								</tr>
+								<tr>
+									<td><code>anchors</code></td>
+									<td>Collection de tous les éléments &lt;a&gt; ayant un attribut ‘name’</td>
+								</tr>
+								<tr>
+									<td><code>cookie</code></td>
+									<td>Cookies associés au document</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLDocument</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>getElementById</code></td>
+									<td><code>elementId</code></td>
+									<td>Renvoie l’élément dont l’id est ‘elementId’</td>
+								</tr>
+								<tr>
+									<td><code>getElementByName</code></td>
+									<td><code>elementName</code></td>
+									<td>Renvoie une collection d’élément dont l’attribut ‘name’ vaut ‘elementName’</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	
+					<section>
+						<h4>Interface <code>HTMLElement</code></h4>
+						<ul>
+							<li>Equivalent de l’interface Element mais spécifique aux documents HTML</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>id</code></td>
+									<td>L’id d’un élément</td>
+								</tr>
+								<tr>
+									<td><code>title</code></td>
+									<td>L’attribut title de l’élément</td>
+								</tr>
+								<tr>
+									<td><code>lang</code></td>
+									<td>L’attribut lang de l’élément</td>
+								</tr>
+								<tr>
+									<td><code>dir</code></td>
+									<td>L’attribut dir de l’élément (direction du texte)</td>
+								</tr>
+								<tr>
+									<td><code>className</code></td>
+									<td>L’attribut class de l’élément</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLFormElement</code></h4>
+						<ul>
+							<li>Formulaire : élément &lt;form&gt;</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>elements</code></td>
+									<td>Collection de tous les éléments de contrôle du formulaire</td>
+								</tr>
+								<tr>
+									<td><code>lenght</code></td>
+									<td>Nombre d’éléments de contrôle</td>
+								</tr>
+								<tr>
+									<td><code>name</code></td>
+									<td>Nom du formulaire</td>
+								</tr>
+								<tr>
+									<td><code>acceptCharset</code></td>
+									<td>Liste des encodages de caractère acceptés par le serveur</td>
+								</tr>
+								<tr>
+									<td><code>action</code></td>
+									<td>Programme en charge de traiter les données</td>
+								</tr>
+								<tr>
+									<td><code>enctype</code></td>
+									<td>Forme de soumission du formulaire</td>
+								</tr>
+								<tr>
+									<td><code>method</code></td>
+									<td>Méthode HTTP utilisée pour soumettre le formulaire</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLFormElement</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>submit</code></td>
+									<td><code></code></td>
+									<td>Soumettre le formulaire</td>
+								</tr>
+								<tr>
+									<td><code>reset</code></td>
+									<td><code></code></td>
+									<td>Effectue un reset (remise à 0 du formulaire)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	
+					<section>
+						<h4>Interface <code>HTMLSelectElement</code></h4>
+						<ul>
+							<li>Menu déroulant : élément &lt;select&gt;</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>type</code></td>
+									<td>Type de contrôle créé</td>
+								</tr>
+								<tr>
+									<td><code>selectedIndex</code></td>
+									<td>Index de l’option sélectionné</td>
+								</tr>
+								<tr>
+									<td><code>value</code></td>
+									<td>Valeur courante du select</td>
+								</tr>
+								<tr>
+									<td><code>lenght</code></td>
+									<td>Nombre d’options dans le select</td>
+								</tr>
+								<tr>
+									<td><code>form</code></td>
+									<td>Formulaire contenant le select</td>
+								</tr>
+								<tr>
+									<td><code>options</code></td>
+									<td>Collection des éléments options contenus dans le select</td>
+								</tr>
+								<tr>
+									<td><code>disabled</code></td>
+									<td>Désactiver le contrôle</td>
+								</tr>
+								<tr>
+									<td><code>multiple</code></td>
+									<td>Si true : plusieurs options peuvent être sélectionnées</td>
+								</tr>
+								<tr>
+									<td><code>name</code></td>
+									<td>Attribut ‘name’ du select</td>
+								</tr>
+								<tr>
+									<td><code>size</code></td>
+									<td>Nombre de lignes visibles</td>
+								</tr>
+								<tr>
+									<td><code>tabIndex</code></td>
+									<td>Index représentant la position de l’element</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLSelectElement</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>add</code></td>
+									<td><code>element</code>, <code>before</code></td>
+									<td>Ajoute un nouvel élément &lt;option&gt; avant l’élément before</td>
+								</tr>
+								<tr>
+									<td><code>remove</code></td>
+									<td><code></code></td>
+									<td>Supprime l’option dont l’index est précisé</td>
+								</tr>
+								<tr>
+									<td><code>blur</code></td>
+									<td><code></code></td>
+									<td>Retire le focus de l’élément</td>
+								</tr>
+								<tr>
+									<td><code>focus</code></td>
+									<td><code></code></td>
+									<td>Donne le focus à l’élément</td>
+								</tr>
+	
+							</tbody>
+						</table>
+					</section>
+	
+					<section>
+						<h4>Interface <code>HTMLOptionElement</code></h4>
+						<ul>
+							<li>Menu déroulant : élément &lt;option&gt;</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>form</code></td>
+									<td>Formulaire contenant l’option</td>
+								</tr>
+								<tr>
+									<td><code>defaultSelected</code></td>
+									<td>Mémorise la valeur sélectionnée initialement</td>
+								</tr>
+								<tr>
+									<td><code>text</code></td>
+									<td>Texte contenu dans l’option</td>
+								</tr>
+								<tr>
+									<td><code>index</code></td>
+									<td>Index de l’option (contenu dans un select)</td>
+								</tr>
+								<tr>
+									<td><code>disabled</code></td>
+									<td>Désactiver le contrôle</td>
+								</tr>
+								<tr>
+									<td><code>label</code></td>
+									<td>Label dans le cas d’un menu hiérarchique</td>
+								</tr>
+								<tr>
+									<td><code>selected</code></td>
+									<td>Sélection de l’option</td>
+								</tr>
+								<tr>
+									<td><code>value</code></td>
+									<td>Valeur de contrôle</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				
+					<section>
+						<h4>Interface <code>HTMLInputElement</code></h4>
+						<ul>
+							<li>Formulaire : élément &lt;input&gt;</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>defaultVallue</code></td>
+									<td>Mémorise la valeur initiale</td>
+								</tr>
+								<tr>
+									<td><code>defaultChecked</code></td>
+									<td>Mémorise la valeur initiale de l’attribut ‘checked’ (pour radio ou checkbox)</td>
+								</tr>
+								<tr>
+									<td><code>checked</code></td>
+									<td>Décrit si le bouton radio ou la checkbox est cochée</td>
+								</tr>
+								<tr>
+									<td><code>disabled</code></td>
+									<td>Désactiver le contrôle</td>
+								</tr>
+								<tr>
+									<td><code>readOnly</code></td>
+									<td>Contrôle en lecture seule ( pour les types texte ou password)</td>
+								</tr>
+								<tr>
+									<td><code>size</code></td>
+									<td>Taille de la zone (dépend du type)</td>
+								</tr>
+								<tr>
+									<td><code>type</code></td>
+									<td>Type de contrôle</td>
+								</tr>
+								<tr>
+									<td><code>value</code></td>
+									<td>Valeur du champ</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interface <code>HTMLInputElement</code></h4>
+						<table style="font-size: 0.7em;">
+							<thead>
+								<tr>
+									<th>Méthodes</th>
+									<th>Paramètres</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>blur</code></td>
+									<td><code></code></td>
+									<td>Retire le focus de l’élément</td>
+								</tr>
+								<tr>
+									<td><code>focus</code></td>
+									<td><code></code></td>
+									<td>Donne le focus à l’élément</td>
+								</tr>
+								<tr>
+									<td><code>select</code></td>
+									<td><code></code></td>
+									<td>Sélectionne le contenu du champs (éléments ‘text’, ‘file’ et ‘password’)</td>
+								</tr>
+								<tr>
+									<td><code>click</code></td>
+									<td><code></code></td>
+									<td>Simule un click de la souris (éléments ‘button’, ‘checkbox’, ‘radio’, ‘reset’, ‘submit’)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+		
+					<section>
+						<h4>Autres interfaces liées à HTML</h4>
+						<ul>
+							<li><code>HTMLCollection</code> : liste de noeuds HTML</li>
+							<li><code>HTMLOptionsCollection</code> : liste de noeuds d’éléments options (dans un select)</li>
+							<li>Une pour chaque élément HTML</li>
+							<li>...</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>DOM Style CSS</h2>
+					</section>
+
+					<section>
+						<h4>Interface <code>StyleSheet</code></h4>
+						<ul>
+							<li>Pour insérer des feuilles de style</li>
+						</ul>
+
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Attribut</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>disabled</code></td>
+									<td>False si la feuille de style est appliquée sinon true</td>
+								</tr>
+								<tr>
+									<td><code>href</code></td>
+									<td>Equivalent du href de l ’élément &lt;link&gt;</td>
+								</tr>
+								<tr>
+									<td><code>media</code></td>
+									<td>Equivalent de l’attribut media de l ’élément &lt;link&gt;</td>
+								</tr>
+								<tr>
+									<td><code>type</code></td>
+									<td>Langage utilisé (text/CSS souvent)</td>
+								</tr>
+								<tr>
+									<td><code>...</code></td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Interfaces CSS</h4>
+						<ul>
+							<li>Interface <code>CSSStyleSheet</code> feuille de style CCS (possibilité d’ajouter, supprimer des règles,…)</li>
+							<li>Interface <code>CSSRuleList</code> : liste de règles CSS</li>
+							<li>Interface <code>CSSRule</code> : règle CSS (classique ou règle @)</li>
+							<li>Interface <code>CSSStyleRule</code> : règle CSS classique</li>
+							<li>Interface <code>CSSMediaRule</code> : règle CSS @</li>
+							<li>Interface <code>CSSFontFaceRule</code> : règle CSS @font-face : description de la police de caractères</li>
+							<li>...</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Interface CSS2Properties</h4>
+						<ul>
+							<li>Référence pour connaître les valeurs des propriétés CSS</li>
+							<li>Ces propriétés n’ont pas forcément le même nom en CSS et en DOM</li>
+							<li>Documentation : Dom Level 2 Style</li>
+						</ul>
+					</section>
+	
+				</section>
+
+				<section>
+					<section>
+						<h2>DOM par l'exemple</h2>
+					</section>	
+					
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Récupérer un noeud du DOM :</p>
+						<ul>
+							<li>
+								Object <code>Document</code> :
+								<ul>
+									<li><code>document.getElementById(elementId)</code></li>
+									<li><code>document.getElementByTagName(tagName)</code></li>
+								</ul>
+							</li>
+							<li>
+								Object <code>NodeList</code> :
+								<ul>
+									<li><code>length</code></li>
+									<li><code>item(index)</code></li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Modifier le contenu d’un noeud :</p>
+						<ul>
+							<li>
+								Object <code>Document</code> :
+								<ul>
+									<li><code>document.createElement(balise)</code></li>
+								</ul>
+							</li>
+							<li>
+								Object <code>Node</code> :
+								<ul>
+									<li><code>‘noeud’.appendChild(newChild)</code></li>
+									<li><code>‘noeud’.replaceChild(newChild, oldChild)</code></li>
+									<li><code>‘noeud’.removeChild(oldChild)</code></li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Exemple : ajout d'un nouveau paragrapyhe à un bloc <code>div</code></p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var pEl=document.createElement(&quot;p&quot;);
+var texte=document.createTextNode(&quot;Fin du bloc&quot;);
+pEl.appendChild(texte);
+document.getElementById(&quot;div2&quot;).appendChild(pEl);
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Parcours d'un arbre avec l'objet <code>Node</code> :</p>
+						<ul>
+							<li><code>‘noeud’.parentsNode</code></li>
+							<li><code>‘noeud’.ChildNodes[ ]</code></li>
+							<li><code>‘noeud’.firstChild</code></li>
+							<li><code>‘noeud’.lastChild</code></li>
+							<li><code>‘noeud’.previousSibling</code></li>
+							<li><code>‘noeud’.nextSibling</code></li>
+							<li><code>‘noeud’.nodeType</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Exemple : fonction récursive de comptage des éléments du document</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+function compteN(noeud) {
+	var nb_noeud = 0; 
+	if(noeud.nodeType == 1) 
+		nb_noeud++; 
+		
+	for(var i=0; i&lt;noeud.childNodes.length; i++) {
+		nb_noeuds += compteN(noeud.childNodes[i]);
+	} 
+	
+	return nb_noeud;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Tester un formulaire</p>
+						<ul>
+							<li>Récupérer le noeud : <br><code>moninput = document.getElementById(inputId);</code></li>
+							<li>Récupérer le texte du champ : <br><code>valeur = moninput.value;</code></li>
+							<li>Tester la valeur : <br><code>if (valeur == ‘Ceci est un test’) { return 1; }</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Les plus utilisés pour le HTML</h4>
+						<p>Exemple : vérification que le champ ‘prénom’ est bien rempli</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+if (document.getElementById(‘prenom’).value==‘’) {
+	alert(‘Veuillez saisir votre prénom’);
+	return false;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Exemples de modification</h4>
+					</section>
+
+					<section>
+						<h4>Exemples de modification</h4>
+						<p>d'un attribut</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;a href=&quot;aide.html&quot;&gt;&lt;img name=&quot;img_aide&quot; src=&quot;help_off.gif&quot; /&gt;&lt;/a&gt;
+&lt;script&gt;
+document.img_aide.onmouseover= function(){this.src=&quot;help_on.gif&quot;;};
+document.img_aide.onmouseout= function(){this.src=&quot;help_off.gif&quot;;};
+&lt;/script&gt;
+						</code></pre>
+					</section>
+	
+					<section>
+						<h4>Exemples de modification</h4>
+						<p>Texte HTML contenu dans un élément (attention : innerHTML à connaître mais à éviter)</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+document.links[0].innerHTML=&quot;Page d'aide&quot;;
+						</code></pre>
+					</section>
+	
+					<section>
+						<h4>Exemples de modification</h4>
+						<p>Style CSS</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+document.forms[0].style.backgroundColor=&quot;red&quot;;
+						</code></pre>
+					</section>
+	
+				</section>
+
+				<section>
+					<section>
+						<h3>Gestion des erreurs</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>En cas d’erreur fatale, le script entier n’est pas exécuté : pas de message incompréhensible pour l’utilisateur</li>
+							<li>Recherche d’erreurs (débogage) : console d’erreurs dans Firefox</li>
+							<li>Pour afficher des erreurs : possibilité d’utiliser l’évènement onError</li>
+						</ul>
+					</section>
+
+					<section>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+function traitement_erreur(msg, url, line) {
+	alert(&quot;Erreur:&quot;+msg+&quot; dans &quot;+url+&quot; ligne&quot;+line);
+	return true;
+}
+window.onerror=traitement_erreur;
+						</code></pre>
+					</section>
+				</section>
+
+
+				<section>
+					<p>Des questions ?</p>
+				</section>
+
+				<section>
+					<img src="img/thats-all-folks-cartoon.jpg" alt="that's all folks">
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

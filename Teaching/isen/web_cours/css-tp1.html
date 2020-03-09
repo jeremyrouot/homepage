@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>CSS TP 1</title>
+
+	<meta name="description" content="CSS TP 1">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+				<h1>TP 1 CSS</h1>
+
+				<h2>Intégration des feuilles de style</h2>
+
+				<h3>Question 1</h3>
+
+				<p>Créer un fichier HTML avec un titre de niveau 1, un titre de niveau 2, un titre de niveau 3.</p>
+				
+				<p>Mettre le titre de niveau 1 en bleu en utilisant une feuille de style externe.</p>
+
+				<p>Mettre le titre de niveau 2 en vert en utilisant la balise <code>style</code>.</p>
+
+				<p>Mettre le titre de niveau 3 en rouge en utilisant l'attribut <code>style</code>.</p>
+
+				<h2>Les sélecteurs</h2>
+
+				<h3>Question 1</h3>
+
+				<p>
+					Quel type de sélecteur est le plus adapté pour appliquer une propriété (exemple : couleur du texte)
+					<ul>
+						<li>à un élément donné (exemple <code>&lt;p&gt;</code>)</li>
+						<li>à un élément spécifique (et unique)</li>
+						<li>à toute une série d'éléments n'ayant pas de liens entre eux</li>
+					</ul>
+				</p>
+
+				<h3>Question 2</h3>
+
+				<p>Le fichier <a href="tp/css-tp1/selecteurs.html">selecteurs.html</a> ne contient aucun style.</p>
+
+				<p>Apporter les modifications de style indiquées dans le fichier en utilisant les types de sélecteurs précisés dans les titres. Ceci peut vous amener apporter quelques modifications au code HTML également...</p>
+
+				<h3>Question 3</h3>
+
+				<p>Soit le code XHTML ci-dessous, indiquez pour chaque nombre entre crochet la couleur dans laquelle il s'affiche.</p>
+
+				<pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;TP CSS&lt;/title&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+		body {color: blue; }
+		h1 {color: green;} 
+		.h1 {color: blue; }
+		ol#liste1 li {color: yellow;}
+		li:first-child {color: grey;}
+		ol[id] li {color: purple;}
+		ul {color: black; }
+		h1+ul&gt;li+li {color: orange;}
+		h1+ul&gt;li {color: red; }
+		h1+ul {color: blue; } 
+	&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;h1&gt;texte [1]&lt;/h1&gt;
+	&lt;ul&gt;
+		&lt;li&gt;texte [2]
+		&lt;/li&gt;
+		&lt;li&gt;texte [3]
+			&lt;ol id=&quot;liste&quot;&gt;
+				&lt;li&gt;texte [4]
+				&lt;/li&gt;
+			&lt;/ol&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;h2&gt;texte [5]&lt;/h2&gt;
+	&lt;ul&gt;
+		&lt;li&gt;texte [6]
+			&lt;ol id=&quot;liste1&quot;&gt;
+				&lt;li&gt;texte [7]
+				&lt;/li&gt;
+			&lt;/ol&gt;
+		&lt;/li&gt;
+		&lt;li class=&quot;h1&quot;&gt;texte [8]
+			&lt;ol id=&quot;liste2&quot;&gt;
+				&lt;li&gt;texte [9]
+				&lt;/li&gt;
+				&lt;li&gt;texte [10]
+				&lt;/li&gt;
+			&lt;/ol&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+				</code></pre>
+
+				<h3>Question 4</h3>
+
+				<p>Même question pour le code suivant (XHTML et CSS séparés) :</p>
+
+				<pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;TP CSS&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;moncss.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+		&lt;h1&gt;[1]&lt;/h1&gt;&lt;h1&gt;[2]&lt;/h1&gt;
+		&lt;ul&gt;
+			&lt;li&gt;[3]
+			&lt;/li&gt;
+			&lt;li&gt;&lt;b&gt;[4]&lt;/b&gt;
+			&lt;/li&gt;
+			&lt;li&gt;[5]
+			&lt;/li&gt;
+		&lt;/ul&gt;&lt;h2&gt;[6]&lt;/h2&gt;
+		&lt;h2 class=&quot;b&quot;&gt;
+			&lt;b class=&quot;h2&quot;&gt;[7]&lt;/b&gt; &lt;b&gt;[8]&lt;/b&gt; [9]&lt;/h2&gt;&lt;h2&gt;[10]&lt;/h2&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;b&gt;[11]&lt;/b&gt;
+			&lt;/li&gt;
+			&lt;li&gt;[12]
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/body&gt;
+
+&lt;/html&gt;
+				</code></pre>
+
+				<p>Le fichier CSS : </p>
+
+				<pre><code class="css">
+h1,h2 {color: blue;}
+h1+h1 {color: red;}
+h2+h2 {color: red;}
+li {color: red;}
+li b {color: green;}
+li+li {color: blue;}
+h2.b {color: blue;}
+b.h2 {color: green;}
+h2>b {color: red;}
+h2+ul > li+li {color: black;}
+h2+h2 > li b {color: yellow;}
+				</code></pre>
+
+
+			</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--
+	Formalisme
+
+	# commande
+
+	# Requêtes et réponses vu du client
+
+	www.isen.fr
+
+	quelle est la requète
+	que signifie la première ligne
+	déduire de la réponse le type de serveur
+	
+	meême question pour perdu.com
+
+	même question pour http://web.isen-bretagne.fr/
+
+		même question pour http://web.isen-bretagne.fr/ sur le port 443
+
+	question 4 écrire la 
+		pour www.isen.fr
+		pour http://example.org
+
+	écrire la requète pour isen.fr por Brest
+
+	question 6 machine intermédiaire
+
+	question 7 requète head
+		succès
+		erreur client
+
+	coté serveur
+	
+	nc -l
+
+	1 - faire connection avec telnet puis navigateur
+
+	2 - renvoyer une page web
+	
+	3 - positionner un couqui
+
+	cache
+
+	requete If-modifed-Since
+-->

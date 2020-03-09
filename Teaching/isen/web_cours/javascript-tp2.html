@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Javascript TP 1</title>
+
+	<meta name="description" content="Javascripot TP 2">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+			<h1>TP 2 Javascript</h1>
+
+			<h2>Arbre du document : DOM</h2>
+
+			<p>Voici un exemple de représentation du code HTML sous forme d'arbre DOM.</p>
+
+			<p>Soit le code suivant :</p>
+
+			<pre><code class="html">
+&lt;p title=&quot;Paragraphe 1&quot;&gt;
+	Ceci est un premier exemple
+	&lt;b&gt;HTML que l'on peut &lt;br/&gt;trouver&lt;/b&gt;
+	dans un document
+&lt;/p&gt;
+			</code></pre>
+					
+			<p>Voici la représentation dans l'arbre DOM :</p>
+
+			<img src="img/javascript-tp1-dom.png" alt="arbre dom">
+
+			<p>Cet arbre est rattaché à d'autres noeuds... Le tout étant forcément rattaché au noeud
+					<code>windows.document</code>. Le paragraphe peut être contenu dans d'autres éléments (div,...).</p>
+
+			<p>Cet exemple comprend 3 types de noeuds :</p>
+
+			<ul>
+				<li>Noeud élément</li>
+				<li>Noeud attribut</li>
+				<li>Noeud texte</li>
+			</ul>
+
+			<h3>Préparation du TP</h3>
+
+			<p>Créer un fichier HTML vierge.</p>
+
+			<p>Insérer le paragraphe précédent dans la page.</p>
+
+			<p>Répéter l'opération pour insérer 2 nouveaux paragraphes en modifiant :</p>
+
+			<ul>
+				<li>Paragraphe 1 par 2 puis 3</li>
+				<li>Un premier exemple par second puis troisième</li>
+			</ul>
+
+			<h2>Retrouver les noeuds</h2>
+
+			<p>Ecrire une fonction qui sera lancée au chargement de la page.</p>
+
+			<p>Cette fonction lancera une boite de dialogue alert contenant l'information demandée dans les
+					questions qui suivent.</p>
+
+			<h3>Noeuds éléments</h3>
+			
+			<p>Utilisation des méthodes de l'interface <code>Document</code>.</p>
+
+			<h4>Question n°1</h4>
+
+			<p>A l'aide de la méthode <code>getElementById</code>, afficher la valeur de l'attribut <code>title</code> du second paragraphe.</p>
+
+			<p>Pour retrouver la valeur de l'attribut, vous pouvez utiliser la méthode <code>getAttribute</code> de
+					l'interface <code>Element</code>.</p>
+
+			<h4>Question n°2</h4>
+
+			<p>Même question en utilisant la méthode <code>getElementsByTagName</code>.</p>
+
+			<h4>Question n°3</h4>
+
+			<p>Même question en utilisant l'attribut <code>childNodes</code> de l'interface <code>Node</code>.</p>
+
+			<p>A partir de ces éléments, vous devez pouvoir appliquer un autre <code>childNodes</code> permettant de repérer
+					l'élément <code>&lt;body&gt;</code> : <code>document.childNodes[1].childNodes[???]</code>.</p>
+
+			<p><code>document.childNodes[1]</code> correspondant à l'élément <code>&lt;html&gt;</code>...</p>
+
+			<p>Avertissement : Pour compliquer le problème, les navigateurs ne réagissent pas de la même façon :</p>
+			<ul>
+				<li>La plupart considère le blanc entre 2 éléments comme un Noeud texte...</li>
+				<li>Internet Explorer considère que les éléments sont consécutifs...</li>
+			</ul>
+
+			<h4>Question n°4</h4>
+
+			<p>Répéter l'opération précédente en simplifiant l'accès avec les attributs de l'élément <code>document</code> : </p>
+			<ul>
+				<li><code>documentElement</code> : accès direct à l'élément <code>&lt;html&gt;</code></html></li>
+				<li><code>body</code> accès direct à l'élément body</li>
+			</ul>
+
+			<h4>Question n°5</h4>
+			<p>Quels sont d'après vous les moyens les plus fiables d'accéder aux éléments ? Vous pouvez
+					considérer plusieurs cas :</p>
+			<ul>
+				<li>Accès à un élément</li>
+				<li>Action sur tous les éléments de même type (exemple paragraphe...)</li>
+			</ul>
+
+			<h3>Noeuds attributs</h3>
+
+			<p>Il est possible d'utiliser l'attribut <code>attributes</code> de l'interface <code>Nodes</code> pour accéder à la valeur d'un attribut
+					mais ce n'est à mon avis pas la plus simple... Si vous le souhaitez, vous pourrez essayer à la fin du
+					TP.</p>
+
+			<h4>Question n°1</h4>
+
+			<p>A l'aide de la méthode <code>getAttribute</code> de l'interface <code>Element</code> (comme effectué précédemment), afficher
+					la valeur de l'attribut <code>title</code> du second paragraphe.</p>
+
+			<h4>Question n°2</h4>
+
+			<p>A l'aide des méthodes <code>setAttribute</code> et <code>removeAttribute</code> de l'interface <code>Element</code>, modifier la valeur de
+					l'attribut du second paragraphe ou supprimer le... (Pas de boite de dialogue)</p>
+
+			<h3>Noeuds texte</h3>
+
+			<h4>Question n°1</h4>
+
+			<p>A l'aide de l'attribut <code>nodeValue</code> de l'interface <code>Node</code>, afficher la valeur du texte contenu dans le
+					second paragraphe (uniquement le début : "Ceci est un second exemple").</p>
+
+			<p>Aide : Vous pourrez utiliser l'attribut <code>firstChild</code> de l'interface <code>Node</code> par exemple</p>
+
+			<h4>Question n°2</h4>
+
+			<p>A l'aide de l'attribut <code>nodeValue</code> de l'interface Node, afficher la valeur du texte contenu dans le
+					second paragraphe (tout le texte). Ceci permet de comprendre comment parcourir l'arbre.</p>
+
+			<p>Aide : Pour cela il faudra parcourir les noeuds afin de ne récupérer que les noeuds texte ... mais il
+					existe peut-être des solutions plus simples... Pour cette solution regardez : <code>nodeType</code> et <code>childNodes</code>
+					de l'interface <code>Node</code>, <code>nodeValue</code> et <code>nodeValue</code>> de l'interface <code>NodeList</code>.</p>
+
+			<p>Les types de noeuds (<code>nodeType</code>) ont les valeurs suivantes (définis dans l'interface <code>Node</code>>) :</p>
+			<ul>
+				<li>1 : élement</li>
+				<li>2 : attribut</li>
+				<li>3 : texte</li>
+			</ul>
+
+			<h4>Question n°3</h4>
+
+			<p>Modifier le texte de fin du second paragraphe : "dans un document" par "ici".(Pas de boite de
+					dialogue)</p>
+
+			<h2>Ajouter et supprimer des noeuds</h2>
+
+			<h3>Création d'un nouvel élément</h3>
+
+			<h4>Question n°1</h4>
+
+			<p>Créez un nouveau paragraphe contenant le texte suivant : "Voici un nouveau paragraphe".</p>
+
+			<p>Aide : Voir les méthodes de l'interface <code>Document</code>.</p>
+
+			<h4>Question n°2</h4>
+
+			<p>Placez le paragraphe après le dernier paragraphe.</p>
+
+			<p>Aide : Voir les méthodes de l'interface <code>Node</code>.</p>
+
+			<h4>Question n°3</h4>
+
+			<p>Oubliez la question précédente et placez le paragraphe avant le premier paragraphe.</p>
+
+			<h4>Question n°4</h4>
+
+			<p>Oubliez les 2 questions précédentes et placez le paragraphe entre le premier et le second
+					paragraphe.</p>
+
+			<h3>Ajouter un attribut à un élément</h3>
+
+			<h4>Question n°1</h4>
+
+			<p>Ajouter au paragraphe créé précédemment un attribut <code>tilte</code> contenant le texte suivant :
+					"Nouveau !!!".</p>
+
+			<p>Deux méthodes sont possibles :</p>
+
+			<ul>
+				<li>Retrouver le paragraphe dans l'arbre</li>
+				<li>Ajouter un attribut <code>id</code> à la création de l'élément. Pour cela vous devez compléter le code
+						précédement écrit...</li>
+			</ul>
+
+			<p>Lors de cette séance, il est demandé d'utiliser la seconde méthode.</p>
+
+			<h3>Suppression d'un élément</h3>
+
+			<h4>Question n°1</h4>
+
+			<p>Supprimer le troisième paragraphe.</p>
+
+			<h4>Question n°2</h4>
+
+			<p>Même question mais le paragraphe disparaîtra lorsque l'on clique dessus avec la souris.</p>
+
+			<p>Aide : Pour réagir à un événement : la syntaxe est la suivante <code>element.evenement</code> (exemple :
+					<code>document.body.onclick</code>)</p>
+
+			<p>Pour indiquer l'action à réaliser, il faut faire appel à une fonction de la façon suivante :</p>
+
+			<p><code>element.evenement = function(){....code à exécuter....}</code></p>
+
+			<p>Vous pouvez utiliser l'objet <code>this</code> qui fait référence à l'objet courant c'est à dire element dans la ligne
+					ci-dessus. Usage : <code>this.attribut</code> ou méthode (exemple : <code>this.firstChild</code>).</p>
+
+			<p>Vous pourrez également utiliser l'attribut <code>nodeParent</code> de l'interface <code>nodeParent</code>.</p>
+
+			<h2>Exercice</h2>
+
+			<p>Pour les manipulations du DOM, préférez les solutions qui ne nécessitent pas de modifications du
+					code HTML.</p>
+
+			<h3>Premiers pas</h3>
+
+			<p>La méthode <code>write(texte)</code> de l'objet document permet de rajouter du texte au fichier HTML.</p>
+
+			<h4>Question n°1</h4>
+
+			<p>Ecrire une simple page HTML avec un titre "Nos amis les animaux" et un paragraphe contenant le texte : "Quel est le meilleur ami de l'homme ?"</p>
+
+			<h4>Question n°2</h4>
+
+			<p>Après ce paragraphe, ajouter une image de chien.</p>
+
+			<h3>Retrouver une information et la modifier</h3>
+
+			<p>A l'aide des méthodes fournies par le DOM et avec du javascript, modifier l'image du chien par une image de chat.</p>
+
+			<h3>Changer de style</h3>
+
+			<p>A l'aide des méthodes fournies par le DOM, modifier les paramètres suivants :</p>
+
+			<ul>
+				<li>Couleur de fond : gris</li>
+				<li>Titre de niveau 1 en rouge et souligné</li>
+				<li>Le paragraphe se trouve dans un cadre de couleur jaune</li>
+			</ul>
+
+		</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

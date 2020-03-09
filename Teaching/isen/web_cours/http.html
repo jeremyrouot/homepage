@@ -1,0 +1,1196 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Le protocole HTTP</title>
+
+		<meta name="description" content="HTTP">
+		<meta name="author" content="Guillaume CLODIC">
+
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Le protocole HTTP</h1>
+					<p>ISEN Brest - CIR1</p>
+				</section>
+
+				<section>
+					<ul>
+						<li>HyperText Transfer Protocol (création 1990)</li>
+						<li>Définit dans les RFC 1945 (HTTP 1.0), 2068 et 2616
+							(HTTP 1.1)</li>
+						<li>RFC 7540 pour le HTT/2.0 en 2015</li>
+						<li>Fonctionnement Client/Serveur en mode
+							Requête/Réponse</li>
+						<li>HTTPS : Variante sécurisée utilisant SSL</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Gestion des types</h3>
+					<ul>
+						<li>Client doit connaître le décodeur permettant de
+								visualiser la ressource</li>
+						<li>Transmission de méta-données
+							<ul>
+								<li>Type (utilisation de MIME)</li>
+								<li>Encodage du document (charsets)</li>
+								<li>Formatage du document (compression)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Encodage de caractères</h3>
+					</section>
+
+					<section>
+						<img src="img/chartoftheday_7719_quelles_langues_parle_internet_n.jpg" alt="parts de marché des navigateurs" class="white-background">
+					</section>
+
+					<section>
+						<h4>Avant</h4>
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>Language</th>
+									<th>charset</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>French (fr)</td>
+									<td>iso-8859-1, windows-1252</td>
+								</tr>
+								<tr>
+									<td>English (en)</td>
+									<td>iso-8859-1, windows-1252</td>
+								</tr>
+								<tr>
+									<td>Arabic (ar)</td>
+									<td>iso-8859-6</td>
+								</tr>
+								<tr>
+									<td>Russian (ru)</td>
+									<td>koi8-r, iso-8859-5</td>
+								</tr>
+								<tr>
+									<td>...</td>
+									<td>...</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Désormais</h4>
+						<p>UTF-8 !</p>
+					</section>
+
+					<section>
+						<h4>UTF-8</h4>
+						<ul>
+							<li>conjointement avec la norme ISO/CEI 10646</li>
+							<li>Géré par le Consortium Unicode (association à but non lucratif)</li>
+							<li>Attribution d’un numéro unique à tout caractère utilisé dans
+									une langue</li>
+							<li>Encodage : UTF-8, UTF-16 , UTF-32</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>UTF-8</h4>
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>Représentation binaire UTF-8</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><pre>0xxxxxxx</pre></td>
+									<td>1 octet codant 1 à 7 bits (ASCII)</td>
+								</tr>
+								<tr>
+									<td><pre>110xxxxx 10xxxxxx</pre></td>
+									<td>2 octets codant 8 à 11bits</td>
+								</tr>
+								<tr>
+									<td><pre>1110xxxx 10xxxxxx 10xxxxxx</pre></td>
+									<td>3 octets codant 12 à 16 bits</td>
+								</tr>
+								<tr>
+									<td><pre>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</pre></td>
+									<td>4 octets codant 17 à 21 bits</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					
+					<section>
+						<h4>Fin de ligne</h4>
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th>OS</th>
+									<th>Caractère</th>
+									<th>ASCII</th>
+									<th>Représentation</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Windows</td>
+									<td><pre>CRLF</pre></td>
+									<td><pre>0x0D,0x0A</pre></td>
+									<td><pre>\r\n</pre></td>
+								</tr>
+								<tr>
+									<td>Unix</td>
+									<td><pre>LF</pre></td>
+									<td><pre>0x0A</pre></td>
+									<td><pre>\n</pre></td>
+								</tr>
+								<tr>
+									<td>MAC (avant macOS)</td>
+									<td><pre>CR</pre></td>
+									<td><pre>0x0D</pre></td>
+									<td><pre>\r</pre></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h3>URL</h3>
+						<blockquote cite="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator" style="font-size: 0.7em; width: 70ws; text-align:justify;">
+							Le sigle URL (de l'anglais Uniform Resource Locator, littéralement « localisateur uniforme de ressource »), auquel se substitue informellement l'expression adresse web, désigne une chaîne de caractères utilisée pour adresser les ressources d'internet : document HTML, image, son, forum Usenet, boîte aux lettres électronique, entre autres. Les URL constituent un sous-ensemble des identifiants uniformisés de ressource (URI). La syntaxe d'une URL est décrite dans la RFC 39861.
+						</blockquote>
+	
+					</section>
+
+					<section>
+						<img src="img/complex_url.png" alt="description url">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Type MIME</h3>
+					</section>
+
+					<section>
+						<h4>Présentation</h4>
+						<ul>
+							<li>Multipurpose Internet Mail Extension (1991 par Bell
+									Communications)</li>
+							<li>Initialement créé pour le protocole SMTP (ne
+									fonctionnait que pour du texte codé en ASCII-7 bits
+									uniquement anglais...)</li>
+							<li>Permet de typer les documents transférés en HTTP</li>
+							<li>Permet de d’échanger des données :
+								<ul>
+									<li>Textuelles utilisant un codage différent</li>
+									<li>Binaires : images, sons, films, programmes,...</li>
+								</ul>
+								
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>En-tête</h4>
+						<ul>
+							<li>MIME-Version : Identifie le message au format MIME
+									(1.0 est l'identification du niveau standard actuel)</li>
+							<li>Content-Type : Spécifie les types, sous-types et
+									paramètres optionnels de chaque partie du message</li>
+							<li>Content-Transfer-Encoding : Définit l’encodage utilisé
+									dans le corps du message</li>
+							<li>Content-ID (optionnel) : Attribue un identificateur unique
+									à chaque partie du message</li>
+							<li>Content-Description (optionnel) : Permet de spécifier un
+									commentaire attaché à chaque partie</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Types</h4>
+						<p>Renseigné dans l’en-tête Content-Type</p>
+						<ul>
+							<li>Content-type: type_mime_principal/sous_type_mime (Ex :
+									Content-type: image/gif)</li>
+							<li>Liste : <a href="http://www.iana.org/assignments/media-types/">http://www.iana.org/assignments/media-types/</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Types principaux</h4>
+						<ul>
+							<li>text : données textuelles lisibles (text/plain ; text/html )</li>
+							<li>image : données binaires représentant des images numériques
+									(image/jpeg ; image/gif ; image/png)</li>
+							<li>audio : données numériques sonores (audio/basic ; audio/wav)</li>
+							<li>video : données vidéos (video/mpeg )</li>
+							<li>application : données binaires autres (application/octet-stream
+									; application/pdf )</li>
+							<li>multipart : pour les messages composites</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>Gestion de l'acheminement</h3>
+					</section>
+
+					<section>
+						<h4>Gestion des caches</h4>
+						<ul>
+							<li>Passage par des relais (routeurs, proxy,...)</li>
+							<li>Protocole informe les éléments réseaux sur d’éventuelles
+									réactions souhaitées</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Gestion des redirections</h4>
+						<ul>
+							<li>Réorganisation des informations du Web</li>
+							<li>Protocole garde des informations sur ces évolutions</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<h3>Notion d'entités</h3>
+					<ul>
+						<li>Protocole permettant de transporter des entités
+								document</li>
+						<li>Un message est composé de :
+							<ul>
+								<li>Un en-tête d’entité (méta-informations sur le contenu et la
+										transmission)</li>
+								<li>Un corps d’entité (le contenu)</li>
+							</ul>
+						</li>
+						<li>Plusieurs entités peuvent être transportées par le même
+								message (format multipart)</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Fonctionnement</h3>
+					</section>
+
+					<section>
+						<img src="img/http1.png" alt="fonctionnement http">
+					</section>
+
+					<section>
+						<h4>Connexion au serveur</h4>
+						<ul>
+							<li>Standard : port 80 en TCP</li>
+							<li>Sécurisé : port 443 en TCP</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Système de fichiers (serveur)</h4>
+						<ul>
+							<li>Définition d’un répertoire racine (voir configuration) : souvent /var/www/html par défaut</li>
+							<li>Le reste du système de fichiers n’est pas accessible (configuration du serveur inclus)</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Requêtes/Réponses</h3>
+					</section>
+
+					<section>
+						<img src="img/http2.png" alt="protocole http">
+					</section>
+
+					<section>
+						<table style="font-size: 0.8em;">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Requêtes</th>
+									<th>Réponse</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td>Ligne de commande</td>
+									<td>Ligne de status</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td valign="middle" rowspan="3">En-têtes</td>
+									<td>En-tête générique</td>
+									<td>En-tête générique</td>
+									<td>transaction</td>
+								</tr>
+								<tr>
+									<td>En-tête requête</td>
+									<td>En-tête réponse</td>
+									<td>spécifique</td>
+								</tr>
+								<tr>
+									<td>En-tête entité</td>
+									<td>En-tête entité</td>
+									<td>contenu de la transaction</td>
+								</tr>
+								<tr>
+									<td>Séparateur</td>
+									<td>CRLF</td>
+									<td>CRLF</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>Corps du message</td>
+									<td>Corps du message</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>En-têtes</h4>
+						<ul>
+							<li>Renseignements sur le client, le serveur, la transaction ou son contenu</li>
+							<li>Ignorés en cas d’erreur… réduit les risques de « plantage »</li>
+							<li>Pas d’ordre dans l’apparition</li>
+							<li>Insensibles à la casse</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>En-têtes génériques</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Nom du champ</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Cache-Control</td>
+									<td>Politique de cache pour la ressource</td>
+								</tr>
+								<tr>
+									<td>Connection</td>
+									<td>Type de connexion (closeconnexion fermée après la réponse ; keep-aliveconnexion persistante)</td>
+								</tr>
+								<tr>
+									<td>Date</td>
+									<td>Date de génération du message</td>
+								</tr>
+								<tr>
+									<td>Pragma</td>
+									<td>Spécification des comportements aux serveurs intermédiaires</td>
+								</tr>
+								<tr>
+									<td>Transfer-Encoding</td>
+									<td>Spécification de l’encodage de transfert (chunked ou rien…)</td>
+								</tr>
+								<tr>
+									<td>Upgrade</td>
+									<td>Spécification des protocoles supportés par le client</td>
+								</tr>
+								<tr>
+									<td>Via</td>
+									<td>Intermédiaires par lesquels est passée le message</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>En-têtes entité</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Nom du champ</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Allow</td>
+									<td>Liste les méthodes (ou commandes) autorisées</td>
+								</tr>
+								<tr>
+									<td>Content-Encoding</td>
+									<td>Encodage utilisé pour la ressource (lien avec Content-Type)</td>
+								</tr>
+								<tr>
+									<td>Content-Language</td>
+									<td>Langue utilisée</td>
+								</tr>
+								<tr>
+									<td>Content-Length</td>
+									<td>Longueur du corps du message en octets</td>
+								</tr>
+								<tr>
+									<td>Content-Type</td>
+									<td>Type de ressource (type MIME)</td>
+								</tr>
+								<tr>
+									<td>Expires</td>
+									<td>Date d’expiration de la ressource</td>
+								</tr>
+								<tr>
+									<td>Last-Modified</td>
+									<td>Date de dernière modification de la ressource</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Requêtes</h3>
+					</section>
+
+					<section>
+						<p>Structure</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Requête</th>
+									<th>Syntaxe</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Ligne de commande</td>
+									<td>Commande URL Version de protocole</td>
+								</tr>
+								<tr>
+									<td>En-tête générique</td>
+									<td>Titre: valeur1 ; valeur2 ; …</td>
+								</tr>
+								<tr>
+									<td>En-tête requête</td>
+									<td>…</td>
+								</tr>
+								<tr>
+									<td>En-tête entité</td>
+									<td>…</td>
+								</tr>
+								<tr>
+									<td colspan="2">CRLF</td>
+								</tr>
+								<tr>
+									<td>Corps du message</td>
+									<td>Texte</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Exemple</p>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+GET /machin/truc.html HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Commandes</h3>
+					</section>
+
+					<section>
+						<p>HTTP 1.0</p>
+						<ul>
+							<li>GET : demande le contenu et les méta-informations de la ressource située à l’URL spécifiée</li>
+							<li>HEAD : demande les méta-informations de la ressource située à l’URL spécifiée</li>
+							<li>POST : envoi de données (ex : formulaire) à traiter par la ressource située à l’URL spécifiée</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>HTTP 1.1</p>
+						<ul>
+							<li>OPTIONS : interroge le serveur sur ses capacités de prise en charge de HTTP</li>
+							<li>TRACE : affiche les en-têtes reçu par le serveur (permet de connaître les intermédiaires proxies, passerelles, firewall,…)</li>
+							<li>DELETE : supprime la ressource spécifiée par l’URL (!! Sécurité !!)</li>
+							<li>PUT : déposer des données sur le serveur à l’URL spécifié (!! Sécurité !!)</li>
+							<li>CONNECT : demande de création d’un tunnel de communication (proxies uniquement)</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Tests avec telnet : #telnet @serveur 80</p>
+						<ul>
+							<li>
+								GET
+								<pre><code data-trim data-noescape style="width: 40vw;">
+GET / HTTP/1.1
+Host: domain.fr
+								</code></pre>
+							</li>
+							<li>
+								GET
+								<pre><code data-trim data-noescape style="width: 40vw;">
+HEAD / HTTP/1.1
+Host: domain.fr
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Tests avec telnet : #telnet @serveur 80</p>
+						<ul>
+							<li>
+								OPTIONS
+								<pre><code data-trim data-noescape style="width: 40vw;">
+OPTIONS / HTTP/1.1
+Host: domain.fr
+								</code></pre>
+							</li>
+							<li>
+							TRACE
+								<pre><code data-trim data-noescape style="width: 40vw;">
+TRACE / HTTP/1.1
+Host: domain.fr
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+	
+					<section>
+						<p>Tests en ligne <a href="http://websniffer.cc">http://websniffer.cc</a></p>
+					</section>
+	
+					<section>
+						<p>En-têtes</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Nom du champ</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Accept</td>
+									<td>Type de contenu accepté par le navigateur (type MIME)</td>
+								</tr>
+								<tr>
+									<td>Accept-Charset</td>
+									<td>Jeux de caractères acceptés</td>
+								</tr>
+								<tr>
+									<td>Accept-Encoding</td>
+									<td>Types de transformation (compression) acceptés</td>
+								</tr>
+								<tr>
+									<td>Accept-Language</td>
+									<td>Langues acceptées</td>
+								</tr>
+								<tr>
+									<td>Cookie</td>
+									<td>Envoi au serveur les cookies (si plusieurs : séparés par ;)</td>
+								</tr>
+								<tr>
+									<td>From</td>
+									<td>Mail du client (nécessite accord)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+	
+					<section>
+						<p>En-têtes</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Nom du champ</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Host</td>
+									<td>Nom du domaine de destination (serveurs hébergeant plusieurs sites à la même adresse IP)</td>
+								</tr>
+								<tr>
+									<td>If-Modified-Since</td>
+									<td>Requête conditionnelle sur la date de dernière modification (ne renvoie la page qu’en cas de changement)</td>
+								</tr>
+								<tr>
+									<td>Range</td>
+									<td>Partie de la ressource demandée souvent en octets (transaction partielle)</td>
+								</tr>
+								<tr>
+									<td>Referer</td>
+									<td>URL du lien à partir duquel la requête a été effectuée</td>
+								</tr>
+								<tr>
+									<td>User-Agent</td>
+									<td>Chaîne donnant des informations sur le client, comme le nom et la version du navigateur, du système d'exploitation</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Corps</p>
+						<ul>
+							<li>PUT : contenu du fichier</li>
+							<li>POST : contenu d’un formulaire HTML
+								<pre><code data-trim data-noescape style="width: 40vw;">
+variable=valeur&amp;variable2=valeur2
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>Réponse</h3>
+					</section>
+
+					<section>
+						<h4>Structure</h4>
+						<p>Plusieurs réponses possibles pour une requête</p>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Réponse</th>
+									<th>Syntaxe</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Ligne de statut</td>
+									<td>Version de protocole Code-réponse Texte-réponse</td>
+								</tr>
+								<tr>
+									<td>En-tête générique</td>
+									<td>Titre: valeur1 ; valeur2 ; …</td>
+								</tr>
+								<tr>
+									<td>En-tête requête</td>
+									<td>…</td>
+								</tr>
+								<tr>
+									<td>En-tête entité</td>
+									<td>…</td>
+								</tr>
+								<tr>
+									<td colspan="2">CRLF</td>
+								</tr>
+								<tr>
+									<td>Corps du message</td>
+									<td>Texte</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Exemple</h4>
+						<p>Requète</p>
+						<pre><code data-trim data-noescape style="width: 60vw;">
+HEAD / HTTP/1.1
+Host: www.isen.fr
+						</code></pre>
+					</section>
+	
+					<section>
+						<h4>Exemple</h4>
+						<p>Réponse</p>
+						<pre><code data-trim data-noescape style="width: 60vw;">
+HTTP/1.1 200 OK
+Date: Tue, 30 Jan 2018 14:27:32 GMT
+Server: Apache
+X-Powered-By: PHP/5.6.22
+Link: <http://www.isen.fr/wp-json/>; rel="https://api.w.org/", <http://www.isen.fr/>; rel=shortlink
+Cache-Control: max-age=3600
+Expires: Tue, 30 Jan 2018 15:27:32 GMT
+Vary: Accept-Encoding
+Content-Type: text/html; charset=UTF-8
+Set-Cookie: MOLSESSION=S1|WnCA2|WnCA2; path=/
+Cache-control: private
+							
+						</code></pre>
+					</section>
+								
+					<section>
+						<h4>Codes de retour</h4>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Code</th>
+									<th>Signification</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><pre>1xx</pre></td>
+									<td>Information</td>
+								</tr>
+								<tr>
+									<td><pre>2xx</pre></td>
+									<td>Succès</td>
+								</tr>
+								<tr>
+									<td><pre>3xx</pre></td>
+									<td>Redirection</td>
+								</tr>
+								<tr>
+									<td><pre>4xx</pre></td>
+									<td>Erreur client</td>
+								</tr>
+								<tr>
+									<td><pre>5xx</pre></td>
+									<td>Erreur serveur</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Codes de retour</h4>
+						<p><a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP">Liste des codes HTTP (Wikipedia)</a></p>
+					</section>
+
+					<section>
+						<h4>En-têtes</h4>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Nom du champ</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Accept-ranges</td>
+									<td>Acceptation des requêtes Range par le serveur et choix de l’unité de mesure (souvent octet)</td>
+								</tr>
+								<tr>
+									<td>Content-ranges</td>
+									<td>Réponse sur la partie demandée + poids total</td>
+								</tr>
+								<tr>
+									<td>Location</td>
+									<td>Redirection vers un autre URI (ex : Status-Code: 3xx)</td>
+								</tr>
+								<tr>
+									<td>Server</td>
+									<td>Type du serveur web répondant à la requête</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h4>Corps</h4>
+						<p>contenu (par exemple page web) en cas de <pre>200 OK</pre></p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h4>Transactions partielles</h4>
+					</section>
+
+					<section>
+						<ul>
+							<li>Echange d’une partie de la ressource</li>
+							<li>Par exemple pour un document PDF : demande du transfert page par page, possibilité de visualiser le début du document avant la fin du transfert global</li>
+							<li>En-têtes : Range; Accept-ranges, Content-ranges</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Exemple</h4>
+						<p>Requète</p>
+						<pre><code data-trim data-noescape style="width: 60vw;">
+GET /articles/http.zip HTTP/1.1
+Host: developpez.com
+Range: bytes=100-1000
+						</code></pre>
+					</section>
+	
+					<section>
+						<h4>Exemple</h4>
+						<p>Réponse</p>
+						<pre><code data-trim data-noescape style="width: 60vw;">
+HTTP/1.1 206 Partial Content
+Date: Wed, 10 Jun 2009 18:50:59 GMT 
+Server: Apache/2.2.11 
+Accept-ranges: bytes 
+Content-range: bytes 100-1000/3258 
+Content-type: application/zip
+Content-length: 900
+
+{ contenu binaire de 900 octets de longueur }
+						</code></pre>
+					</section>
+						
+				</section>
+
+				<section>
+					<section>
+						<h3>Négociation de contenu</h3>
+					</section>
+
+					<section>
+						<h4>Présentation</h4>						
+						<ul>
+							<li>Client : expression de ses capacités</li>
+							<li>Serveur : choix de la ressource la plus adéquate</li>
+							<li>Facteur de qualité : orientation des choix</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Types de spécifications possibles</h4>
+						<ul>
+							<li>Langue</li>
+							<li>Type MIME</li>
+							<li>Charset (encodage de caractères)</li>
+							<li>Encodage (compression,...)</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>Proxy</h3>
+						<p>Serveur proxy (mandataire, bastion) : intermédiaire sur le réseau permettant de relayer des requêtes</p>
+					</section>
+
+					<section>
+						<h4>Rôle</h4>
+					</section>
+
+					<section>
+						<ul>
+							<li>Mémoire cache : économie de ressources</li>
+							<li>Filtrage : réquêtes ou réponses</li>
+							<li>Journalisation</li>
+							<li>Sécurité</li>
+							<li>Authentification</li>
+							<li>Balance de charge</li>
+							<li>Préchargement</li>
+							<li>Transcodage</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h4>Forward proxy</h4>
+						<img src="img/forward_proxy-3.png" alt="forward proxy">
+					</section>
+	
+					<section>
+						<h4>Reverse proxy</h4>
+						<img src="img/reverse_proxy-resized-600.png" alt="reverse proxy">
+					</section>
+
+					<section>
+						<h4>Mise en place côté client</h4>
+						<p>Plusieurs méthodes :</p>
+						<ul>
+							<li>Configuration manuelle</li>
+							<li>Script Proxy Auto Configuration</li>
+							<li>Proxy d’interception (reroutage des requêtes vers le proxy)</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>Cache</h3>
+						<p>Enregistrement temporaire d’une copie des données d’une ressource sur une machine intermédiaire</p>
+					</section>
+
+					<section>
+						<h4>Objectifs</h4>
+						<ul>
+							<li>Réduire la latence (rapidité de chargement)</li>
+							<li>Réduire la bande passante consommée</li>
+							<li>Réduire la charge sur le serveur proposant la ressource</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Types</h4>
+						<ul>
+							<li>Privés : intégré au navigateur Web</li>
+							<li>Publics : proxys</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Fonctionnement</h4>
+						<p>Dépend des paramètres :</p>
+						<ul>
+							<li>Code de réponse</li>
+							<li>Type de requête</li>
+							<li>En-têtes : Expires, Cache-Control et Pragma</li>
+							<li>Présence ou non d’un mécanisme d’authentification</li>
+						</ul>
+					</section>
+		
+					<section>
+						<p>Méthodes de requête :</p>
+						<ul>
+							<li>GET : "Cachable " par défaut sauf si un en-tête précise le contraire</li>
+							<li>HEAD : Non "cachable" par défaut sauf si un en-tête précise le contraire</li>
+							<li>POST : Non "cachable" par défaut sauf si un en-tête précise le contraire</li>
+							<li>PUT, DELETE, OPTIONS, TRACE : Cache interdit</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>HTTP 1.0</h4>
+						<ul>
+							<li>Expires :
+								<ul>
+									<li>Indique que la réponse est "cachable"</li>
+									<li>Utilisé dans le cas où la ressource ne change pas…</li>
+									<li>Inférieur à 1an (recommandé)</li>
+									<li>Si la date indiquée dans le champ Expire > date indiquée dans le champ Date, revalidation de la ressource auprès du serveur qu’après expiration</li>
+									<li>Problèmes de synchronisation des dates…</li>
+								</ul>
+							</li>
+							<li>
+								Last-modified et If-Modified-Since :
+								<ul>
+									<li>Le cache interroge le serveur sur la date de dernière modification, récupère la ressource uniquement en cas de nécessité</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>HTTP 1.1</h4>
+						<p>Cache-Control : en-tête pour requête et réponse</p>
+					</section>
+
+					<section>
+						<table style="font-size: 0.6em;">
+							<thead>
+								<tr>
+									<th>Valeur</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>private</td>
+									<td>Autorisation dle stockage par les caches privés (navigateurs) uniquement : pour les infos propres à un utilisateur (POST)</td>
+								</tr>
+								<tr>
+									<td>public</td>
+									<td>Autorise le stockage par les caches publics et privés</td>
+								</tr>
+								<tr>
+									<td>no-cache</td>
+									<td>Revalidation systématique de la ressource par le cache</td>
+								</tr>
+								<tr>
+									<td>no-store</td>
+									<td>Mise en cache interdite</td>
+								</tr>
+								<tr>
+									<td>must-revalidate</td>
+									<td>Force la revalidation… peu utilisé : problème réseau…</td>
+								</tr>
+								<tr>
+									<td>max-age</td>
+									<td>Temps relatif par rapport à la date de réponse pour calculer la date d’expiration (équivalent à Expires)</td>
+								</tr>
+								<tr>
+									<td>s-maxage</td>
+									<td>Identique à max-age mais appliqué qu’aux caches publics</td>
+								</tr>
+								<tr>
+									<td>no-transform</td>
+									<td>Transformation par le proxy interdite (compression, ré-encodage,…)</td>
+								</tr>
+								<tr>
+									<td>max-stale</td>
+									<td>Client accepte des réponses non fraiches (cas où le proxy ne peut plus atteindre le serveur)</td>
+								</tr>
+		
+							</tbody>
+						</table>
+
+					</section>
+
+					<section>
+						<h4>Fraicheur des données</h4>
+						<ul>
+							<li>2 mécanismes permettent de vérifier la fraicheur des données :
+								<ul>
+									<li>Last-Modified et If-Modified-Since : date</li>
+									<li>Etag et If-None-Match : sorte de signature du document</li>
+								</ul>
+							</li>
+							<li>
+								Fonctionnement :
+								<ul>
+									<li>Pas de changement : Réponse 304 incluant une Date et un Expires</li>
+									<li>Changement : Réponse 200 OK incluant la mise à jour</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Conseil</h4>
+						<ul>
+							<li>Utiliser Expires et Last-Modified</li>
+							<li>Ne pas abuser de la négociation de contenu</li>
+							<li>Eviter l’authentification HTTP : désactivation du cache…</li>
+						</ul>
+					</section>
+
+				</section>
+	
+				<section>
+					<section>
+						<h3>Cookies</h3>
+					</section>
+
+					<section>
+						<ul>
+							<li>Informations envoyées par un serveur HTTP à un client HTTP sous forme d’en-tête</li>
+							<li>Stockés sous forme de fichiers texte côté client</li>
+							<li>Renvoyés à chaque nouvelle connexion au serveur</li>
+							<li>Durée de vie limitée, fixée par le site visité</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>Usage :</h4>
+						<ul>
+							<li>Authentification</li>
+							<li>Sessions</li>
+							<li>Personnalisation</li>
+							<li>Pistage</li>
+						</ul>
+
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>HTTPS</h3>
+					</section>
+
+					<section>
+						<ul style="font-size: 0.8em;">
+							<li>le client contacte un serveur et demande une connexion sécurisée, en lui présentant un certain nombre de méthodes de chiffrage de la connexion</li>
+							<li>le serveur répond en  confirmant pouvoir dialoguer de manière sécurisée et en choisissant dans cette liste une méthode de chiffrage et surtout, en produisant un certificat garantissant qu'il est bien le serveur en question et pas un serveur pirate déguisé (on parle de l'homme du milieu).</li>
+							<li>cela permet au client d'envoyer de manière secrète un code (une clé symétrique) qui sera mélangée à tous les échanges entre le serveur et le client de façon à ce que tous les contenus de la communication — y compris l'adresse même du site web, l'URL — soient chiffrées.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>HTTP/2</h3>
+					</section>
+
+					<section>
+						<p>Issu du protocole expérimental SPDY développé par Google</p>
+					</section>					
+
+					<section>
+						<h4>Objectifs :</h4>
+						<ul>
+							<li>Conservation de la compatibilité avec le HTTP/1.1</li>
+							<li>Réduction de la latence pour améliorer le temps de chargement des pages</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<p>Des questions ?</p>
+				</section>
+
+				<section>
+					<img src="img/thats-all-folks-cartoon.jpg" alt="that's all folks">
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

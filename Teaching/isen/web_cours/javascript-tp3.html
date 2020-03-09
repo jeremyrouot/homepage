@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Javascript TP 1</title>
+
+	<meta name="description" content="Javascripot TP 3">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+			<h1>TP 3 Javascript</h1>
+
+			<h2>Formulaire</h2>
+
+			<p>Créer un fichier HTML vierge.</p>
+
+			<p>Le formulaire permettra de garder des informations sur les étudiants rencontrés sur des salons.</p>
+
+			<h3>Champs du formulaire</h3>
+
+			<p>Le formulaire contient les champs suivants regroupés en parties distinctes :</p>
+
+			<ul>
+				<li>
+					Identité
+					<ul>
+						<li>Un nom</li>
+						<li>Un prénom</li>
+					</ul>
+				</li>
+				<li>
+					Une adresse décomposée en plusieurs champs :
+					<ul>
+						<li>Une adresse</li>
+						<li>Un code postal</li>
+						<li>Une ville</li>
+						<li>Un pays (sous forme de liste, 3 ou 4 pays seront suffisants)</li>
+					</ul>
+				</li>
+				<li>
+					Contact
+					<ul>
+						<li>Un numéro de téléphone</li>
+						<li>Une adresse de courrier électronique</li>
+					</ul>
+				</li>
+				<li>
+					Etudes en cours
+					<ul>
+						<li>Année d'étude (de la 4ème à Bac+2)</li>
+						<li>Une spécialité (S ou STI) uniquement pour les 1ère et Terminal</li>
+					</ul>
+				</li>
+				<li>
+					Poursuite d'études
+					<ul>
+						<li>Premier choix (CSI ou CIR)</li>
+						<li>Second choix (CSI ou CIR) optionnel</li>
+					</ul>
+				</li>
+				<li>
+					Une zone pour des commentaires libres (texte initial dans la zone : "Tapez ici vos commentaires")
+				</li>
+			</ul>
+
+			<p>Le formulaire se terminera par 2 boutons :</p>
+
+			<ul>
+				<li>"Valider" pour soumettre le formulaire</li>
+				<li>"Annuler" pour remettre le formulaire dans son état initial</li>
+			</ul>
+			
+			<p>Les champs nom et prénom et l'email sont des champs obligatoires, vous le signalerez en ajoutant un asterisque rouge à côté du champ.'
+
+			<h3>Réaction de certains champs</h3>
+
+			<p>Le champs "spécialité" ne sera actif que si l'année d'études choisie est "1ère" ou "Terminale" (attribut <code>disabled</code> de l'élément <code>input</code>).</p>
+
+			<p>Lorsque le champs "Commentaires" prend le focus, le texte initial doit disparaître.</p>
+
+			<h3>Réalisation</h3>
+
+			<h4>Question n°1</h4>
+
+			<p>Créer le formulaire.</p>
+
+			<h4>Question n°2</h4>
+
+			<p>Rendre les champs indiqués précédemment réactifs... (spécialité, commentaires,...).</p>
+
+			<h4>Question n°3</h4>
+
+			<p>Créer une fonction qui sera appelée lors de la soumission du formulaire. Cette fonction vérifiera
+					que les champs obligatoires ne sont pas vides. Si un champ est vide, lui ajouter un bord rouge.</p>
+
+			<h4>Question n°4</h4>
+
+			<p>Vérifier que le champ email contient un texte qui à la forme d'un email, idem pour le numéro de téléphone.</p>
+
+
+		</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

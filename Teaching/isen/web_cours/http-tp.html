@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>HTTP TP</title>
+
+	<meta name="description" content="HTTP TP">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+				<h1>TP HTTP</h1>
+
+				<h2>Requètes et réponses vu du client</h2>
+
+				<p>Pour cette partie on utilisera la commande
+					<pre>telnet</pre> pour simuler un client Web</p>
+
+				<h3>Question 1</h3>
+
+				<p>Quelle requète permet de récupérer les caractèristiques du serveur Web de l'isen (www.isen.fr) ?</p>
+
+				<p>A quoi correspond la première ligne de la réponse ?</p>
+
+				<p>Quelles sont les autres informations disponibles ?</p>
+
+				<h3>Question 2</h3>
+
+				<p>Même question pour le serveur web.isen-bretagne.fr ?</p>
+
+				<h3>Question 3</h3>
+
+				<p>Même question pour le serveur web.isen-bretagne.fr sur le port 443 (https) ?</p>
+
+				<h3>Question 4</h3>
+
+				<p>Ecrire une requète permettant de connaître les commandes acceptèes par www.isen.fr ?</p>
+
+				<p>Même chose sur www.example.org</p>
+
+				<h3>Question 5</h3>
+
+				<p>Ecrire la requète permettant de récupérer la page concernant Brest sur le site Web de l'ISEN ?</p>
+
+				<p>Comment modifier la requète pour clore la connexion après avoir récupérer la réponse ?</p>
+
+				<h3>Question 6</h3>
+
+				<p>Afin de comprendre les différentes classes de réponses, tentez d'obtenir avec une requête HEAD une réponse de chacune
+					des classes (codes de retours) :</p>
+				<ul>
+					<li>Succès</li>
+					<li>Erreur client</li>
+				</ul>
+
+				<h2>Coté serveur</h2>
+
+				<p>Pour simuler un serveur WEB on utilisera la commande : <pre>nc</pre>
+					 (pour netcat) avec la syntaxe suivante :
+					<pre>nc -l localhost port</pre>
+				</p>
+				<p>Il est ensuite possible de se connecter à ce serveur via un telnet ou un navigateur WEB.</p>
+
+				<h3>Question 7</h3>
+
+				<p>Connecter vous au serveur à l'aide de telnet puis d'un navigateur, qu'apparait-il au niveau du serveur ?</p>
+
+				<h3>Question 8</h3>
+
+				<p>Répondez à la requête du client pour afficcher une page Web.</p>
+
+				<p>On peut utiliser le code simple suivant :</p>
+
+				<pre><code>
+&lt;title&gt;Exemple&lt;/title&gt;
+&lt;p&gt;Ceci est une page d'exemple&lt;/p&gt;
+		</code></pre>
+
+				<h3>Question 9</h3>
+
+				<p>Positionnez un Cookie sur le client dans votre reponse suivante. Vous pouvez vérifier que tout a bien fonctionner à partir
+					du navigateur Web. Dans Firefox : Outils/Informations sur la page/Détails/Voir les cookies.</p>
+
+				<p>Lors d'une connexion ultérieure, vérifiez que le cookie est bien envoyé au client.</p>
+
+				<h3>Question 10</h3>
+
+				<p>Envoyez des erreurs avec différents codes de status au client.</p>
+
+				<h2>Fonctionnement du cache</h2>
+
+				<h3>Question 11</h3>
+
+				<p>Repérer la date de dernière modification d’une page Web (Last-Modified).</p>
+
+				<h3>Question 12</h3>
+
+				<p>Ecrire une requête permettant de rapatrier la page en fonction de la date de dernière modification (If-Modified-Since)
+					dans les 2 cas suivants :</p>
+				<ul>
+					<li>date ultérieure à la dernière modification</li>
+					<li>date antérieure à la dernière modification</li>
+				</ul>
+
+			</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+<!--
+	Formalisme
+
+	# commande
+
+	# Requêtes et réponses vu du client
+
+	www.isen.fr
+
+	quelle est la requète
+	que signifie la première ligne
+	déduire de la réponse le type de serveur
+	
+	meême question pour perdu.com
+
+	même question pour http://web.isen-bretagne.fr/
+
+		même question pour http://web.isen-bretagne.fr/ sur le port 443
+
+	question 4 écrire la 
+		pour www.isen.fr
+		pour http://example.org
+
+	écrire la requète pour isen.fr por Brest
+
+	question 6 machine intermédiaire
+
+	question 7 requète head
+		succès
+		erreur client
+
+	coté serveur
+	
+	nc -l
+
+	1 - faire connection avec telnet puis navigateur
+
+	2 - renvoyer une page web
+	
+	3 - positionner un couqui
+
+	cache
+
+	requete If-modifed-Since
+-->

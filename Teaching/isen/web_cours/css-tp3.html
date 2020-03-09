@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>CSS TP 3</title>
+
+	<meta name="description" content="CSS TP 3">
+	<meta name="author" content="Guillaume CLODIC">
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom-bootstrap.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="page-top">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top">Introduction aux technologies WEB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--			<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+						</ul>
+					</div> -->
+		</div>
+	</nav>
+
+	<section>
+		<div class="container">
+
+			<h1>TP 3 CSS Positionnement</h1>
+
+			<p>L'objectif de ce TP est d'utiliser les différentes méthodes de positionnement CSS.</p>
+
+			<h2>Général</h2>
+
+			<p>Pour ce TP on utilisera les fichiers suivants : </p>
+			<ul>
+				<li><a href="tp/css-tp3/positionnement.html">positionnement.html</a></li>
+				<li><a href="tp/css-tp3/positionnement.css">positionnement.css</a></li>
+			</ul>
+
+			<h3>Question 1</h3>
+
+			<p>Utiliser le positionnement <code>fixed</code> pour obtenir le visual suivant :</p>
+			<p><img src="img/positionnement1.png" alt="positionnement"></p>
+			
+			<p>Pour ce faire créer un nouveau fichier css nommé <code>fixed.css</code> que vous ajouterez à la page HTML.</p>
+
+			<h3>Question 2</h3>
+
+			<p>Même chose que la question 1 mais en utilisant le positionnement <code>absolute</code>.</p>
+
+			<h3>Question 3</h3>
+
+			<p>Même chose que la question 1 mais en utilisant la propriété <code>float</code>.</p>
+
+			<h3>Question 4</h3>
+
+			<p>Même chose que la question 1 mais en utilisant le dislay <code>grid</code>.</p>
+
+			<h2>Article</h2>
+
+			<p>Nous essayerons de nous en rapprocher en suivant le modèle ci-dessous :</p>
+
+			<p><img src="img/article.png" alt="article"></p>
+
+			<h3>Question 1</h3>
+
+			<p>Vous avez à votre disposition :</p>
+			<ul>
+				<li>Le fichier « <a href="tp/css-tp3/article.html">article.html</a> » contenant le code XHTML non mis en forme.</li>
+				<li>L'image « <a href="tp/css-tp3/alice.jpeg">alice.jpeg</a> »</li>
+			</ul>
+
+			<p>Il est possible d'apporter des modifications au code XHTML mais pas au texte !!!</p>
+
+			<p>Voici la liste des opérations à réaliser :</p>
+
+			<ul>
+				<li>La couleur d'arrière plan de l'article est gris</li>
+				<li>La page créée s'adaptera automatiquement en cas de redimensionnement de la fenêtre</li>
+				<li>Les titres sont écrits en lettre majuscules</li>
+				<li>Le second titre n'a pas d'interligne, les paragraphe non plus</li>
+				<li>Les textes des paragraphes sont justifiés</li>
+				<li>Le texte s'étale sur 3 colonnes séparée par un espace</li>
+				<li>La première lettre du premier paragraphe s'étale sur 3 lignes et est en gras</li>
+				<li>La largeur de l'image fait la moitié de la dernière colonne</li>
+				<li>Le texte coule le long de l'image	</li>
+			</ul>
+
+			<h3>Question 2</h3>
+
+			<p>Afin de comprendre une des nouveautés CSS 3, tenter de reproduire l'article de journal précédent en
+					utilisant la fonctionnalité « Multi column layout ». La documentation est accessible à l'adresse
+					suivante : <a href="http://www.w3.org/TR/css3-multicol/">http://www.w3.org/TR/css3-multicol/</a></p>
+
+		</div>
+	</section>
+
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

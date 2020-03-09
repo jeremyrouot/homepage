@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>One more thing</title>
+
+		<meta name="description" content="One more thing">
+		<meta name="author" content="Guillaume CLODIC">
+
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+
+			<div class="slides">
+				
+				<section>
+					<h1>One more thing...</h1>
+					<p>ISEN Brest - CIR1</p>
+				</section>
+
+				<section>
+					<h1>Un peu plus en fait.</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2>Timer en JavaScript</h2>
+					</section>
+
+					<section>
+						<h3>Fonction <code>setTimeout</code></h3>
+
+						<ul>
+							<li>Appartient à l'objet <code>window</code></li>
+							<li>Syntaxe <code>setTimeout(nom_fonction, temps_en_ms);</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Fonction <code>setTimeout</code></h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var maVariable = setTimeout(monTimer, 2000);
+
+function monTimer() {
+	var d = new Date();
+	console.log(d.toLocalTimeString());
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Fonction <code>setTimeout</code></h3>
+
+						<p>Annulation avec la fonction <code>clearTimeout</code></p>
+					</section>
+					
+					<section>
+						<h3>Fonction <code>setTimeout</code></h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var maVariable = setTimeout(monTimer, 2000);
+
+function monTimer() {
+	var d = new Date();
+	console.log(d.toLocalTimeString());
+}
+
+function stopTimer() {
+	clearTimeout(maVariable);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Fonction <code>setInterval</code></h3>
+
+						<ul>
+							<li>Idem mais appel à interval régulier</li>
+							<li>Annulation avec <code>clearInterval</code></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Canvas</h2>
+					</section>
+
+					<section>
+						<ul>
+							<li>Apparait avec le HTML 5</li>
+							<li>Permet de définir une zone rectangulaire où il est possible de "dessiner" à l'aide de JavaScript</li>
+							<li>Lancé en 2004 dans Safari et présent depuis 2005 dans Firefox</li>
+						</ul>
+					</section>
+
+					<section>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+&lt;canvas id=&quot;monCanvas&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+	Texte alternatif pour les navigateurs ne supportant pas la balise canvas
+&lt;/canvas&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Système de coordonnées</h3>
+						<img src="img/canvascoord.png" alt="système de coordonnées"/>
+					</section>
+
+					<section>
+						<h3>En javascript</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var c = document.getElementById("monCanvas");
+var ctx = c.getContext("2d");
+/* Code */
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Pour le tracé</h3>
+						<ul>
+							<li>Initialisation <code>beginPath()</code></li>
+							<li>Point de départ <code>moveTo(x,y)</code></li>
+							<li>Point d'arrivé <code>lineTo(x,y)</code></li>
+							<li>Clôture de la forme <code>closePath()</code></li>
+							<li>Affichage du contour <code>stroke()</code> ou remplissage <code>fill()</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(10,10);
+ctx.lineTo(90,90);
+ctx.moveTo(90,10);
+ctx.lineTo(10,90);
+ctx.closePath();
+
+ctx.stroke();
+						</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>Propriété <code>fillStyle</code> ou <code>strokeStyle</code> : couleur CSS</li>
+							<li>Propriété <code>lineWidth</code> : épaisseur du trait</li>
+							<li>Propriété <code>lineCap</code> : style de fin de ligne</li>
+						</ul>
+					</section>
+
+					<section>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 2;
+						</code></pre>
+					</section>
+	
+					<section>
+						<h3>Forme rectangulaire</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, 90, 90);
+						</code></pre>
+					</section>
+	
+					<section>
+						<h3>Effacement d'une zone</h3>
+						<pre><code data-trim data-noescape style="font-size: 0.8em;">
+ctx.clearRect(0, 0, 100, 100);
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Et encore...</h3>
+
+						<ul>
+							<li>Afficher des images</li>
+							<li>Dessiner des arcs de cercle</li>
+							<li>Des courbes quadratique ou de bézier</li>
+							<li>Des dégradés</li>
+							<li>Du texte</li>
+							<li>Des effets, des transformations</li>
+							<li>Modification au pixel</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>jQuery</h2>
+					</section>
+
+					<section>
+						<p>Sans doute la librairie la plus utilisée en JavaScript</p>
+					</section>
+
+					<section>
+						<ul>
+							<li>Manipulation du DOM</li>
+							<li>Manipulation du CSS</li>
+							<li>Gestion des évènements</li>
+							<li>Gestion des effets et des animations</li>
+							<li>AJAX</li>
+							<li>etc...</li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Syntaxe <code>$(selector).action()</code></p>
+					</section>
+							
+					<section>
+						<ul>
+							<li>$(this).hide()</li>
+							<li>$("p").hide()</li>
+							<li>$(".classe").hide()</li>
+							<li>$("#identifiant").hide()</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Quelques ressources</h2>
+					</section>
+
+					<section>
+						<a href="https://www.youtube.com/watch?v=PSeU1IJztkI">Comprendre enfin le javascript</a>
+					</section>
+
+					<section>
+						<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">Javascript MDN</a>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
